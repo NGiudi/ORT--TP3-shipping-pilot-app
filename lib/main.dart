@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:shipping_pilot/core/app_router.dart';
+
 void main() {
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  MainApp({super.key});
+
+  final ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      theme: darkTheme,
+      routerConfig: appRouter,
     );
   }
 }
