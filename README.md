@@ -63,18 +63,21 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   - ID
   - Dirección (Address)
   - Comprador (Person)
-  - Conductor (User)
-  - Estado (Exitosa / Fallida / En curso)
+  - Estado (Nueva / Exitosa / Fallida / En curso)
   - Cantidad de paquetes.
   - Lista de ids de los paquetes.
   - Precio visita. (devuelve un valor según el estado)
 
+  OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
+
 - Route
   - Auto (Vehicle)
+  - Conductor (User)
   - Estado (Nueva / En Curso / Finalizada)
   - Lista de visitas
-  - Precio estimado (cantidad vistas * precio fijo por visita).
-  - Precio final
+  - Precio => cantidad vistas * precio fijo por visita 
+    
+  OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
 
 ## Fuera del MVP
   - Agregar Pais  y Ciudad en al dirección.
