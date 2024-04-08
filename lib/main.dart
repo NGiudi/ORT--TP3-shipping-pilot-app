@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:shipping_pilot/core/app_router.dart';
+import 'package:shipping_pilot/app_state.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const AppState());
 }
 
 class MainApp extends StatelessWidget {

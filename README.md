@@ -70,7 +70,7 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
   OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
 
-- Route
+- Travel
   - Auto (Vehicle)
   - Conductor (User)
   - Estado (Nueva / En Curso / Finalizada)

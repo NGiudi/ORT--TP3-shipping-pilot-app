@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+import 'package:shipping_pilot/pages/pages.dart';
+
 class LoginPage extends StatelessWidget {
   static const String name = 'LoginPage';
 
@@ -7,9 +10,14 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Hola mundo!'),
+        child: TextButton(
+          child: const Text("Iniciar sesión"),
+          onPressed: () {
+            GoRouter.of(context).pushNamed(TravelDetailPage.name);
+          },
+        ),
       ),
     );
   }
