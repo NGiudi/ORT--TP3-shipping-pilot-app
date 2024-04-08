@@ -13,7 +13,9 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => TravelsService()),
       ],
-      child: MainApp(),
+      child: SafeArea(
+        child: MainApp(),
+      ),
     );
   }
 }

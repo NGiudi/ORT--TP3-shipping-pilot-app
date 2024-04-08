@@ -13,6 +13,7 @@ class TravelDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final travelsService = Provider.of<TravelsService>(context);
+    final travel = travelsService.travels[0];
 
     if (travelsService.isLoading) {
       return const Scaffold(
@@ -23,11 +24,26 @@ class TravelDetailPage extends StatelessWidget {
     }
 
     return Scaffold(
-      body: ListView.builder(
-        itemCount: travelsService.travels.length,
-        itemBuilder: (context, idx) {
-          return VisitListItemWidget(visits: travelsService.travels[idx].visits);
-        },
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 24),
+            child: Text("Vehículo", style: Theme.of(context).textTheme.titleLarge),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 24),
+            child: Text("Visitas", style: Theme.of(context).textTheme.titleLarge),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: travel.visits.length,
+              itemBuilder: (context, idx) {
+                return VisitListItemWidget(visit: travel.visits[idx]);
+              },
+            ),
+          )
+        ],
       ),
     );
   }
