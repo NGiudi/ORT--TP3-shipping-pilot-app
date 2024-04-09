@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:shipping_pilot/pages/travels/travels_detail/widgets/visits_list_item_widget.dart';
+import 'package:shipping_pilot/widgets/car/car_detail_widget.dart';
+import 'package:shipping_pilot/widgets/visits/visits_list/visit_list_widget.dart';
 
 import 'package:shipping_pilot/services/travels_service.dart';
 
@@ -27,21 +27,13 @@ class TravelDetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16, top: 24),
-            child: Text("Vehículo", style: Theme.of(context).textTheme.titleLarge),
-          ),
+          CarDetailWidget(car: travel.car),
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 24),
             child: Text("Visitas", style: Theme.of(context).textTheme.titleLarge),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: travel.visits.length,
-              itemBuilder: (context, idx) {
-                return VisitListItemWidget(visit: travel.visits[idx]);
-              },
-            ),
+            child: VisitsListWidget(visits: travel.visits),
           )
         ],
       ),
