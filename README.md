@@ -29,7 +29,6 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 ## Entidades
 
 - Address
-  - Id
   - Barrio
   - Calle
   - Altura
@@ -38,40 +37,14 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   - Código Postal
   - Observaciones
 
-- Person
-  - Id
+- Client
   - Nombre
   - Apellido
   - DNI
   - Telefono
 
-- User
-  - Id
-  - Persona (Person)
-  - Password
-  - Email
-  - Rol (admin / driver)
-
-- Vehicle
-  - Color
-  - Patente
-  - Modelo
-  - Marca
-  - Tipo
-
-- Visit
-  - ID
-  - Dirección (Address)
-  - Comprador (Person)
-  - Estado (Nueva / Exitosa / Fallida / En curso)
-  - Cantidad de paquetes.
-  - Lista de ids de los paquetes.
-  - Precio visita. (devuelve un valor según el estado)
-
-  OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
-
 - Travel
-  - Auto (Vehicle)
+  - Vehículo (Vehicle)
   - Conductor (User)
   - Estado (Nueva / En Curso / Finalizada)
   - Lista de visitas
@@ -79,8 +52,35 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
     
   OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
 
+- User
+  - Nombre
+  - Apellido
+  - DNI
+  - Telefono
+  - Password
+  - Foto (URL)
+  - Email
+  - Rol (admin / driver)
+
+- Vehicle
+  - Color
+  - Patente 
+  - Modelo
+  - Marca
+  - Tipo
+
+- Visit
+  - Dirección (Address)
+  - Comprador (Client)
+  - Estado (Nueva / Exitosa / Fallida / En curso)
+  - Cantidad de paquetes.
+  - Lista de ids de los paquetes.
+  - Precio visita. (devuelve un valor según el estado)
+
+  OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
+
 ## Fuera del MVP
-  - Agregar Pais  y Ciudad en al dirección.
+  - Agregar Pais y Ciudad en al dirección.
   - Agregar valoración del conductor.
   - Agregarle foto al usuario.
   - Pantallas del administrador.

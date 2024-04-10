@@ -2,7 +2,7 @@ import 'package:shipping_pilot/models/models.dart';
 
 class Visit {
   Address address;
-  Person buyer;
+  Client buyer;
   List<String> packages;
   int packagesCount;
   int price;
@@ -19,7 +19,7 @@ class Visit {
 
   factory Visit.fromJson(Map<String, dynamic> json) => Visit(
     address: Address.fromJson(json["address"]),
-    buyer: Person.fromJson(json["buyer"]),
+    buyer: Client.fromJson(json["buyer"]),
     packages: List<String>.from(json["packages"].map((x) => x)),
     packagesCount: json["packages_count"],
     price: json["price"],

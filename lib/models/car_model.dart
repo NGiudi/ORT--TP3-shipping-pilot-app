@@ -1,11 +1,11 @@
-class Car {
+class Vehicle {
   String brand;
   String color;
   String licensePlate;
   String model;
   String type;
 
-  Car({
+  Vehicle({
     required this.brand,
     required this.color,
     required this.licensePlate,
@@ -13,7 +13,7 @@ class Car {
     required this.type,
   });
 
-  factory Car.fromJson(Map<String, dynamic> json) => Car(
+  factory Vehicle.fromJson(Map<String, dynamic> json) => Vehicle(
     brand: json["brand"],
     color: json["color"],
     licensePlate: json["license_plate"],

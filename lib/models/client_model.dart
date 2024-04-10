@@ -1,17 +1,17 @@
-class Person {
+class Client {
   int docNumber;
   String lastName;
   String name;
   String phone;
 
-  Person({
+  Client({
     required this.docNumber,
     required this.lastName,
     required this.name,
     required this.phone,
   });
 
-  factory Person.fromJson(Map<String, dynamic> json) => Person(
+  factory Client.fromJson(Map<String, dynamic> json) => Client(
     docNumber: json["doc_number"],
     lastName: json["last_name"],
     name: json["name"],

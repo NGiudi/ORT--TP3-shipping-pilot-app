@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shipping_pilot/widgets/car/car_detail_widget.dart';
-import 'package:shipping_pilot/widgets/visits/visits_list/visit_list_widget.dart';
+
+import 'package:shipping_pilot/widgets/widgets.dart';
 
 import 'package:shipping_pilot/services/travels_service.dart';
 
@@ -24,10 +24,12 @@ class TravelDetailPage extends StatelessWidget {
     }
 
     return Scaffold(
+      drawer: SidebarWidget(driver: travel.driver),
+      appBar: AppbarWidget(driver: travel.driver),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CarDetailWidget(car: travel.car),
+          VehicleDetailWidget(vehicle: travel.vehicle),
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 24),
             child: Text("Visitas", style: Theme.of(context).textTheme.titleLarge),
