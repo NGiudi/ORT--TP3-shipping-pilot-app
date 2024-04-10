@@ -26,6 +26,11 @@ class SidebarWidget extends StatelessWidget {
               ),
             ),
           ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            onTap: () => {}, //TODO: add logout function.
+            title: const Text('Cerrar sesión'),  
+          ),
         ],
       ),
     );
