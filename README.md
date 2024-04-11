@@ -49,7 +49,11 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   - Estado (Nueva / En Curso / Finalizada)
   - Lista de visitas
   - Precio => cantidad vistas * precio fijo por visita 
-    
+  - Stats
+    - Cantidad de paquetes.
+    - Cantidad de visitas.
+    - ETA del recorrido.
+  
   OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
 
 - User

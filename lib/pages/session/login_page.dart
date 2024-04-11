@@ -22,62 +22,65 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            child: TextField(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
               controller: _usuarioController,
               decoration: InputDecoration(
-                hintText: 'Usuario',
-                labelText: 'Usuario',
+                hintText: 'Email',
+                labelText: 'Email',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 50),
-            child: TextField(
+            const SizedBox(height: 30),
+            TextField(
               obscureText: passwordVisible,
               controller: _claveController,
               decoration: InputDecoration(
-                hintText: 'Clave',
-                labelText: 'Clave',
+                hintText: 'Contraseña',
+                labelText: 'Contraseña',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                suffixIcon: IconButton(
-                  icon: Icon(passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
-                  onPressed: () {
-                    setState(
-                      () {
-                        passwordVisible = !passwordVisible;
-                      },
-                    );
-                  },
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: IconButton(
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                    onPressed: () {
+                      setState(
+                        () {
+                          passwordVisible = !passwordVisible;
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              if (_usuarioController.text.isEmpty ||
-                  _claveController.text.isEmpty) {
-                return;
-              }
-              GoRouter.of(context).pushNamed(TravelDetailPage.name,
-                  extra: _usuarioController.text);
-            },
-            child: const Text('Iniciar sesion'),
-          ),
-        ],
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_usuarioController.text.isEmpty ||
+                      _claveController.text.isEmpty) {
+                    return;
+                  }
+                  GoRouter.of(context).pushNamed(TravelDetailPage.name,
+                      extra: _usuarioController.text);
+                },
+                child: const Text('Iniciar sesion'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
