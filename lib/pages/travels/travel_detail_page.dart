@@ -13,8 +13,8 @@ class TravelDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final travelsService = Provider.of<TravelsService>(context);
-    final travel = travelsService.travels[0];
-
+    
+    //? Waiting to receive the route information.
     if (travelsService.isLoading) {
       return const Scaffold(
         body: Center(
@@ -22,6 +22,9 @@ class TravelDetailPage extends StatelessWidget {
         )
       );
     }
+
+    //? Once the route information is obtained.
+    final travel = travelsService.travels[0];
 
     return Scaffold(
       drawer: SidebarWidget(driver: travel.driver),
