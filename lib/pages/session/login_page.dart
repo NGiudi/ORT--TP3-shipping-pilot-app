@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       _claveController.text.isEmpty) {
                     return;
                   }
-                  context.pushNamed(TravelDetailPage.name,
+                  context.pushReplacementNamed(TravelDetailPage.name,
                       extra: _usuarioController.text);
                 },
                 child: const Text('Iniciar sesión'),
