@@ -76,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                   GoRouter.of(context).pushNamed(TravelDetailPage.name,
                       extra: _usuarioController.text);
                 },
-                child: const Text('Iniciar sesion'),
+                child: const Text('Iniciar sesión'),
               ),
             ),
           ],
