@@ -8,38 +8,40 @@ class VehicleDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {    
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 8, left: 16),
-          child: Text(
+    return Padding(
+      padding: const EdgeInsets.only(left: 16), 
+      child: Column (
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
             "Vehículo",
             style: Theme.of(context).textTheme.titleLarge
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(left: 24),
-          child: Text(
-            '${vehicle.brand} ${vehicle.model}',
-            style: Theme.of(context).textTheme.bodyLarge
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${vehicle.brand} ${vehicle.model}',
+                  style: Theme.of(context).textTheme.bodyLarge
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Patente: ${vehicle.licensePlate}',
+                  style: Theme.of(context).textTheme.bodySmall
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Color: ${vehicle.color}',
+                  style: Theme.of(context).textTheme.bodySmall
+                ),
+              ],
+            ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(left: 24, top: 8),
-          child: Text(
-            'Patente: ${vehicle.licensePlate}',
-            style: Theme.of(context).textTheme.bodySmall
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.only(left: 24, top: 4),
-          child: Text(
-            'Color: ${vehicle.color}',
-            style: Theme.of(context).textTheme.bodySmall
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

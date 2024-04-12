@@ -32,6 +32,7 @@ class TravelDetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          TravelDetailWidget(travel: travel),
           VehicleDetailWidget(vehicle: travel.vehicle),
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 24),
