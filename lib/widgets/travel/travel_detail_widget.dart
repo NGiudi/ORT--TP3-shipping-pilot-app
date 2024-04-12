@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:shipping_pilot/widgets/widgets.dart';
+
 import 'package:shipping_pilot/models/models.dart';
 
 class TravelDetailWidget extends StatelessWidget {
@@ -22,6 +25,8 @@ class TravelDetailWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                TravelStatusBadge(status: travel.status),
+                const SizedBox( height: 4 ),
                 Text(
                   '${travel.stats.packagesCount} paquete(s), ${travel.stats.visitsCount} visita(s)',
                   style: Theme.of(context).textTheme.bodyMedium
@@ -33,7 +38,7 @@ class TravelDetailWidget extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
