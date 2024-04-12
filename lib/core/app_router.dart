@@ -14,5 +14,10 @@ final appRouter = GoRouter(
       builder: (context, state) => const TravelDetailPage(),
       name: TravelDetailPage.name,
     ),
+    GoRoute(
+      path: '/visit_detail',
+      builder: (context, state) => const VisitDetailPage(),
+      name: VisitDetailPage.name,
+    ),
   ],
 );
