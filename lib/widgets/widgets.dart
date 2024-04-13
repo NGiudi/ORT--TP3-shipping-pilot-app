@@ -11,4 +11,5 @@ export 'package:shipping_pilot/widgets/travel/travel_status_badge_widget.dart';
 export 'package:shipping_pilot/widgets/vehicle/vehicle_detail_widget.dart';
 
 /* visits */
-export 'package:shipping_pilot/widgets/visits/visits_list/visit_list_widget.dart';
+export 'package:shipping_pilot/widgets/visits/visit_list_widget.dart';
+export 'package:shipping_pilot/widgets/visits/visit_status_badge_widget.dart';

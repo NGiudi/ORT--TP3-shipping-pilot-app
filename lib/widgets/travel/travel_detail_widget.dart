@@ -33,7 +33,7 @@ class TravelDetailWidget extends StatelessWidget {
                 ),
                 const SizedBox( height: 4 ),
                 Text(
-                  'ETA: ${travel.stats.eta}',
+                  'ETA: ${travel.stats.formattedETA()}',
                   style: Theme.of(context).textTheme.bodyMedium
                 ),
               ],

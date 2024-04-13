@@ -20,4 +20,8 @@ class TravelStats {
     'packages_count': packagesCount,
     'visits_count': visitsCount,
   };
+
+  formattedETA() {
+    return '${eta.hour}:${eta.minute}';
+  }
 }
