@@ -11,6 +11,7 @@ class MainApp extends StatelessWidget {
   MainApp({super.key});
 
   final ThemeData darkTheme = ThemeData(
+    colorSchemeSeed: Colors.red,
     brightness: Brightness.dark,
   );
 

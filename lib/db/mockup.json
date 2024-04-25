@@ -1,0 +1,101 @@
+{
+  "drivers": {
+    "23456789": {
+      "email": "nicolas.giudice@gmail.com",
+      "last_name": "Giudice",
+      "name": "Nicolás",
+      "password": "pass1234",
+      "phone": "+5491133333333",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVErbGzN5-649rSfng3O623SW0ySRC0pdM12gT5pqrjw&s",
+      "role": "driver"
+    },
+    "12345678": {
+      "email": "jero.miguez@gmail.com",
+      "last_name": "Miguez",
+      "name": "Jerónimo",
+      "password": "pass1234",
+      "phone": "+5491122222222",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVErbGzN5-649rSfng3O623SW0ySRC0pdM12gT5pqrjw&s",
+      "role": "driver"
+    }
+  },
+  "settings": {
+    "pricing": {
+      "failed_coefficient": 0.8,
+      "successful_coefficient": 1.2,
+      "visit_price": 5000
+    }
+  },
+  "travels": {
+    "23456789-24042024": {
+      "driver": "23456789",
+      "price": 4000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-11T15:23:45.123456",
+        "packages_count": 2,
+        "visits_count": 1
+      },
+      "vehicle": "ABC123",
+      "visits": [
+        {
+          "address": {
+            "district": "Almagro",
+            "floor": 3,
+            "observations": "",
+            "street_name": "Yapeyu",
+            "street_number": 340,
+            "unit": "D",
+            "zip_code": 1202
+          },
+          "buyer": {
+            "doc_number": 23456789,
+            "last_name": "Giudice",
+            "name": "Nicolás",
+            "phone": "+5491133333333"
+          },
+          "eta": "2024-04-11T10:11:45.123456",
+          "packages_count": 2,
+          "packages": [
+            "pck_1",
+            "pack_2"
+          ],
+          "price": 10000,
+          "status": "new"
+        },
+        {
+          "address": {
+            "district": "caballito",
+            "floor": 1,
+            "observations": "",
+            "street_name": "Doblas",
+            "street_number": 276,
+            "unit": "",
+            "zip_code": 1204
+          },
+          "buyer": {
+            "doc_number": 12345678,
+            "last_name": "Miguez",
+            "name": "Jeronimo",
+            "phone": "+5491122222222"
+          },
+          "eta": "2024-04-11T10:11:45.123456",
+          "packages_count": 1,
+          "packages": [
+            "pck_3"
+          ],
+          "price": 5000,
+          "status": "new"
+        }
+      ]
+    }
+  },
+  "vehicles": {
+    "ABC123": {
+      "brand": "Volkswagen",
+      "color": "Negro",
+      "model": "Fox",
+      "type": "car"
+    }
+  }
+}

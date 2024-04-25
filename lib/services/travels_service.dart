@@ -13,7 +13,7 @@ class TravelsService extends ChangeNotifier {
   bool isLoading = true;
 
   TravelsService() {
-    getRoute("40388846-24042024");//TODO: aca deberíamos pasar el string "dni del conductor-dia" 
+    getFullTravel("23456789-24042024");//TODO: aca deberíamos pasar el string "dni del conductor-dia" 
   }
 
   Future getDriver(String dni) async {
@@ -37,7 +37,7 @@ class TravelsService extends ChangeNotifier {
     return json.decode(resp.body);
   }
 
-  Future getRoute(String uuid) async {
+  Future getFullTravel(String uuid) async {
     //* start generate travel information.
     isLoading = true;
     notifyListeners();
