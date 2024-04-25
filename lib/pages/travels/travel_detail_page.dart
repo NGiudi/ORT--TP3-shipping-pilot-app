@@ -5,6 +5,8 @@ import 'package:shipping_pilot/widgets/widgets.dart';
 
 import 'package:shipping_pilot/services/travels_service.dart';
 
+import 'package:shipping_pilot/models/models.dart';
+
 class TravelDetailPage extends StatelessWidget {
   static const String name = 'TravelDetail';
 
@@ -13,7 +15,7 @@ class TravelDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final travelsService = Provider.of<TravelsService>(context);
-    
+
     //? Waiting to receive the route information.
     if (travelsService.isLoading) {
       return const Scaffold(
@@ -23,8 +25,16 @@ class TravelDetailPage extends StatelessWidget {
       );
     }
 
-    //? Once the route information is obtained.
-    final travel = travelsService.travels[0];
+    final Travel? travel = travelsService.travel;
+    
+    //TODO: diseñar el empty state y revisar mejor si debe ir aca o dentro del Scaffold del return de la linea 39.
+    if (travel == null) {
+      return const Scaffold(
+        body: Center(
+          child: Text("empty state"),
+        )
+      );
+    }
 
     return Scaffold(
       drawer: SidebarWidget(driver: travel.driver),

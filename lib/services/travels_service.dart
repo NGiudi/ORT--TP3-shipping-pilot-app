@@ -7,29 +7,59 @@ import 'package:shipping_pilot/models/models.dart';
 
 class TravelsService extends ChangeNotifier {
   final String _baseUrl = "shipping-pilot-app-default-rtdb.firebaseio.com";
-  final List<Travel> travels = [];
+
+  Travel? travel;
 
   bool isLoading = true;
 
   TravelsService() {
-    getRoutes();
+    getRoute("40388846-24042024");//TODO: aca deberíamos pasar el string "dni del conductor-dia" 
   }
 
-  //TODO: modificar.
-  Future getRoutes() async {
+  Future getDriver(String dni) async {
+    final url = Uri.https(_baseUrl, 'drivers/$dni.json');
+    final resp = await http.get(url);
+    
+    return json.decode(resp.body);
+  }
+
+  Future getTravel(String uuid) async {
+    final url = Uri.https(_baseUrl, 'travels/$uuid.json');
+    final resp = await http.get(url);
+
+    return json.decode(resp.body);
+  }
+
+  Future getVehicle(String licensePlate) async {
+    final url = Uri.https(_baseUrl, 'vehicles/$licensePlate.json');
+    final resp = await http.get(url);
+    
+    return json.decode(resp.body);
+  }
+
+  Future getRoute(String uuid) async {
+    //* start generate travel information.
     isLoading = true;
     notifyListeners();
 
-    final url = Uri.https(_baseUrl, 'routes.json');
-    final resp = await http.get(url);
+    //* get travel.
+    Map<String, dynamic>? travel = await getTravel(uuid);
+    
+    if (travel != null) {
+      //* get driver.
+      Map<String, dynamic> driver = await getDriver(travel["driver"]);
+      driver["doc_number"] = int.parse(travel["driver"]);
+      travel["driver"] = driver;
 
-    final List<dynamic> travelList = json.decode(resp.body);
+      //* get vehicle.
+      Map<String, dynamic> vehicle = await getVehicle(travel["vehicle"]);
+      vehicle["license_plate"] = travel["vehicle"];
+      travel["vehicle"] = vehicle;
 
-    for (dynamic t in travelList) {
-      final travel = Travel.fromJson(t);
-      travels.add(travel); 
+      this.travel = Travel.fromJson(travel);
     }
-
+    
+    //* end generate travel information.
     isLoading = false;
     notifyListeners();
   }
