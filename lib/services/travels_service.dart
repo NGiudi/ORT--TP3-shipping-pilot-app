@@ -17,7 +17,7 @@ class TravelsService extends ChangeNotifier {
   }
 
   Future getDriver(String dni) async {
-    final url = Uri.https(_baseUrl, 'drivers/$dni.json');
+    final url = Uri.https(_baseUrl, 'users/$dni.json');
     final resp = await http.get(url);
     
     return json.decode(resp.body);
