@@ -12,11 +12,19 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 ## Pantallas
 
-**Pantalla de Inicio de Sesión:** Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
+### Pantalla de Inicio de Sesión
 
-**Pantalla de Lista de Visitas:** Esta pantalla mostrará una lista de visitas programadas para la ruta del conductor logueado.
+Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
 
-**Pantalla de Detalles de Visita:** Al hacer clic en una visita específica, podrán ver detalles más detallados, como la dirección exacta, los paquetes a entregar, las instrucciones especiales del cliente, etc.
+### Pantalla de Lista de Visitas
+
+Esta pantalla mostrará una lista de visitas programadas para la ruta del conductor logueado.
+
+## Pantalla de Detalles de Visita
+
+Al hacer clic en una visita específica, podrán ver detalles más detallados, como la dirección exacta, los paquetes a entregar, las instrucciones especiales del cliente, etc.
+
+Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Una vez llegado al domicilio del comprador, podrá finalizar la visita, marcándola como entregada o no entregada. En ambos casos, se proporcionará un formulario para completar. En el caso de una visita fallida, se requerirá especificar la razón del fallo. Si la visita se marca como entregada, se deberán completar los datos de la persona que recibió el pedido.
 
 **Pantalla de Perfil de Usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como nombre, dirección, información de contacto, etc.
 
@@ -88,3 +96,5 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   - Agregar valoración del conductor.
   - Agregarle foto al usuario.
   - Pantallas del administrador.
+  - Agregar lectura de QR de los paquetes antes de entregarlo al comprador.
+  - Ingresar codigo de seguridad para entregar el paquete.
