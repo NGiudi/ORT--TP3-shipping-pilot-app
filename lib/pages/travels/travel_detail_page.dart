@@ -38,7 +38,7 @@ class TravelDetailPage extends StatelessWidget {
 
     return Scaffold(
       drawer: SidebarWidget(driver: travel.driver),
-      appBar: AppbarWidget(driver: travel.driver),
+      appBar: const AppbarWidget(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

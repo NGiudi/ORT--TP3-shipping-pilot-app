@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:shipping_pilot/widgets/widgets.dart';
-import 'package:shipping_pilot/pages/pages.dart';
 
 import 'package:shipping_pilot/models/models.dart';
 
 class _VisitListItemWidget extends StatelessWidget {
   final Visit visit;
+  final int idx;
 
-  const _VisitListItemWidget({ required this.visit });
+  const _VisitListItemWidget({ required this.visit, required this.idx });
 
   @override
   Widget build(BuildContext context) {    
     return ListTile(
       onTap: () {
-        context.pushNamed(VisitDetailPage.name);
+        context.push('/visit_detail/$idx');
       },
       subtitle: Text(visit.buyer.fullName()),
       title: Column(
@@ -32,7 +32,7 @@ class _VisitListItemWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          Text(visit.address.fullAddress()),
+          Text(visit.address.streetAddress()),
         ],
       ),
       trailing: const Icon(Icons.chevron_right),
@@ -50,7 +50,7 @@ class VisitsListWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: visits.length,
       itemBuilder: (context, idx) {
-        return _VisitListItemWidget(visit: visits[idx]);
+        return _VisitListItemWidget(visit: visits[idx], idx: idx);
       },
     );
   }

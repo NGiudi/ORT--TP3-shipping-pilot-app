@@ -38,6 +38,10 @@ class Address {
   };
 
   String fullAddress() {
-    return '$streetName $streetNumber';
+    return '$streetName $streetNumber $floor$unit';
   }
+
+  String streetAddress() {
+    return '$streetName $streetNumber';
+  }  
 }
