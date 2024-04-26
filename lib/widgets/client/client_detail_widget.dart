@@ -17,7 +17,7 @@ class ClientDetailWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Comprador",
+            'Comprador',
             style: Theme.of(context).textTheme.titleLarge
           ),
           const SizedBox(height: 8),

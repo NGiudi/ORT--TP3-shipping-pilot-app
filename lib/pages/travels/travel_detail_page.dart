@@ -31,7 +31,7 @@ class TravelDetailPage extends StatelessWidget {
     if (travel == null) {
       return const Scaffold(
         body: Center(
-          child: Text("empty state"),
+          child: Text('empty state'),
         )
       );
     }
@@ -46,7 +46,7 @@ class TravelDetailPage extends StatelessWidget {
           VehicleDetailWidget(vehicle: travel.vehicle),
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 24),
-            child: Text("Visitas", style: Theme.of(context).textTheme.titleLarge),
+            child: Text('Visitas', style: Theme.of(context).textTheme.titleLarge),
           ),
           Expanded(
             child: VisitsListWidget(visits: travel.visits),

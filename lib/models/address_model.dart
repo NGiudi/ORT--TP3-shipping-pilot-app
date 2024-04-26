@@ -18,23 +18,23 @@ class Address {
   });
 
   factory Address.fromJson(Map<String, dynamic> json) => Address(
-    district: json["district"],
-    floor: json["floor"],
-    observations: json["observations"],
-    streetName: json["street_name"],
-    streetNumber: json["street_number"],
-    unit: json["unit"],
-    zipCode: json["zip_code"],
+    district: json['district'],
+    floor: json['floor'],
+    observations: json['observations'],
+    streetName: json['street_name'],
+    streetNumber: json['street_number'],
+    unit: json['unit'],
+    zipCode: json['zip_code'],
   );
 
   Map<String, dynamic> toJson() => {
-    "district": district,
-    "floor": floor,
-    "observations": observations,
-    "street_name": streetName,
-    "street_number": streetNumber,
-    "unit": unit,
-    "zip_code": zipCode,
+    'district': district,
+    'floor': floor,
+    'observations': observations,
+    'street_name': streetName,
+    'street_number': streetNumber,
+    'unit': unit,
+    'zip_code': zipCode,
   };
 
   String fullAddress() {

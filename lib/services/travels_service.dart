@@ -51,8 +51,6 @@ class TravelsService extends ChangeNotifier {
 
     //* get travel.
     Map<String, dynamic>? travel = await getTravel(uuid);
-    
-    print('prueba $travel');
 
     if (travel != null) {
       travel['id'] = uuid;
