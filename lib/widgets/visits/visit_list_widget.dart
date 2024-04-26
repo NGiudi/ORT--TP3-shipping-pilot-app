@@ -24,7 +24,7 @@ class _VisitListItemWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                'ETA: ${visit.formattedETA()}',
+                'ETA: ${visit.stats.formattedETA()}',
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(width: 8),
@@ -32,7 +32,7 @@ class _VisitListItemWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          Text(visit.address.streetAddress()),
+          Text(visit.buyer.address.streetAddress()),
         ],
       ),
       trailing: const Icon(Icons.chevron_right),

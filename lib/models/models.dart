@@ -4,4 +4,5 @@ export 'package:shipping_pilot/models/travels/travel_model.dart';
 export 'package:shipping_pilot/models/travels/travel_stats_model.dart';
 export 'package:shipping_pilot/models/user_model.dart';
 export 'package:shipping_pilot/models/vehicle_model.dart';
-export 'package:shipping_pilot/models/visit_model.dart';
+export 'package:shipping_pilot/models/visits/visit_model.dart';
+export 'package:shipping_pilot/models/visits/visit_stats_model.dart';

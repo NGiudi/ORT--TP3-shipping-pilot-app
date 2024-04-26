@@ -1,10 +1,14 @@
+import 'package:shipping_pilot/models/models.dart';
+
 class Client {
+  Address address;
   int docNumber;
   String lastName;
   String name;
   String phone;
 
   Client({
+    required this.address,
     required this.docNumber,
     required this.lastName,
     required this.name,
@@ -12,17 +16,19 @@ class Client {
   });
 
   factory Client.fromJson(Map<String, dynamic> json) => Client(
-    docNumber: json["doc_number"],
-    lastName: json["last_name"],
-    name: json["name"],
-    phone: json["phone"],
+    address: Address.fromJson(json['address']),
+    docNumber: json['doc_number'],
+    lastName: json['last_name'],
+    name: json['name'],
+    phone: json['phone'],
   );
 
   Map<String, dynamic> toJson() => {
-    "doc_number": docNumber,
-    "last_name": lastName,
-    "name": name,
-    "phone": phone,
+    'address': address.toJson(),
+    'doc_number': docNumber,
+    'last_name': lastName,
+    'name': name,
+    'phone': phone,
   };
 
   String fullName() {

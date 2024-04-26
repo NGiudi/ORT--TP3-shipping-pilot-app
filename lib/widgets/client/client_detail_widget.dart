@@ -3,12 +3,10 @@ import 'package:shipping_pilot/models/models.dart';
 
 class ClientDetailWidget extends StatelessWidget {
   final Client client;
-  final Address address;
 
   const ClientDetailWidget({
     super.key,
     required this.client,
-    required this.address
   });
 
   @override
@@ -34,12 +32,12 @@ class ClientDetailWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Dirección: ${address.fullAddress()}',
+                  'Dirección: ${client.address.fullAddress()}',
                   style: Theme.of(context).textTheme.bodyLarge
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Barrio: ${address.district}',
+                  'Barrio: ${client.address.district}',
                   style: Theme.of(context).textTheme.bodyLarge
                 ),
                 

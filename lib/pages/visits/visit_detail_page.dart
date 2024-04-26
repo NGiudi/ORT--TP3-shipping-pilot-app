@@ -25,7 +25,7 @@ class VisitDetailPage extends StatelessWidget {
       appBar: const AppbarWidget(),
       body: Row(
         children: [
-          ClientDetailWidget(client: visit.buyer, address: visit.address),
+          ClientDetailWidget(client: visit.buyer),
         ],
       ),
     );

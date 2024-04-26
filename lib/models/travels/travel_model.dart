@@ -8,6 +8,7 @@ String routeToJson(List<Travel> data) => json.encode(List<dynamic>.from(data.map
 
 class Travel {
   User driver;
+  String id;
   int price;
   TravelStats stats;
   String status;
@@ -16,6 +17,7 @@ class Travel {
 
   Travel({
     required this.driver,
+    required this.id,
     required this.price,
     required this.stats,
     required this.status,
@@ -25,6 +27,7 @@ class Travel {
 
   factory Travel.fromJson(Map<String, dynamic> json) => Travel(
     driver: User.fromJson(json['driver']),
+    id: json['id'],
     price: json['price'],
     stats: TravelStats.fromJson(json['stats']),
     status: json['status'],
@@ -34,8 +37,9 @@ class Travel {
 
   Map<String, dynamic> toJson() => {
     'driver': driver.toJson(),
+    'id': id,
     'price': price,
-    'stats': stats,
+    'stats': stats.toJson(),
     'status': status,
     'vehicle': vehicle.toJson(),
     'visits': List<dynamic>.from(visits.map((x) => x.toJson())),

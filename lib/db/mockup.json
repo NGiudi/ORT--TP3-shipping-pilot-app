@@ -1,4 +1,24 @@
 {
+  "settings": {
+    "pricing": {
+      "failed_coefficient": 0.8,
+      "successful_coefficient": 1.2,
+      "visit_price": 5000
+    }
+  },
+  "travels": {
+    "23456789-24042024": {
+      "driver": "23456789",
+      "price": 15000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-11T15:23:45.123456",
+        "packages_count": 3,
+        "visits_count": 2
+      },
+      "vehicle": "ABC123"
+    }
+  },
   "users": {
     "23456789": {
       "email": "nicolas.giudice@gmail.com",
@@ -19,83 +39,67 @@
       "role": "driver"
     }
   },
-  "settings": {
-    "pricing": {
-      "failed_coefficient": 0.8,
-      "successful_coefficient": 1.2,
-      "visit_price": 5000
-    }
-  },
-  "travels": {
-    "23456789-24042024": {
-      "driver": "23456789",
-      "price": 4000,
-      "status": "new",
-      "stats": {
-        "eta": "2024-04-11T15:23:45.123456",
-        "packages_count": 2,
-        "visits_count": 1
-      },
-      "vehicle": "ABC123",
-      "visits": [
-        {
-          "address": {
-            "district": "Almagro",
-            "floor": 3,
-            "observations": "",
-            "street_name": "Yapeyu",
-            "street_number": 340,
-            "unit": "D",
-            "zip_code": 1202
-          },
-          "buyer": {
-            "doc_number": 23456789,
-            "last_name": "Giudice",
-            "name": "Nicolás",
-            "phone": "+5491133333333"
-          },
-          "eta": "2024-04-11T10:11:45.123456",
-          "packages_count": 2,
-          "packages": [
-            "pck_1",
-            "pack_2"
-          ],
-          "price": 10000,
-          "status": "new"
-        },
-        {
-          "address": {
-            "district": "caballito",
-            "floor": 1,
-            "observations": "",
-            "street_name": "Doblas",
-            "street_number": 276,
-            "unit": "",
-            "zip_code": 1204
-          },
-          "buyer": {
-            "doc_number": 12345678,
-            "last_name": "Miguez",
-            "name": "Jeronimo",
-            "phone": "+5491122222222"
-          },
-          "eta": "2024-04-11T10:11:45.123456",
-          "packages_count": 1,
-          "packages": [
-            "pck_3"
-          ],
-          "price": 5000,
-          "status": "new"
-        }
-      ]
-    }
-  },
   "vehicles": {
     "ABC123": {
       "brand": "Volkswagen",
       "color": "Negro",
       "model": "Fox",
       "type": "car"
+    }
+  },
+  "visits": {
+    "23456789-24042024-1": {
+      "buyer": {
+        "address": {
+          "district": "Almagro",
+          "floor": 3,
+          "observations": "",
+          "street_name": "Yapeyu",
+          "street_number": 340,
+          "unit": "D",
+          "zip_code": 1202
+        },
+        "doc_number": 23456789,
+        "last_name": "Giudice",
+        "name": "Nicolás",
+        "phone": "+5491133333333"
+      },
+      "packages": [
+        "pck_1",
+        "pack_2"
+      ],
+      "price": 10000,
+      "stats": {
+        "eta": "2024-04-11T10:11:45.123456",
+        "packages_count": 2
+      },
+      "status": "new"
+    },
+    "23456789-24042024-2": {
+      "buyer": {
+        "address": {
+          "district": "caballito",
+          "floor": 1,
+          "observations": "",
+          "street_name": "Doblas",
+          "street_number": 276,
+          "unit": "",
+          "zip_code": 1204
+        },
+        "doc_number": 12345678,
+        "last_name": "Miguez",
+        "name": "Jeronimo",
+        "phone": "+5491122222222"
+      },
+      "packages": [
+        "pck_3"
+      ],
+      "price": 5000,
+      "stats": {
+        "eta": "2024-04-11T10:11:45.123456",
+        "packages_count": 1
+      },
+      "status": "new"
     }
   }
 }
