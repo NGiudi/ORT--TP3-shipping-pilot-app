@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shipping_pilot/pages/pages.dart';
 
 import 'package:shipping_pilot/widgets/widgets.dart';
 
@@ -18,11 +19,7 @@ class TravelDetailPage extends StatelessWidget {
 
     //? Waiting to receive the route information.
     if (travelsService.isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        )
-      );
+      return const LoadingPage();
     }
 
     final Travel? travel = travelsService.travel;

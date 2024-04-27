@@ -1,3 +1,6 @@
+/* common */
+export 'package:shipping_pilot/pages/common/loading_page.dart';
+
 /* session */
 export 'package:shipping_pilot/pages/session/login_page.dart';
 
