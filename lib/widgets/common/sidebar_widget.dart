@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+/* import 'package:shipping_pilot/models/models.dart'; */
 
 class SidebarWidget extends StatelessWidget {
-  final User driver;
+  //final User driver;
 
-  const SidebarWidget({super.key, required this.driver});
+  const SidebarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
-          UserAccountsDrawerHeader(
-            accountName: Text(driver.fullName()), 
-            accountEmail: Text(driver.email),
-            currentAccountPicture: CircleAvatar(
+          const UserAccountsDrawerHeader(
+            accountName: Text('Nicolás Giudice'), //TODO: driver.fullName()
+            accountEmail: Text('n.giudice@gmail.com'), //TODO: driver.email
+            /* currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
                   driver.photoUrl,
@@ -24,7 +24,7 @@ class SidebarWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
+            ), */
           ),
           ListTile(
             leading: const Icon(Icons.logout),
