@@ -13,7 +13,7 @@
       "status": "new",
       "stats": {
         "eta": "2024-04-11T15:23:45.123456",
-        "packages_count": 3,
+        "packages_count": 10,
         "visits_count": 2
       },
       "vehicle": "ABC123"
@@ -66,12 +66,19 @@
       },
       "packages": [
         "pck_1",
-        "pack_2"
+        "pck_2",
+        "pck_4",
+        "pck_5",
+        "pck_6",
+        "pck_7",
+        "pck_8",
+        "pck_9",
+        "pck_10"
       ],
       "price": 10000,
       "stats": {
         "eta": "2024-04-11T10:11:45.123456",
-        "packages_count": 2
+        "packages_count": 9
       },
       "status": "new"
     },

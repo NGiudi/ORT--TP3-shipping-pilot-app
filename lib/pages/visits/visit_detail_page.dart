@@ -27,13 +27,23 @@ class VisitDetailPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClientDetailWidget(client: visit.buyer),
-                const SizedBox(height: 16),
-                PackagesDetailWidget(visit: visit),
-              ],
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClientDetailWidget(client: visit.buyer),
+                    const Divider(),
+                    const SizedBox(height: 8),
+                    PackagesDetailWidget(visit: visit),
+                    const Divider(),
+                    const SizedBox(height: 8),
+                    VisitPriceWidget(visit: visit),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ),
             )
           ),
           Padding(
