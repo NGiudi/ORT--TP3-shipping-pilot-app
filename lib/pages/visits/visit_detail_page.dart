@@ -9,7 +9,7 @@ import 'package:shipping_pilot/models/models.dart';
 
 class VisitDetailPage extends StatelessWidget {
   static const String name = 'VisitDetail';
-
+  
   final int idx;
 
   const VisitDetailPage({super.key, required this.idx});
@@ -26,9 +26,23 @@ class VisitDetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClientDetailWidget(client: visit.buyer),
-          const SizedBox(height: 16),
-          PackagesDetailWidget(visit: visit),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClientDetailWidget(client: visit.buyer),
+                const SizedBox(height: 16),
+                PackagesDetailWidget(visit: visit),
+              ],
+            )
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12, left: 8, right: 8),
+            child: SizedBox(
+              width: double.infinity,
+              child: VisitButtonWidget(idx: idx, visit: visit)
+            ),
+          ),
         ],
       ),
     );

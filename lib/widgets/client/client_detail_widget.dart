@@ -53,7 +53,7 @@ class ClientDetailWidget extends StatelessWidget {
                 const SizedBox(height: 8),
                 FieldWidget(
                   title: 'Observaciones',
-                  text: client.address.observations.isEmpty ? "-" : client.address.observations,
+                  text: client.address.observations.isEmpty ? '-' : client.address.observations,
                 ),
               ],
             ),

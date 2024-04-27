@@ -22,5 +22,13 @@ final appRouter = GoRouter(
       },
       name: VisitDetailPage.name,
     ),
+    GoRoute(
+      path: '/visit_detail/:id/finalize',
+      builder: (context, state) {
+        int idx = int.parse(state.pathParameters['id']!);
+        return VisitFinalizePage(idx: idx);
+      },
+      name: VisitFinalizePage.name,
+    ),
   ],
 );

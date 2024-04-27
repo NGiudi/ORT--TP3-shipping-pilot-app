@@ -98,3 +98,9 @@ Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Un
   - Pantallas del administrador.
   - Agregar lectura de QR de los paquetes antes de entregarlo al comprador.
   - Ingresar codigo de seguridad para entregar el paquete.
+
+
+## TODOs
+  - [ ] Cuando se inicia la visita, se sigue mostrando el botón de "iniciar visita" cuando debería mostrarse el botón de "finalizar visita".
+  - [ ] Cuando la visita pasa en curso, no se muestra el badge de "En curso".
+  - [ ] Solo se debe permitir ver el detalle de la primer visita en estado new.
