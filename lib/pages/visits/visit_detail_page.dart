@@ -23,9 +23,12 @@ class VisitDetailPage extends StatelessWidget {
 
     return Scaffold(
       appBar: const AppbarWidget(),
-      body: Row(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClientDetailWidget(client: visit.buyer),
+          const SizedBox(height: 16),
+          PackagesDetailWidget(visit: visit),
         ],
       ),
     );

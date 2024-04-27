@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:shipping_pilot/widgets/widgets.dart';
+
 import 'package:shipping_pilot/models/models.dart';
 
 class ClientDetailWidget extends StatelessWidget {
@@ -22,25 +25,36 @@ class ClientDetailWidget extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Padding(
-            padding: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Nombre: ${client.fullName()}',
-                  style: Theme.of(context).textTheme.bodyLarge
+                FieldWidget(
+                  title: 'Nombre y Apellido',
+                  text: client.fullName(),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  'Dirección: ${client.address.fullAddress()}',
-                  style: Theme.of(context).textTheme.bodyLarge
+                const SizedBox(height: 8),
+                FieldWidget(
+                  title: 'Dirección',
+                  text: client.address.fullAddress(),
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  'Barrio: ${client.address.district}',
-                  style: Theme.of(context).textTheme.bodyLarge
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Text(
+                    client.address.district,
+                    style: Theme.of(context).textTheme.bodyMedium
+                  ),
                 ),
-                
+                const SizedBox(height: 8),
+                FieldWidget(
+                  title: 'Teléfono',
+                  text: client.phone,
+                ),
+                const SizedBox(height: 8),
+                FieldWidget(
+                  title: 'Observaciones',
+                  text: client.address.observations.isEmpty ? "-" : client.address.observations,
+                ),
               ],
             ),
           ),
