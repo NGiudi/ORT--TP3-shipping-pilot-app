@@ -7,10 +7,7 @@ import 'package:shipping_pilot/models/models.dart';
 class ClientDetailWidget extends StatelessWidget {
   final Client client;
 
-  const ClientDetailWidget({
-    super.key,
-    required this.client,
-  });
+  const ClientDetailWidget({ super.key, required this.client });
 
   @override
   Widget build(BuildContext context) {    
@@ -19,7 +16,7 @@ class ClientDetailWidget extends StatelessWidget {
       children: [
         const SectionTitleWidget(text: 'Comprador'),
         Padding(
-          padding: const EdgeInsets.only(left: 12),
+          padding: const EdgeInsets.only(left: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

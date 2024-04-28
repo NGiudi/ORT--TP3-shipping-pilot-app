@@ -25,7 +25,7 @@ class VisitPriceWidget extends StatelessWidget {
       children: [
         const SectionTitleWidget(text: 'Precio'),
         Padding(
-          padding: const EdgeInsets.only(left: 12),
+          padding: const EdgeInsets.only(left: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -20,19 +20,19 @@ class VehicleDetailWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '${vehicle.brand} ${vehicle.model}',
-                style: Theme.of(context).textTheme.bodyLarge
+              FieldWidget(
+                title: 'Vehículo',
+                text: '${vehicle.brand} ${vehicle.model}',
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Patente: ${vehicle.licensePlate}',
-                style: Theme.of(context).textTheme.bodySmall
+              const SizedBox(height: 8),
+              FieldWidget(
+                title: 'Patente',
+                text: vehicle.licensePlate,
               ),
-              const SizedBox(height: 4),
-              Text(
-                'Color: ${vehicle.color}',
-                style: Theme.of(context).textTheme.bodySmall
+              const SizedBox(height: 8),
+              FieldWidget(
+                title: 'Color',
+                text: vehicle.color,
               ),
             ],
           ),
