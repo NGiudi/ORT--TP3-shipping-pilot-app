@@ -1,0 +1,1 @@
+export 'package:shipping_pilot/pages/common/loading_page.dart';

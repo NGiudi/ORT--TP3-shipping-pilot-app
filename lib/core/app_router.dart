@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/pages/pages.dart';
+import 'package:shipping_pilot/pages/index.dart';
 
 final appRouter = GoRouter(
   routes: [

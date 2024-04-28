@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/widgets.dart';
-import 'package:shipping_pilot/pages/pages.dart';
+import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/services/travels_service.dart';
 

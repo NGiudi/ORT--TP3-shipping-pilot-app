@@ -1,6 +1,3 @@
-/* client */
-export 'package:shipping_pilot/widgets/client/client_detail_widget.dart';
-
 /* common - texts */
 export 'package:shipping_pilot/widgets/common/texts/section_title_widget.dart';
 
@@ -11,11 +8,3 @@ export 'package:shipping_pilot/widgets/common/divider_widget.dart';
 export 'package:shipping_pilot/widgets/common/empty_state_widget.dart';
 export 'package:shipping_pilot/widgets/common/field_widget.dart';
 export 'package:shipping_pilot/widgets/common/sidebar_widget.dart';
-
-/* packages */
-export 'package:shipping_pilot/widgets/package/packages_detail_widget.dart';
-
-/* visits */
-export 'package:shipping_pilot/widgets/visits/visit_button_widget.dart';
-export 'package:shipping_pilot/widgets/visits/visit_price_widget.dart';
-export 'package:shipping_pilot/widgets/visits/visit_status_badge_widget.dart';

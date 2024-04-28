@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:shipping_pilot/pages/pages.dart';
+import 'package:shipping_pilot/pages/index.dart';
 
 class LoginPage extends StatefulWidget {
   static const String name = 'LoginPage';
