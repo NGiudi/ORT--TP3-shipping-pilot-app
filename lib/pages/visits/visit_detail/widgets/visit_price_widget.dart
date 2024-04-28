@@ -16,7 +16,7 @@ class VisitPriceWidget extends StatelessWidget {
     final Map<String, String> prefixText = {
       'new': 'Precio estimado',
       'in_progress': 'Precio estimado',
-      'success': 'Precio',
+      'successful': 'Precio',
       'failed': 'Precio',
     };
 

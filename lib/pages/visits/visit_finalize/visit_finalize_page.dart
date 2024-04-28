@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'package:shipping_pilot/pages/visits/visit_finalize/widgets/index.dart';
 import 'package:shipping_pilot/pages/common/index.dart';
 
-class VisitFinalizePage extends StatelessWidget {
+import 'package:shipping_pilot/services/services.dart';
+
+import 'package:shipping_pilot/models/models.dart';
+
+class VisitFinalizePage extends StatefulWidget {
   static const String name = 'VisitFinalize';
 
   final int idx;
@@ -11,13 +15,52 @@ class VisitFinalizePage extends StatelessWidget {
   const VisitFinalizePage({super.key, required this.idx});
 
   @override
+  State<VisitFinalizePage> createState() => _VisitFinalizePageState();
+}
+
+class _VisitFinalizePageState extends State<VisitFinalizePage> {
+  String _selected = 'successful';
+
+  @override
   Widget build(BuildContext context) {
+    final travelsService = Provider.of<TravelsService>(context);
+    
+    final Travel? travel = travelsService.travel;
+    final Visit visit = travel!.visits[widget.idx];
+
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
-        onPressed: () {},
+        onPressed: () async {
+          visit.status = _selected;
+          await VisitsService().updateVisit(visit);
+        },
         child: const Text('Guardar'),
       ),
-      content: const VisitStatusRadioWidget(),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RadioListTile(
+            title: const Text('Exitosa'),
+            value: 'successful',
+            groupValue: _selected,
+            onChanged: (value) {
+              setState(() {
+                _selected = value!;
+              });
+            }
+          ),
+          RadioListTile(
+            title: const Text('Fallida'),
+            value: 'failed',
+            groupValue: _selected,
+            onChanged: (value) {
+              setState(() {
+                _selected = value!;
+              });
+            },
+          ),
+        ],
+      ),
     );
   }
 }

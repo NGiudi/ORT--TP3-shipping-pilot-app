@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:shipping_pilot/widgets/index.dart';
+
 class FieldWidget extends StatelessWidget {
   final String title;
   final String text;
@@ -20,10 +22,7 @@ class FieldWidget extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(left: 4),
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.bodyLarge
-          ),
+          child: TextWidget(text: text),
         ),
       ]
     );
