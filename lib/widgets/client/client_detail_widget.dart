@@ -17,7 +17,7 @@ class ClientDetailWidget extends StatelessWidget {
     return Column (
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleWidget(text: 'Comprador'),
+        const SectionTitleWidget(text: 'Comprador'),
         Padding(
           padding: const EdgeInsets.only(left: 12),
           child: Column(

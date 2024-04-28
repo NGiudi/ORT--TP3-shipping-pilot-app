@@ -23,7 +23,7 @@ class TravelDetailContent extends StatelessWidget {
     }
 
     return Padding(
-      padding: const EdgeInsets.only(left: 16), 
+      padding: const EdgeInsets.symmetric(horizontal: 16), 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -31,7 +31,7 @@ class TravelDetailContent extends StatelessWidget {
           const DividerWidget(),
           VehicleDetailWidget(vehicle: travel.vehicle),
           const DividerWidget(),
-          const  TitleWidget(text: 'Visitas'),
+          const  SectionTitleWidget(text: 'Visitas'),
           Expanded(
             child: VisitsListWidget(visits: travel.visits),
           )

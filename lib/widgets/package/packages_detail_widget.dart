@@ -14,7 +14,7 @@ class PackagesDetailWidget extends StatelessWidget {
     return Column (
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleWidget(text: 'Paquetes'),
+        const SectionTitleWidget(text: 'Paquetes'),
         const SizedBox(height: 8),
         Padding(
           padding: const EdgeInsets.only(left: 12),

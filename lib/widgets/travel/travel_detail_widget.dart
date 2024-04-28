@@ -14,7 +14,7 @@ class TravelDetailWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleWidget(text: 'Recorrido'),
+        const SectionTitleWidget(text: 'Recorrido'),
         Padding(
           padding: const EdgeInsets.only(left: 8, top: 8),
           child: Column(

@@ -14,7 +14,7 @@ class VehicleDetailWidget extends StatelessWidget {
     return Column (
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const TitleWidget( text: 'Vehículo'),
+        const SectionTitleWidget( text: 'Vehículo'),
         Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Column(
