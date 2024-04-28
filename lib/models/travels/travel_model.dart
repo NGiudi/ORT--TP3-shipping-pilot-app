@@ -44,6 +44,21 @@ class Travel {
     'vehicle': vehicle.toJson(),
     'visits': List<dynamic>.from(visits.map((x) => x.toJson())),
   };
+
+  String currentVisit() {
+    Visit? currentVisit;
+
+    for (int i=0; i < visits.length; i++) {
+      if (visits[i].status == 'in_progress') {
+        currentVisit = visits[i];
+        i = visits.length;
+      } else if (currentVisit == null && visits[i].status == 'new') {
+        currentVisit = visits[i];
+      }
+    }
+
+    return currentVisit == null ? '' : currentVisit.id;
+  }
 }
 
 

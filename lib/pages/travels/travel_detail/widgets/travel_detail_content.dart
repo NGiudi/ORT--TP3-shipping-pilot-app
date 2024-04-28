@@ -42,7 +42,7 @@ class TravelDetailContent extends StatelessWidget {
           const DividerWidget(),
           const  SectionTitleWidget(text: 'Visitas'),
           Expanded(
-            child: VisitsListWidget(visits: travel.visits),
+            child: VisitsListWidget(travel: travel),
           )
         ],
       ),

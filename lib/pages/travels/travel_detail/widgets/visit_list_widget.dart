@@ -6,14 +6,17 @@ import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/models/models.dart';
 
 class _VisitListItemWidget extends StatelessWidget {
-  final Visit visit;
+  final Travel travel;
   final int idx;
 
-  const _VisitListItemWidget({ required this.visit, required this.idx });
+  const _VisitListItemWidget({ required this.travel, required this.idx });
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {   
+    Visit visit = travel.visits[idx];
+ 
     return ListTile(
+      enabled: travel.currentVisit() == visit.id,
       onTap: () {
         context.push('/visit_detail/$idx');
       },
@@ -41,16 +44,16 @@ class _VisitListItemWidget extends StatelessWidget {
 }
 
 class VisitsListWidget extends StatelessWidget {
-  final List<Visit> visits;
+  final Travel travel;
 
-  const VisitsListWidget({super.key, required this.visits});
+  const VisitsListWidget({super.key, required this.travel});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: visits.length,
+      itemCount: travel.visits.length,
       itemBuilder: (context, idx) {
-        return _VisitListItemWidget(visit: visits[idx], idx: idx);
+        return _VisitListItemWidget(travel: travel, idx: idx);
       },
     );
   }
