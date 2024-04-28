@@ -1,32 +1,37 @@
 import 'package:flutter/material.dart';
 
-//TODO: hacerlo generico.
+import 'package:shipping_pilot/widgets/index.dart';
+
 class EmptyStateWidget extends StatelessWidget {
-  const EmptyStateWidget({super.key});
+  final Widget icon;
+  final String text;
+  final String title;
+
+  const EmptyStateWidget({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.warning,
-            size: 80,
-            color: Colors.orange,
+          icon,
+          const SizedBox(height: 20),
+          TitleWidget(
+            text: title,
           ),
-          SizedBox(height: 20),
-          Text(
-            'No hay recorrido asignado',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          const SizedBox(height: 10),
+          TextWidget(
+            center: true,
+            text: text,
           ),
-          SizedBox(height: 10),
-          Text(
-            'No se encontró ningún recorrido asignado para tu usuario.',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );

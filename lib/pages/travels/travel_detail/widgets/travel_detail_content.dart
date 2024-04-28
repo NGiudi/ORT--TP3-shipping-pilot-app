@@ -20,7 +20,15 @@ class TravelDetailContent extends StatelessWidget {
     final Travel? travel = travelsService.travel;
     
     if (travel == null) {
-      return const EmptyStateWidget();
+      return const EmptyStateWidget(
+        icon: Icon(
+          Icons.warning,
+          size: 80,
+          color: Colors.orange,
+        ),
+        title: 'No hay recorrido asignado',
+        text: 'No se encontró ningún recorrido asignado para tu usuario.',
+      );
     }
 
     return Padding(
