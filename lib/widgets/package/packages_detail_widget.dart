@@ -7,10 +7,7 @@ import 'package:shipping_pilot/models/models.dart';
 class PackagesDetailWidget extends StatelessWidget {
   final Visit visit;
 
-  const PackagesDetailWidget({
-    super.key,
-    required this.visit,
-  });
+  const PackagesDetailWidget({ super.key, required this.visit });
 
   @override
   Widget build(BuildContext context) {    

@@ -22,19 +22,21 @@ class TravelDetailContent extends StatelessWidget {
       return const EmptyStateWidget();
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TravelDetailWidget(travel: travel),
-        VehicleDetailWidget(vehicle: travel.vehicle),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, top: 24),
-          child: Text('Visitas', style: Theme.of(context).textTheme.titleLarge),
-        ),
-        Expanded(
-          child: VisitsListWidget(visits: travel.visits),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 16), 
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TravelDetailWidget(travel: travel),
+          const DividerWidget(),
+          VehicleDetailWidget(vehicle: travel.vehicle),
+          const DividerWidget(),
+          const  TitleWidget(text: 'Visitas'),
+          Expanded(
+            child: VisitsListWidget(visits: travel.visits),
+          )
+        ],
+      ),
     );
   }
 }

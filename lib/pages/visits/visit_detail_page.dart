@@ -34,11 +34,9 @@ class VisitDetailPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClientDetailWidget(client: visit.buyer),
-                    const Divider(),
-                    const SizedBox(height: 8),
+                    const DividerWidget(),
                     PackagesDetailWidget(visit: visit),
-                    const Divider(),
-                    const SizedBox(height: 8),
+                    const DividerWidget(),
                     VisitPriceWidget(visit: visit),
                     const SizedBox(height: 8),
                   ],
