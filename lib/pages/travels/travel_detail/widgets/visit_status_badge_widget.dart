@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/widgets/widgets.dart';
+import 'package:shipping_pilot/widgets/index.dart';
 
 class VisitStatusBadge extends StatelessWidget {
   final String status;
