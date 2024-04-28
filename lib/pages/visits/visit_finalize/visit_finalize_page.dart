@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:shipping_pilot/pages/visits/visit_finalize/widgets/index.dart';
+import 'package:shipping_pilot/pages/common/index.dart';
+
 class VisitFinalizePage extends StatelessWidget {
   static const String name = 'VisitFinalize';
 
@@ -9,6 +12,13 @@ class VisitFinalizePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ScrollableContentWithButtonLayoutPage(
+      button: ElevatedButton(
+        onPressed: () {},
+        child: const Text('Guardar'),
+      ),
+      content: const VisitStatusRadioWidget(),
+    );
   }
 }
+

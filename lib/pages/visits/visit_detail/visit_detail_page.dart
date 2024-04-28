@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
 
 import 'package:shipping_pilot/pages/visits/visit_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
@@ -22,36 +23,17 @@ class VisitDetailPage extends StatelessWidget {
     final Travel? travel = travelsService.travel;
     final Visit visit = travel!.visits[idx];
 
-    return Scaffold(
-      appBar: const AppbarWidget(),
-      body: Column(
+    return ScrollableContentWithButtonLayoutPage(
+      button: VisitButtonWidget(idx: idx, visit: visit),
+      content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClientDetailWidget(client: visit.buyer),
-                    const DividerWidget(),
-                    PackagesDetailWidget(visit: visit),
-                    const DividerWidget(),
-                    VisitPriceWidget(visit: visit),
-                    const SizedBox(height: 8),
-                  ],
-                ),
-              ),
-            )
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12, left: 8, right: 8),
-            child: SizedBox(
-              width: double.infinity,
-              child: VisitButtonWidget(idx: idx, visit: visit)
-            ),
-          ),
+          ClientDetailWidget(client: visit.buyer),
+          const DividerWidget(),
+          PackagesDetailWidget(visit: visit),
+          const DividerWidget(),
+          VisitPriceWidget(visit: visit),
+          const SizedBox(height: 8),
         ],
       ),
     );
