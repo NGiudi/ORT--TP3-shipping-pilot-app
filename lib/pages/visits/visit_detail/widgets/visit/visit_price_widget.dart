@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
 class VisitPriceWidget extends StatelessWidget {

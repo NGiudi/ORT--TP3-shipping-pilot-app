@@ -1,6 +1,10 @@
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/travel_detail_content.dart';
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/travel_detail_widget.dart';
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/travel_status_badge_widget.dart';
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/vehicle_detail_widget.dart';
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/visit_list_widget.dart';
-export 'package:shipping_pilot/pages/travels/travel_detail/widgets/visit_status_badge_widget.dart';
+/* travels */
+export 'package:shipping_pilot/pages/travels/travel_detail/widgets/travels/travel_detail_widget.dart';
+export 'package:shipping_pilot/pages/travels/travel_detail/widgets/travels/widgets/travel_status_badge_widget.dart';
+
+/* vehicles */
+export 'package:shipping_pilot/pages/travels/travel_detail/widgets/vehicle/vehicle_detail_widget.dart';
+
+/* visits */
+export 'package:shipping_pilot/pages/travels/travel_detail/widgets/visits/visit_list_widget.dart';
+export 'package:shipping_pilot/pages/travels/travel_detail/widgets/visits/widgets/visit_status_badge_widget.dart';

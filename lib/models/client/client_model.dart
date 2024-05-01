@@ -1,4 +1,4 @@
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class Client {
   Address address;

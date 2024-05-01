@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class _VisitListItemWidget extends StatelessWidget {
   final Travel travel;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
+
 import 'package:shipping_pilot/pages/index.dart';
 
 class LoginPage extends StatefulWidget {
@@ -73,8 +73,8 @@ class _LoginPageState extends State<LoginPage> {
                       _claveController.text.isEmpty) {
                     return;
                   }
-                  context.goNamed(TravelDetailPage.name,
-                      extra: _usuarioController.text);
+
+                  context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
                 },
                 child: const Text('Iniciar sesión'),
               ),

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class TravelsService extends ChangeNotifier {
   final String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';

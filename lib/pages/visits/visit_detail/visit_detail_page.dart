@@ -5,9 +5,9 @@ import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layou
 import 'package:shipping_pilot/pages/visits/visit_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
-import 'package:shipping_pilot/services/services.dart';
+import 'package:shipping_pilot/services/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class VisitDetailPage extends StatelessWidget {
   static const String name = 'VisitDetail';
@@ -29,9 +29,9 @@ class VisitDetailPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClientDetailWidget(client: visit.buyer),
-          const DividerWidget(),
+          const CustomDivider(),
           PackagesDetailWidget(visit: visit),
-          const DividerWidget(),
+          const CustomDivider(),
           VisitPriceWidget(visit: visit),
           const SizedBox(height: 8),
         ],

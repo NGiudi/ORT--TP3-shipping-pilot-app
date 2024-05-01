@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class TravelDetailWidget extends StatelessWidget {
   final Travel travel;

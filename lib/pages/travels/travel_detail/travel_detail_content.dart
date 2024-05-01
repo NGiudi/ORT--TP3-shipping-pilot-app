@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
-import 'package:shipping_pilot/services/services.dart';
+import 'package:shipping_pilot/services/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class TravelDetailContent extends StatelessWidget {
   static const String name = 'TravelDetail';
@@ -20,7 +20,7 @@ class TravelDetailContent extends StatelessWidget {
     final Travel? travel = travelsService.travel;
     
     if (travel == null) {
-      return const EmptyStateWidget(
+      return const MessageWidget(
         icon: Icon(
           Icons.warning,
           size: 80,
@@ -37,9 +37,9 @@ class TravelDetailContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TravelDetailWidget(travel: travel),
-          const DividerWidget(),
+          const CustomDivider(),
           VehicleDetailWidget(vehicle: travel.vehicle),
-          const DividerWidget(),
+          const CustomDivider(),
           const  SectionTitleWidget(text: 'Visitas'),
           Expanded(
             child: VisitsListWidget(travel: travel),

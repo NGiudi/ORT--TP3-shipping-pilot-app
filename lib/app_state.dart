@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shipping_pilot/services/services.dart';
+import 'package:shipping_pilot/services/index.dart';
 import 'package:shipping_pilot/main.dart';
 
 class AppState extends StatelessWidget {

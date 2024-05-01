@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/services/services.dart';
+import 'package:shipping_pilot/services/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class VisitButtonWidget extends StatelessWidget {
   final Visit visit;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
+import 'package:shipping_pilot/pages/travels/travel_detail/travel_detail_content.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:shipping_pilot/widgets/index.dart';
 
-class EmptyStateWidget extends StatelessWidget {
+class MessageWidget extends StatelessWidget {
   final Widget icon;
   final String text;
   final String title;
 
-  const EmptyStateWidget({
+  const MessageWidget({
     super.key,
     required this.icon,
     required this.text,

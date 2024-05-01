@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:shipping_pilot/pages/common/index.dart';
+import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
 
-import 'package:shipping_pilot/services/services.dart';
+import 'package:shipping_pilot/services/index.dart';
 
-import 'package:shipping_pilot/models/models.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class VisitFinalizePage extends StatefulWidget {
   static const String name = 'VisitFinalize';

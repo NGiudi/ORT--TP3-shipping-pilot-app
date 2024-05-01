@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/widgets/appbar_widget.dart';
+import 'package:shipping_pilot/widgets/index.dart';
 
 class ScrollableContentWithButtonLayoutPage extends StatelessWidget {
   final Widget content;
