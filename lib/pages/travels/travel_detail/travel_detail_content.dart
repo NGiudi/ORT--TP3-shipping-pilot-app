@@ -33,17 +33,14 @@ class TravelDetailContent extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16), 
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           TravelDetailWidget(travel: travel),
           const CustomDivider(),
           VehicleDetailWidget(vehicle: travel.vehicle),
           const CustomDivider(),
           const  SectionTitleWidget(text: 'Visitas'),
-          Expanded(
-            child: VisitsListWidget(travel: travel),
-          )
+          VisitsListWidget(travel: travel)
         ],
       ),
     );

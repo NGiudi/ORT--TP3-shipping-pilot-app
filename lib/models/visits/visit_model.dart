@@ -34,4 +34,14 @@ class Visit {
     'stats': stats.toJson(),
     'status': status,
   };
+
+  String getIndex() {
+    List<String> parts = id.split("-");
+
+    if (parts.length < 3) {
+      return '';
+    }
+
+    return '${int.parse(parts[2]) - 1}';
+  }
 }
