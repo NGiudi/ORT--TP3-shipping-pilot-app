@@ -10,6 +10,9 @@ Una vez que los conductores ingresen al sistema, podrán visualizar el listado d
 
 En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido un valor fijo por visita, incentivando el éxito de las mismas mediante un sistema de bonificación. En caso de que la entrega no se realice según lo esperado, se abonará el 90% del valor fijo, mientras que en el caso de una entrega exitosa, se pagará el 120% del valor fijado.
 
+OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
+OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
+
 ## Pantallas
 
 ### Pantalla de Inicio de Sesión
@@ -34,62 +37,65 @@ Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Un
 
 **Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
 
-## Entidades
+## Dcumentación
 
-- Address
-  - Barrio
-  - Calle
-  - Altura
-  - Piso
-  - Departamento
-  - Código Postal
-  - Observaciones
-
-- Client
-  - Nombre
-  - Apellido
-  - DNI
-  - Telefono
-
-- Travel
-  - Vehículo (Vehicle)
-  - Conductor (User)
-  - Estado (Nueva / En Curso / Finalizada)
-  - Lista de visitas
-  - Precio => cantidad vistas * precio fijo por visita 
-  - Stats
-    - Cantidad de paquetes.
-    - Cantidad de visitas.
-    - ETA del recorrido.
+<details>
+  <summary>Entidades</summary>
   
-  OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
+  - Address
+    - Barrio `district`
+    - Calle `street_name`
+    - Altura `street_number`
+    - Piso `floor`
+    - Departamento `unit`
+    - Código Postal `zip_code`
+    - Observaciones `observations`
 
-- User
-  - Nombre
-  - Apellido
-  - DNI
-  - Telefono
-  - Password
-  - Foto (URL)
-  - Email
-  - Rol (admin / driver)
+  - Client
+    - Dirección `Address` 
+    - Nombre `name`
+    - Apellido `last_name`
+    - DNI `doc_number`
+    - Telefono `phone`
 
-- Vehicle
-  - Color
-  - Patente 
-  - Modelo
-  - Marca
-  - Tipo
+  - Travel
+    - Conductor `User.doc_number`
+    - Estado `status` (Nueva / En Curso / Finalizada)
+    - Precio `price`
+    - Stats `TravelStats`
+    - Vehículo `Vehicle.license_plate`
+   
+  - TravelStats 
+    - Cantidad de paquetes `packages_count`
+    - Cantidad de visitas `visits_count`
+    - ETA del recorrido `eta`
+  
+  - User `key=doc_number`
+    - Apellido `last_name`
+    - Email `email`
+    - Foto `photo_url`
+    - Nombre `name`
+    - Password `password`
+    - Rol `role` (admin / driver)
+    - Telefono `phone`
 
-- Visit
-  - Dirección (Address)
-  - Comprador (Client)
-  - Estado (Nueva / Exitosa / Fallida / En curso)
-  - Cantidad de paquetes.
-  - Lista de ids de los paquetes.
-  - Precio visita. (devuelve un valor según el estado)
+  - Vehicle `key=license_plate`
+    - Color `color`
+    - Marca `brand`
+    - Modelo `model`
+    - Tipo `type`
 
-  OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
+  - Visit
+    - Comprador `Client`
+    - Estado `status` (Nueva / Exitosa / Fallida / En curso)
+    - Stats `VisitStats`
+    - Lista de ids de los paquetes `packages`
+    - Precio `price`
+
+  - VisitStats
+    - Cantidad de paquetes `packages_count`
+    - ETA de la visita `eta`
+</details>
 
 ## Fuera del MVP
   - Agregar Pais y Ciudad en al dirección.
