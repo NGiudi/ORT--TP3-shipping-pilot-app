@@ -10,26 +10,17 @@ Una vez que los conductores ingresen al sistema, podrán visualizar el listado d
 
 En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido un valor fijo por visita, incentivando el éxito de las mismas mediante un sistema de bonificación. En caso de que la entrega no se realice según lo esperado, se abonará el 90% del valor fijo, mientras que en el caso de una entrega exitosa, se pagará el 120% del valor fijado.
 
-OBS: mientras la ruta no este finalizada, el precio es estimado. Luego al finalizar la ruta se calcula el monto a pagar.
-OBS: mientras la visita no este en un estado final (Exitosa o Fallida), el precio es estimado. Luego al finalizar la visata se calcula el monto a pagar.
+## Vistas para conductores
 
-## Pantallas
+**Inicio de Sesión:** Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
 
-### Pantalla de Inicio de Sesión
+**Detalle del recorrido:** Esta pantalla mostrará el detalle del vehículo, del recorrido y una lista de visitas programadas para el día de la fecha.
 
-Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
+**Detalles de la visita:** Al hacer clic en una visita específica, podrán ver el detalle de esa visita, como la dirección exacta del comprador, los paquetes a entregar, las instrucciones especiales del cliente, etc. Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Una vez llegado al domicilio del comprador, podrá finalizar la visita, marcándola como entregada o no entregada.
 
-### Pantalla de Lista de Visitas
+**Finalizar visita**: Al finalizar la visita, se proporcionará un formulario para completar. En el caso de una visita fallida, se requerirá especificar la razón del fallo. Si la visita se marca como entregada, se deberán completar los datos de la persona que recibió el pedido.
 
-Esta pantalla mostrará una lista de visitas programadas para la ruta del conductor logueado.
-
-## Pantalla de Detalles de Visita
-
-Al hacer clic en una visita específica, podrán ver detalles más detallados, como la dirección exacta, los paquetes a entregar, las instrucciones especiales del cliente, etc.
-
-Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Una vez llegado al domicilio del comprador, podrá finalizar la visita, marcándola como entregada o no entregada. En ambos casos, se proporcionará un formulario para completar. En el caso de una visita fallida, se requerirá especificar la razón del fallo. Si la visita se marca como entregada, se deberán completar los datos de la persona que recibió el pedido.
-
-**Pantalla de Perfil de Usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como nombre, dirección, información de contacto, etc.
+**Perfil de usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como apellido, nombre, teléfono, etc.
 
 ## Dcumentación
 
