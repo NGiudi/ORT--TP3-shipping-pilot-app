@@ -31,12 +31,6 @@ Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Un
 
 **Pantalla de Perfil de Usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como nombre, dirección, información de contacto, etc.
 
-## Tipos de usuarios
-
-**Administradores:** Este tipo de usuario tiene privilegios más amplios y capacidades de gestión avanzadas. Sus responsabilidades principales incluyen la creación y gestión de rutas, asignación de conductores a rutas específicas, programación de visitas, seguimiento del progreso de las entregas, gestión de pagos, entre otras tareas administrativas relacionadas con la operación logística de la empresa.
-
-**Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
-
 ## Dcumentación
 
 <details>
@@ -95,6 +89,16 @@ Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Un
   - VisitStats
     - Cantidad de paquetes `packages_count`
     - ETA de la visita `eta`
+</details>
+
+<details>
+  <summary>Tipos de usuarios</summary>
+  <br/>
+  
+  **Administradores:** Este tipo de usuario tiene privilegios más amplios y capacidades de gestión avanzadas. Sus responsabilidades principales incluyen la creación y gestión de rutas, asignación de conductores a rutas específicas, programación de visitas, seguimiento del progreso de las entregas, gestión de pagos, entre otras tareas administrativas relacionadas con la operación logística de la empresa.
+
+**Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
+  
 </details>
 
 ## Fuera del MVP
