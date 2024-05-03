@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:shipping_pilot/services/index.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:shipping_pilot/main.dart';
 
 class AppState extends StatelessWidget {
@@ -9,10 +9,7 @@ class AppState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => TravelsService()),
-      ],
+    return ProviderScope(
       child: SafeArea(
         child: MainApp(),
       ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:shipping_pilot/models/index.dart';
+
+import 'package:shipping_pilot/providers/travel_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
 
 import 'package:shipping_pilot/services/index.dart';
 
-import 'package:shipping_pilot/models/index.dart';
-
-class VisitFinalizePage extends StatefulWidget {
+class VisitFinalizePage extends ConsumerStatefulWidget {
   static const String name = 'VisitFinalize';
 
   final int idx;
@@ -15,24 +16,23 @@ class VisitFinalizePage extends StatefulWidget {
   const VisitFinalizePage({super.key, required this.idx});
 
   @override
-  State<VisitFinalizePage> createState() => _VisitFinalizePageState();
+  VisitFinalizePageState createState() => VisitFinalizePageState();
 }
 
-class _VisitFinalizePageState extends State<VisitFinalizePage> {
+class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
   String _selected = 'successful';
 
   @override
   Widget build(BuildContext context) {
-    final travelsService = Provider.of<TravelsService>(context);
-    
-    final Travel? travel = travelsService.travel;
-    final Visit visit = travel!.visits[widget.idx];
+    final travel = ref.watch(travelProdiver)["travel"];    
+    final Visit visit = travel.visits[widget.idx];
 
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () async {
           visit.status = _selected;
-          await VisitsService().updateVisit(visit);
+          //TODO: agregar este update en riverpod.
+          await VisitService.update(visit);
         },
         child: const Text('Guardar'),
       ),

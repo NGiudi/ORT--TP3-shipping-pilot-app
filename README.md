@@ -104,4 +104,3 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 ## TODOs
   - [ ] Cuando se inicia la visita, se sigue mostrando el botón de "iniciar visita" cuando debería mostrarse el botón de "finalizar visita".
   - [ ] Cuando la visita pasa en curso, no se muestra el badge de "En curso".
-  - [ ] Solo se debe permitir ver el detalle de la primer visita en estado new.

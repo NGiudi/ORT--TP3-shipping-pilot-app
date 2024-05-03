@@ -19,7 +19,8 @@ class VisitButtonWidget extends StatelessWidget {
         return ElevatedButton(
           onPressed: () async {
             visit.status = 'in_progress';
-            await VisitsService().updateVisit(visit);
+            //TODO: agregar este update en riverpod.
+            await VisitService.update(visit);
           },
           child: const Text('Iniciar visita'),
         );

@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'package:shipping_pilot/providers/travel_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
-import 'package:shipping_pilot/services/index.dart';
-
-import 'package:shipping_pilot/models/index.dart';
-
-class TravelDetailContent extends StatelessWidget {
+class TravelDetailContent extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
   const TravelDetailContent({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final travelsService = Provider.of<TravelsService>(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final travel = ref.watch(travelProdiver)["travel"];
 
-    final Travel? travel = travelsService.travel;
-    
     if (travel == null) {
       return const MessageWidget(
         icon: Icon(

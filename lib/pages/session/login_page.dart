@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:shipping_pilot/providers/travel_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:shipping_pilot/pages/index.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends ConsumerStatefulWidget {
   static const String name = 'LoginPage';
 
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends ConsumerState<LoginPage> {
   final TextEditingController _usuarioController = TextEditingController();
 
   final TextEditingController _claveController = TextEditingController();
@@ -73,6 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                       _claveController.text.isEmpty) {
                     return;
                   }
+
+                  //TODO: aca deberíamos pasar el string 'dni del conductor-dia'
+                  ref.read(travelProdiver.notifier).loadTravel('23456789-24042024');
 
                   context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
                 },
