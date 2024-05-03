@@ -4,7 +4,7 @@ import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
-import 'package:shipping_pilot/pages/visits/visit_detail/widgets/index.dart';
+import 'package:shipping_pilot/pages/visit/visit_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
+import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
 class TravelDetailContent extends ConsumerWidget {

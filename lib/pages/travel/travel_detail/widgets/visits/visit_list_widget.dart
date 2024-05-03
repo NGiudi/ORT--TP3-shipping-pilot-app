@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/pages/travels/travel_detail/widgets/index.dart';
+import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
