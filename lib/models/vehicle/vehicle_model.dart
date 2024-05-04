@@ -28,4 +28,20 @@ class Vehicle {
     'model': model,
     'type': type,
   };
+
+  Vehicle copyWith({
+    String? brand,
+    String? color,
+    String? licensePlate,
+    String? model,
+    String? type,
+  }) {
+    return Vehicle(
+      brand: brand ?? this.brand,
+      color: color ?? this.color,
+      licensePlate: licensePlate ?? this.licensePlate,
+      model: model ?? this.model,
+      type: type ?? this.type,
+    );
+  }
 }

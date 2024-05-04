@@ -37,6 +37,26 @@ class Address {
     'zip_code': zipCode,
   };
 
+  Address copyWith({
+    String? district,
+    int? floor,
+    String? observations,
+    String? streetName,
+    int? streetNumber,
+    String? unit,
+    int? zipCode,
+  }) {
+    return Address(
+      district: district ?? this.district,
+      floor: floor ?? this.floor,
+      observations: observations ?? this.observations,
+      streetName: streetName ?? this.streetName,
+      streetNumber: streetNumber ?? this.streetNumber,
+      unit: unit ?? this.unit,
+      zipCode: zipCode ?? this.zipCode,
+    );
+  }
+
   String fullAddress() {
     return '$streetName $streetNumber $floor$unit';
   }

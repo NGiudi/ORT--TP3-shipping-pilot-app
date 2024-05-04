@@ -22,7 +22,7 @@ class VisitDetailPage extends ConsumerWidget {
     final Visit visit = travel.visits[idx];
 
     return ScrollableContentWithButtonLayoutPage(
-      button: VisitButtonWidget(idx: idx, visit: visit),
+      button: VisitButtonWidget(idx: idx),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

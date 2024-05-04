@@ -44,6 +44,26 @@ class Travel {
     'vehicle': vehicle.toJson(),
     'visits': List<dynamic>.from(visits.map((x) => x.toJson())),
   };
+  
+  Travel copyWith({
+    User? driver,
+    String? id,
+    int? price,
+    TravelStats? stats,
+    String? status,
+    Vehicle? vehicle,
+    List<Visit>? visits,
+  }) {
+    return Travel(
+      driver: driver ?? this.driver.copyWith(),
+      id: id ?? this.id,
+      price: price ?? this.price,
+      stats: stats ?? this.stats.copyWith(),
+      status: status ?? this.status,
+      vehicle: vehicle ?? this.vehicle.copyWith(),
+      visits: visits ?? List<Visit>.from(this.visits.map((v) => v.copyWith())),
+    );
+  }
 
   String currentVisit() {
     Visit? currentVisit;
@@ -60,10 +80,3 @@ class Travel {
     return currentVisit == null ? '' : currentVisit.id;
   }
 }
-
-
-
-
-
-
-

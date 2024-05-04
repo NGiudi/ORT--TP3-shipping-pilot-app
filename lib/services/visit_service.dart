@@ -14,10 +14,12 @@ class VisitService {
   }
 
   static Future update(Visit visit) async {
-    String jsonBody = jsonEncode(visit.toJson());
+    //? adapt the visit for the database.
+    Map<String, dynamic> visitJson = visit.toJson();
+    visitJson.remove('id');
 
-    //* update visit.
+    //? update visit in the database.
     final url = Uri.https(_baseUrl, 'visits/${visit.id}.json');
-    await http.put(url, body: jsonBody);
+    await http.put(url, body: jsonEncode(visitJson));
   }
 }

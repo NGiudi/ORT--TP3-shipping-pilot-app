@@ -41,6 +41,28 @@ class User {
     'role': role,
   };
 
+  User copyWith({
+    int? docNumber,
+    String? email,
+    String? lastName,
+    String? name,
+    String? password,
+    String? phone,
+    String? photoUrl,
+    String? role,
+  }) {
+    return User(
+      docNumber: docNumber ?? this.docNumber,
+      email: email ?? this.email,
+      lastName: lastName ?? this.lastName,
+      name: name ?? this.name,
+      password: password ?? this.password,
+      phone: phone ?? this.phone,
+      photoUrl: photoUrl ?? this.photoUrl,
+      role: role ?? this.role,
+    );
+  }
+
   String fullName() {
     return '$name $lastName';
   }

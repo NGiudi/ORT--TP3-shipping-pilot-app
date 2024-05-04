@@ -35,6 +35,24 @@ class Visit {
     'status': status,
   };
 
+  Visit copyWith({
+    Client? buyer,
+    String? id,
+    List<String>? packages,
+    int? price,
+    VisitStats? stats,
+    String? status,
+  }) {
+    return Visit(
+      buyer: buyer ?? this.buyer.copyWith(),
+      id: id ?? this.id,
+      packages: packages ?? List<String>.from(this.packages),
+      price: price ?? this.price,
+      stats: stats ?? this.stats.copyWith(),
+      status: status ?? this.status,
+    );
+  }
+  
   String getIndex() {
     List<String> parts = id.split("-");
 

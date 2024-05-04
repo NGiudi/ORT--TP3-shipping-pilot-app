@@ -21,6 +21,18 @@ class TravelStats {
     'visits_count': visitsCount,
   };
 
+  TravelStats copyWith({
+    DateTime? eta,
+    int? packagesCount,
+    int? visitsCount,
+  }) {
+    return TravelStats(
+      eta: eta ?? this.eta,
+      packagesCount: packagesCount ?? this.packagesCount,
+      visitsCount: visitsCount ?? this.visitsCount,
+    );
+  }
+
   formattedETA() {
     return '${eta.hour}:${eta.minute}';
   }

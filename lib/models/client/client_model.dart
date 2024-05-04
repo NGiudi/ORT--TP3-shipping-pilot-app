@@ -31,6 +31,22 @@ class Client {
     'phone': phone,
   };
 
+  Client copyWith({
+    Address? address,
+    int? docNumber,
+    String? lastName,
+    String? name,
+    String? phone,
+  }) {
+    return Client(
+      address: address ?? this.address.copyWith(),
+      docNumber: docNumber ?? this.docNumber,
+      lastName: lastName ?? this.lastName,
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+    );
+  }
+
   String fullName() {
     return '$name $lastName';
   }

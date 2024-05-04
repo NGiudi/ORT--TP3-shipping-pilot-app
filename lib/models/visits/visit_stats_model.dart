@@ -17,6 +17,16 @@ class VisitStats {
     'packages_count': packagesCount,
   };
 
+  VisitStats copyWith({
+    DateTime? eta,
+    int? packagesCount,
+  }) {
+    return VisitStats(
+      eta: eta ?? this.eta,
+      packagesCount: packagesCount ?? this.packagesCount,
+    );
+  }
+
   formattedETA() {
     return '${eta.hour}:${eta.minute}';
   }
