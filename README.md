@@ -25,6 +25,49 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 ## Dcumentación
 
 <details>
+  <details>
+    <summary>Arquitectura</summary>
+    <br/>
+
+    La estructura de carpetas en una aplicación es fundamental para la organización y el mantenimiento eficiente del código. A continuación, se detalla la estructura de carpetas utilizada en esta aplicación:
+
+    ```
+      -- lib
+        -- core
+        -- db
+        -- models
+        -- pages
+        -- providers
+        -- services
+        -- widgets
+    ```
+
+    ### Core
+      - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
+
+      - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
+
+    ### DB (Database) 
+      Mockup de la base de datos alojada en firebase.
+
+    ### Models
+      Modelos de datos que representan la estructura de los datos utilizados en la aplicación.
+
+    ### Pages
+      Este directorio alberga todas las pantallas de la aplicación. Cada pantalla debe tener su propia carpeta, donde se incluyen los widgets específicos de esa pantalla, organizados por entidad.
+
+    ### Providers
+      - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
+
+    ### Services
+      - **api:** Lógica para interactuar con servicios web o APIs.
+      
+      - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
+
+    ### Widgets
+      - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
+  </details>
+
   <summary>Entidades</summary>
   
   - Address
@@ -88,8 +131,7 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   
   **Administradores:** Este tipo de usuario tiene privilegios más amplios y capacidades de gestión avanzadas. Sus responsabilidades principales incluyen la creación y gestión de rutas, asignación de conductores a rutas específicas, programación de visitas, seguimiento del progreso de las entregas, gestión de pagos, entre otras tareas administrativas relacionadas con la operación logística de la empresa.
 
-**Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
-  
+  **Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
 </details>
 
 ## Fuera del MVP
@@ -99,8 +141,3 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   - Pantallas del administrador.
   - Agregar lectura de QR de los paquetes antes de entregarlo al comprador.
   - Ingresar codigo de seguridad para entregar el paquete.
-
-
-## TODOs
-  - [ ] Cuando se inicia la visita, se sigue mostrando el botón de "iniciar visita" cuando debería mostrarse el botón de "finalizar visita".
-  - [ ] Cuando la visita pasa en curso, no se muestra el badge de "En curso".
