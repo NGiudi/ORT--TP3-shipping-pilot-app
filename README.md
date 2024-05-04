@@ -43,9 +43,9 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
   ### Core
   
-  - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
+  **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
 
-  - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
+  **theme:** Definición de estilos y temas aplicados en toda la aplicación.
 
   ### DB (Database) 
   
@@ -61,17 +61,17 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
   ### Providers
   
-  - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
+  Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
 
   ### Services
-  
-  - **api:** Lógica para interactuar con servicios web o APIs.
+
+  **api:** Lógica para interactuar con servicios web o APIs.
     
-  - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
+  **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
 
   ### Widgets
   
-  - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
+  En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
 </details>
 
 <details>
