@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 import 'package:shipping_pilot/widgets/index.dart';
 
@@ -11,9 +12,9 @@ class TravelStatusBadgeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final statusText = {
-      'new': 'En espera de inicio',
-      'in_progress': 'En curso',
-      'finished': 'Finalizado',
+      Travel.NEW_STATUS: 'En espera de inicio',
+      Travel.IN_PROGRESS_STATUS: 'En curso',
+      Travel.FINISHED_STATUS: 'Finalizado',
     };
     
     return CustomBadge(text: statusText[status] ?? '');

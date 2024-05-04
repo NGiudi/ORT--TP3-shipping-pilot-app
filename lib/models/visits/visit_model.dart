@@ -8,6 +8,12 @@ class Visit {
   VisitStats stats;
   String status;
 
+  //? statuses
+  static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
+  static const FAILED_STATUS = 'failed'; // ignore: constant_identifier_names
+  static const IN_PROGRESS_STATUS = 'in_propress'; // ignore: constant_identifier_names
+  static const SUCCESSFUL_STATUS = 'successful'; // ignore: constant_identifier_names
+
   Visit({
     required this.buyer,
     required this.id,

@@ -15,6 +15,11 @@ class Travel {
   Vehicle vehicle;
   List<Visit> visits;
 
+  //? statuses
+  static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
+  static const IN_PROGRESS_STATUS = 'in_propress'; // ignore: constant_identifier_names
+  static const FINISHED_STATUS = 'finished'; // ignore: constant_identifier_names
+
   Travel({
     required this.driver,
     required this.id,
@@ -69,10 +74,10 @@ class Travel {
     Visit? currentVisit;
 
     for (int i=0; i < visits.length; i++) {
-      if (visits[i].status == 'in_progress') {
+      if (visits[i].status == Visit.IN_PROGRESS_STATUS) {
         currentVisit = visits[i];
         i = visits.length;
-      } else if (currentVisit == null && visits[i].status == 'new') {
+      } else if (currentVisit == null && visits[i].status == Visit.NEW_STATUS) {
         currentVisit = visits[i];
       }
     }

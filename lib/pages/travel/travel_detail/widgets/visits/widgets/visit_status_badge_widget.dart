@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 import 'package:shipping_pilot/widgets/index.dart';
 
@@ -11,13 +12,13 @@ class VisitStatusBadge extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final statusText = {
-      'new': '',
-      'in_progress': 'En curso',
-      'successful': 'Exitoso',
-      'failed': 'Fallido',
+      Visit.NEW_STATUS: '',
+      Visit.IN_PROGRESS_STATUS: 'En curso',
+      Visit.SUCCESSFUL_STATUS: 'Exitoso',
+      Visit.FAILED_STATUS: 'Fallido',
     };
 
-    if (status == 'new') {
+    if (status == Visit.NEW_STATUS) {
       //? empty widget returned.
       return const SizedBox.shrink();
     }

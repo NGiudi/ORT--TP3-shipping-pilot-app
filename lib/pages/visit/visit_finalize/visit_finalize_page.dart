@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shipping_pilot/models/index.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
+import 'package:shipping_pilot/pages/index.dart';
 
-import 'package:shipping_pilot/services/index.dart';
+import 'package:shipping_pilot/models/index.dart';
 
 class VisitFinalizePage extends ConsumerStatefulWidget {
   static const String name = 'VisitFinalize';
@@ -20,7 +20,7 @@ class VisitFinalizePage extends ConsumerStatefulWidget {
 }
 
 class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
-  String _selected = 'successful';
+  String _selected = Visit.SUCCESSFUL_STATUS;
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,8 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
       button: ElevatedButton(
         onPressed: () async {
           visit.status = _selected;
-          //TODO: agregar este update en riverpod.
-          await VisitService.update(visit);
+          ref.read(travelProdiver.notifier).updateVisit(visit);
+          context.goNamed(TravelDetailPage.name);
         },
         child: const Text('Guardar'),
       ),
@@ -41,7 +41,7 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
         children: [
           RadioListTile(
             title: const Text('Exitosa'),
-            value: 'successful',
+            value: Visit.SUCCESSFUL_STATUS,
             groupValue: _selected,
             onChanged: (value) {
               setState(() {
@@ -51,7 +51,7 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
           ),
           RadioListTile(
             title: const Text('Fallida'),
-            value: 'failed',
+            value: Visit.FAILED_STATUS,
             groupValue: _selected,
             onChanged: (value) {
               setState(() {
