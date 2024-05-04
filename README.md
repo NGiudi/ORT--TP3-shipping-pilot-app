@@ -25,49 +25,49 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 ## Dcumentación
 
 <details>
-  <details>
-    <summary>Arquitectura</summary>
-    <br/>
+  <summary>Arquitectura</summary>
+  <br/>
 
-    La estructura de carpetas en una aplicación es fundamental para la organización y el mantenimiento eficiente del código. A continuación, se detalla la estructura de carpetas utilizada en esta aplicación:
+  La estructura de carpetas en una aplicación es fundamental para la organización y el mantenimiento eficiente del código. A continuación, se detalla la estructura de carpetas utilizada en esta aplicación:
 
-    ```
-      -- lib
-        -- core
-        -- db
-        -- models
-        -- pages
-        -- providers
-        -- services
-        -- widgets
-    ```
+  ```
+    -- lib
+      -- core
+      -- db
+      -- models
+      -- pages
+      -- providers
+      -- services
+      -- widgets
+  ```
 
-    ### Core
-      - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
+  ### Core
+    - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
 
-      - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
+    - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
 
-    ### DB (Database) 
-      Mockup de la base de datos alojada en firebase.
+  ### DB (Database) 
+    Mockup de la base de datos alojada en firebase.
 
-    ### Models
-      Modelos de datos que representan la estructura de los datos utilizados en la aplicación.
+  ### Models
+    Modelos de datos que representan la estructura de los datos utilizados en la aplicación.
 
-    ### Pages
-      Este directorio alberga todas las pantallas de la aplicación. Cada pantalla debe tener su propia carpeta, donde se incluyen los widgets específicos de esa pantalla, organizados por entidad.
+  ### Pages
+    Este directorio alberga todas las pantallas de la aplicación. Cada pantalla debe tener su propia carpeta, donde se incluyen los widgets específicos de esa pantalla, organizados por entidad.
 
-    ### Providers
-      - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
+  ### Providers
+    - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
 
-    ### Services
-      - **api:** Lógica para interactuar con servicios web o APIs.
-      
-      - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
+  ### Services
+    - **api:** Lógica para interactuar con servicios web o APIs.
+    
+    - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
 
-    ### Widgets
-      - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
-  </details>
+  ### Widgets
+    - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
+</details>
 
+<details>
   <summary>Entidades</summary>
   
   - Address
