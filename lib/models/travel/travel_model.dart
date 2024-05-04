@@ -9,7 +9,7 @@ String routeToJson(List<Travel> data) => json.encode(List<dynamic>.from(data.map
 class Travel {
   User driver;
   String id;
-  int price;
+  double price;
   TravelStats stats;
   String status;
   Vehicle vehicle;
@@ -33,7 +33,7 @@ class Travel {
   factory Travel.fromJson(Map<String, dynamic> json) => Travel(
     driver: User.fromJson(json['driver']),
     id: json['id'],
-    price: json['price'],
+    price: json['price'].toDouble(),
     stats: TravelStats.fromJson(json['stats']),
     status: json['status'],
     vehicle: Vehicle.fromJson(json['vehicle']),
@@ -53,7 +53,7 @@ class Travel {
   Travel copyWith({
     User? driver,
     String? id,
-    int? price,
+    double? price,
     TravelStats? stats,
     String? status,
     Vehicle? vehicle,

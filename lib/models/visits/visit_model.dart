@@ -4,7 +4,7 @@ class Visit {
   Client buyer;
   String id;
   List<String> packages;
-  int price;
+  double price;
   VisitStats stats;
   String status;
 
@@ -27,7 +27,7 @@ class Visit {
     buyer: Client.fromJson(json['buyer']),
     id: json['id'],
     packages: List<String>.from(json['packages'].map((x) => x)),
-    price: json['price'],
+    price: json['price'].toDouble(),
     stats: VisitStats.fromJson(json['stats']),
     status: json['status'],
   );
@@ -45,7 +45,7 @@ class Visit {
     Client? buyer,
     String? id,
     List<String>? packages,
-    int? price,
+    double? price,
     VisitStats? stats,
     String? status,
   }) {

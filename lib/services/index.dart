@@ -1,3 +1,4 @@
+export 'package:shipping_pilot/services/api/settings_service.dart';
 export 'package:shipping_pilot/services/api/travel_service.dart';
 export 'package:shipping_pilot/services/api/user_service.dart';
 export 'package:shipping_pilot/services/api/visit_service.dart';

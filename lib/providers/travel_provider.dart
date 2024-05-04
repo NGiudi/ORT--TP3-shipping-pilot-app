@@ -9,6 +9,7 @@ final travelProdiver = StateNotifierProvider<TravelNotifier, Map<String, dynamic
 class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   TravelNotifier(): super({
     'isLoading': false,
+    'settings': null,
     'travel': null,
     'user': null,
   });
@@ -29,9 +30,12 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
 
     Travel travel = await TravelService.get('$dni-$date');
 
+    Map<String, dynamic> settings = await SettingsService.get();
+
     state = {
       ...state,
       'isLoading': false,
+      'settings': Settings.fromJson(settings),
       'travel': travel,
       'user': User.fromJson(user),
     };

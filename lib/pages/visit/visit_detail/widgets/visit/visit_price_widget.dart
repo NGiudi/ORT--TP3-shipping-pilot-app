@@ -11,7 +11,7 @@ class VisitPriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     
-    final int price = visit.price;
+    final double price = visit.price;
     
     final Map<String, String> prefixText = {
       Visit.NEW_STATUS: 'Precio estimado',
