@@ -77,8 +77,11 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     return;
                   }
 
-                  //TODO: aca deberíamos pasar el string 'dni del conductor-dia'
-                  ref.read(travelProdiver.notifier).loadTravel('23456789-24042024');
+                  //TODO: obtener este dato del login.
+                  const String dni = '23456789';
+                  const String day = '24042024';
+
+                  ref.read(travelProdiver.notifier).login(dni, day);
 
                   context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
                 },

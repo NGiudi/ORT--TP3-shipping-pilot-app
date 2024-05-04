@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
+import 'package:shipping_pilot/models/index.dart';
+
 class TravelDetailContent extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
@@ -13,7 +15,7 @@ class TravelDetailContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final travel = ref.watch(travelProdiver)["travel"];
+    final Travel? travel = ref.watch(travelProdiver)['travel'];
 
     if (travel == null) {
       return const MessageWidget(

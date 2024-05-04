@@ -14,7 +14,7 @@ class TravelDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(travelProdiver)["isLoading"];
+    final isLoading = ref.watch(travelProdiver)['isLoading'];
 
     //? Waiting to receive the route information.
     if (isLoading) {

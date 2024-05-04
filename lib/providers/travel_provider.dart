@@ -10,6 +10,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   TravelNotifier(): super({
     'isLoading': false,
     'travel': null,
+    'user': null,
   });
 
   int _findVisitById(String id) {
@@ -20,12 +21,20 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     return state['travel'].visits.indexWhere((Visit visit) => visit.id == id);
   }
 
-  Future<void> loadTravel(id) async {
+  Future<void> login(String dni, String date) async {
     state = {...state, 'isLoading': true};
 
-    Travel travel = await TravelService.get(id);
+    Map<String, dynamic> user = await UserService.get(dni);
+    user['doc_number'] = int.parse(dni);
 
-    state = {...state, 'isLoading': false, 'travel': travel};
+    Travel travel = await TravelService.get('$dni-$date');
+
+    state = {
+      ...state,
+      'isLoading': false,
+      'travel': travel,
+      'user': User.fromJson(user),
+    };
   }
 
   Future<void> updateVisit(Visit visit) async {

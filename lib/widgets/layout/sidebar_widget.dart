@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
 
-/* import 'package:shipping_pilot/models/models.dart'; */
+import 'package:shipping_pilot/providers/travel_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SidebarWidget extends StatelessWidget {
-  //final User driver;
+import 'package:shipping_pilot/models/index.dart';
+
+class SidebarWidget extends ConsumerWidget {
 
   const SidebarWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final User user = ref.watch(travelProdiver)['user'];
+
     return Drawer(
       child: ListView(
         children: [
-          const UserAccountsDrawerHeader(
-            accountName: Text('Nicolás Giudice'), //TODO: driver.fullName()
-            accountEmail: Text('n.giudice@gmail.com'), //TODO: driver.email
-            /* currentAccountPicture: CircleAvatar(
+          UserAccountsDrawerHeader(
+            accountName: Text(user.fullName()), 
+            accountEmail: Text(user.email),
+            currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
-                  driver.photoUrl,
+                  user.photoUrl,
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
                 ),
               ),
-            ), */
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.logout),

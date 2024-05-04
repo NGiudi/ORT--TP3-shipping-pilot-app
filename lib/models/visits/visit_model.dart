@@ -60,7 +60,7 @@ class Visit {
   }
   
   String getIndex() {
-    List<String> parts = id.split("-");
+    List<String> parts = id.split('-');
 
     if (parts.length < 3) {
       return '';

@@ -24,7 +24,7 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
 
   @override
   Widget build(BuildContext context) {
-    final travel = ref.watch(travelProdiver)["travel"];    
+    final Travel travel = ref.watch(travelProdiver)['travel'];    
     final Visit visit = travel.visits[widget.idx];
 
     return ScrollableContentWithButtonLayoutPage(

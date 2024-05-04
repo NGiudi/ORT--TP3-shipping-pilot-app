@@ -17,7 +17,7 @@ class VisitDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {   
-    final travel = ref.watch(travelProdiver)["travel"];
+    final Travel travel = ref.watch(travelProdiver)['travel'];
 
     final Visit visit = travel.visits[idx];
 
