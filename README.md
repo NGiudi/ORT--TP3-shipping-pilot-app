@@ -42,29 +42,36 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
   ```
 
   ### Core
-    - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
+  
+  - **navigation:** Configuración de la navegación de la aplicación, incluyendo rutas y enrutadores.
 
-    - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
+  - **theme:** Definición de estilos y temas aplicados en toda la aplicación.
 
   ### DB (Database) 
-    Mockup de la base de datos alojada en firebase.
+  
+  Mockup de la base de datos alojada en firebase.
 
   ### Models
-    Modelos de datos que representan la estructura de los datos utilizados en la aplicación.
+  
+  Modelos de datos que representan la estructura de los datos utilizados en la aplicación.
 
   ### Pages
-    Este directorio alberga todas las pantallas de la aplicación. Cada pantalla debe tener su propia carpeta, donde se incluyen los widgets específicos de esa pantalla, organizados por entidad.
+  
+  Este directorio alberga todas las pantallas de la aplicación. Cada pantalla debe tener su propia carpeta, donde se incluyen los widgets específicos de esa pantalla, organizados por entidad.
 
   ### Providers
-    - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
+  
+  - Implementaciones específicas para gestionar el estado de la aplicación. En este caso, se utiliza la librería Riverpod.
 
   ### Services
-    - **api:** Lógica para interactuar con servicios web o APIs.
+  
+  - **api:** Lógica para interactuar con servicios web o APIs.
     
-    - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
+  - **storage:** Lógica para gestionar el almacenamiento local, como SharedPreferences o bases de datos locales.
 
   ### Widgets
-    - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
+  
+  - En este directorio se encuentran los widgets genéricos que pueden ser utilizados en cualquier pantalla de la aplicación, organizados por tipo.
 </details>
 
 <details>
