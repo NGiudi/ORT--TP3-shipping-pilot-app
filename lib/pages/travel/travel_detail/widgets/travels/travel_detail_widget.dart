@@ -32,6 +32,11 @@ class TravelDetailWidget extends StatelessWidget {
                 'ETA: ${travel.stats.formattedETA()}',
                 style: Theme.of(context).textTheme.bodyMedium
               ),
+              const SizedBox( height: 8 ),
+              FieldWidget(
+                text: travel.price.toString(),
+                title: 'Precio',
+              ),
             ],
           ),
         ),

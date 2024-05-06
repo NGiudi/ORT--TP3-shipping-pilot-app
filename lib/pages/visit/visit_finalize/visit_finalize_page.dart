@@ -6,8 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
-import 'package:shipping_pilot/core/buisness_logic.dart';
-
 import 'package:shipping_pilot/models/index.dart';
 
 class VisitFinalizePage extends ConsumerStatefulWidget {
@@ -26,22 +24,10 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
 
   @override
   Widget build(BuildContext context) {
-    final Settings settings = ref.watch(travelProdiver)['settings'];    
-  
-    final Travel travel = ref.watch(travelProdiver)['travel'];    
-    final Visit visit = travel.visits[widget.idx];
-
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
-        onPressed: () async {
-          //? update visit data.
-          visit.status = _selected;
-          visit.price = BuisnessLogic.calculateVisitPrice(_selected, settings.pricing);
-
-          //? update database information.
-          ref.read(travelProdiver.notifier).updateVisit(visit);
-
-          //?update page.
+        onPressed: () async {      
+          ref.read(travelProdiver.notifier).finalizeVisit(_selected, widget.idx);
           context.goNamed(TravelDetailPage.name);
         },
         child: const Text('Guardar'),

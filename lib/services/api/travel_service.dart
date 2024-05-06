@@ -23,9 +23,11 @@ class TravelService {
     if (travel != null) {
       travel['id'] = uuid;
 
+      int docNumber = int.parse(travel['driver']);
+
       //* get driver.
-      Map<String, dynamic> driver = await UserService.get(travel['driver']);
-      driver['doc_number'] = int.parse(travel['driver']);
+      Map<String, dynamic> driver = await UserService.get(docNumber);
+      driver['doc_number'] = docNumber;
       travel['driver'] = driver;
 
       //* get vehicle.
@@ -49,5 +51,20 @@ class TravelService {
 
       return Travel.fromJson(travel);
     }
+  }
+
+  static Future update(Travel travel) async {
+    //? adapt the travel for the database.
+    Map<String, dynamic> travelJson = travel.toJson();
+    
+    travelJson['driver'] = travel.driver.docNumber;
+    travelJson['vehicle'] = travel.vehicle.licensePlate;
+
+    travelJson.remove('id');
+    travelJson.remove('visits');
+
+    //? update travel in the database.
+    final url = Uri.https(_baseUrl, 'travels/${travel.id}.json');
+    await http.put(url, body: jsonEncode(travelJson));
   }
 }

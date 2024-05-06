@@ -78,7 +78,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   }
 
                   //TODO: obtener este dato del login.
-                  const String dni = '23456789';
+                  const int dni = 23456789;
                   const String day = '24042024';
 
                   ref.read(travelProdiver.notifier).login(dni, day);

@@ -20,8 +20,7 @@ class VisitButtonWidget extends ConsumerWidget {
       case Visit.NEW_STATUS:
         return ElevatedButton(
           onPressed: () async {
-            visit.status = Visit.IN_PROGRESS_STATUS;
-            ref.read(travelProdiver.notifier).updateVisit(visit);
+            ref.read(travelProdiver.notifier).startVisit(idx);
           },
           child: const Text('Iniciar visita'),
         );
