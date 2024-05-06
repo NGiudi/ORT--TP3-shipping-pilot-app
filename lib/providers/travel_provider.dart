@@ -14,14 +14,6 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     'user': null,
   });
 
-  int _findVisitById(String id) {
-    if (state['travel'] == null) {
-      return -1;
-    }
-
-    return state['travel'].visits.indexWhere((Visit visit) => visit.id == id);
-  }
-
   //? buisness logic.
   double _calculateVisitPrice(String visitStauts) {
     Pricing pricing = state['settings'].pricing;
@@ -48,22 +40,27 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   void finalizeVisit(String visitStauts , int visitIdx) {
+    int lastVisitIdx = state['travel'].visits.length - 1;
+
     //? update visit data.
     state['travel'].visits[visitIdx].status = visitStauts;
     state['travel'].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
     
-    updateVisit(state['travel'].visits[visitIdx]);
+    updateVisit(visitIdx);
 
     //? update travel data.
     state['travel'].price = _calculateTravelPrice();
+    
+    if (visitIdx == lastVisitIdx) {  
+      state['travel'].status = Travel.FINISHED_STATUS;
+    }
 
-    //TODO: ver si debo crear una función de update.
     TravelService.update(state['travel']);
   }
 
   void startVisit (int visitIdx) {
     state['travel'].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
-    updateVisit(state['travel'].visits[visitIdx]);
+    updateVisit(visitIdx);
 
     if (visitIdx == 0) {  
       state['travel'].status = Travel.IN_PROGRESS_STATUS;
@@ -91,15 +88,11 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     };
   }
 
-  Future<void> updateVisit(Visit visit) async {
-    final idx = _findVisitById(visit.id);
+  Future<void> updateVisit(int idx) async {
+    //? update the visit in the database.
+    await VisitService.update(state['travel'].visits[idx]);
 
-    if (idx != -1) {
-      //? update the visit in the database.
-      await VisitService.update(visit);
-
-      //? update the state with the updated visits.
-      state = {...state, 'travel': state['travel']!.copyWith()};
-    }
+    //? update the state with the updated visits.
+    state = {...state, 'travel': state['travel']!.copyWith()};
   }
 }

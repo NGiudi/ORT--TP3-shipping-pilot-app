@@ -23,11 +23,9 @@ class TravelService {
     if (travel != null) {
       travel['id'] = uuid;
 
-      int docNumber = int.parse(travel['driver']);
-
       //* get driver.
-      Map<String, dynamic> driver = await UserService.get(docNumber);
-      driver['doc_number'] = docNumber;
+      Map<String, dynamic> driver = await UserService.get(travel['driver']);
+      driver['doc_number'] = travel['driver'];
       travel['driver'] = driver;
 
       //* get vehicle.
