@@ -10,6 +10,36 @@ Una vez que los conductores ingresen al sistema, podrán visualizar el listado d
 
 En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido un valor fijo por visita, incentivando el éxito de las mismas mediante un sistema de bonificación. En caso de que la entrega no se realice según lo esperado, se abonará el 90% del valor fijo, mientras que en el caso de una entrega exitosa, se pagará el 120% del valor fijado.
 
+## 🗞️ Historias de usuario
+
+### Administradores
+
+Como administrador, quiero poder **crear perfiles de usuario** tanto para los conductores como administradores. 
+
+Como administrador, quiero poder **crear rutas, visitas y vehículos** para que los conductores puedan seguir un plan de trabajo definido.
+
+Como administrador, quiero poder **visualizar en tiempo real la ubicación de los vehículos**.
+
+Como administrador, quiero poder **visualizar en tiempo real el progreso de las rutas**.
+
+Como administrador, quiero que se **calcule automáticamente los pagos de los conductores según el éxito de sus entregas**.
+
+Como administrador, quiero poder **configurar los precios de las visitas**.
+
+### Conductores
+
+Como conductor, quiero poder **visualizar el listado de visitas programadas para el día**.
+
+Como conductor, quiero poder **visualizar el vehículo asignado para el día**.
+
+Como conductor, quiero poder **iniciar visitas**.
+
+Como conductor, quiero poder **finalizar visitas**.
+
+Como conductor, quiero poder **registrarportar cualquier problema o incidencia durante la entrega**.
+
+Como conductor, quiero poder **visualizar las ganancias del recorrido**.
+
 ## Vistas para conductores
 
 **Inicio de Sesión:** Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
@@ -22,7 +52,7 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 **Perfil de usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como apellido, nombre, teléfono, etc.
 
-## Dcumentación
+## 📰 Documentación
 
 <details>
   <summary>Arquitectura</summary>
