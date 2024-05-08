@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
@@ -29,6 +32,13 @@ class SidebarWidget extends ConsumerWidget {
                 ),
               ),
             ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.edit_outlined),
+            onTap: () {
+              context.pushNamed(EditProfilePage.name);
+            },
+            title: const Text('Datos personales'),  
           ),
           ListTile(
             leading: const Icon(Icons.logout),

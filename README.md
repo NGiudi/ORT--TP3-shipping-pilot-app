@@ -26,6 +26,10 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como administrador, quiero poder **configurar los precios de las visitas**.
 
+- Como administrador, quiero poder **puntuar los conductores**.
+
+- Como administrador, quiero poder **visualizar la valoración del conductor**.
+
 ### Conductores
 
 - Como conductor, quiero poder **visualizar el listado de visitas programadas para el día**.
@@ -42,21 +46,13 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como conductor, quiero poder **escanear los paquetes** antes de finalizar la visita.
 
+- Como conductor, quiero poder **ingresar un código de segurar** para validar que el receptor sea realmente el comprador.
+
 ### Usuario (Administradores y Conductores)
 
+- Como usuario, quiero poder **autenticarme en la aplicación** para hacer uso de la misma.
+
 - Como usuario, quiero poder **editar los datos personales**.
-
-## Vistas para conductores
-
-**Inicio de Sesión:** Esta pantalla permitirá a los usuarios iniciar sesión con sus credenciales para acceder a la aplicación.
-
-**Detalle del recorrido:** Esta pantalla mostrará el detalle del vehículo, del recorrido y una lista de visitas programadas para el día de la fecha.
-
-**Detalles de la visita:** Al hacer clic en una visita específica, podrán ver el detalle de esa visita, como la dirección exacta del comprador, los paquetes a entregar, las instrucciones especiales del cliente, etc. Inicialmente, en la parte inferior, habrá un botón para iniciar una visita. Una vez llegado al domicilio del comprador, podrá finalizar la visita, marcándola como entregada o no entregada.
-
-**Finalizar visita**: Al finalizar la visita, se proporcionará un formulario para completar. En el caso de una visita fallida, se requerirá especificar la razón del fallo. Si la visita se marca como entregada, se deberán completar los datos de la persona que recibió el pedido.
-
-**Perfil de usuario:** Esta pantalla permitirá a los usuarios ver y editar su información personal, como apellido, nombre, teléfono, etc.
 
 ## 📰 Documentación
 

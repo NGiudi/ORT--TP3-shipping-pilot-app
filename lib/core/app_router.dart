@@ -10,6 +10,11 @@ final appRouter = GoRouter(
       name: LoginPage.name,
     ),
     GoRoute(
+      path: '/edit_profile',
+      builder: (context, state) => const EditProfilePage(),
+      name: EditProfilePage.name,
+    ),
+    GoRoute(
       path: '/travel_detail',
       builder: (context, state) => const TravelDetailPage(),
       name: TravelDetailPage.name,

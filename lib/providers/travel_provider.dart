@@ -75,7 +75,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     Map<String, dynamic> user = await UserService.get(dni);
     user['doc_number'] = dni;
 
-    Travel travel = await TravelService.get('$dni-$date');
+    Travel? travel = await TravelService.get('$dni-$date');
 
     Map<String, dynamic> settings = await SettingsService.get();
 
