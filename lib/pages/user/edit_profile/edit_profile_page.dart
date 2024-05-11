@@ -7,6 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/pages/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
+import 'package:shipping_pilot/services/api/user_service.dart';
+
 class EditProfilePage extends ConsumerStatefulWidget {
   static const String name = 'EditProfile';
 
@@ -16,80 +18,106 @@ class EditProfilePage extends ConsumerStatefulWidget {
   EditProfilePageState createState() => EditProfilePageState();
 }
 
+//TODO: agregar snackbar y validacioens en el formulario.
 class EditProfilePageState extends ConsumerState<EditProfilePage> {
   bool passwordVisible = true;
 
   @override
   Widget build(BuildContext context) {
     final User user = ref.watch(travelProdiver)['user'];
-    
-    final TextEditingController emailController = TextEditingController(text: user.email);
-    final TextEditingController lastNameController = TextEditingController(text: user.lastName);
-    final TextEditingController nameController = TextEditingController(text: user.name);
-    final TextEditingController passwordController = TextEditingController(text: user.password);
-    final TextEditingController phoneController = TextEditingController(text: user.phone);
-    final TextEditingController roleController = TextEditingController(text: user.role);
+    User formUser = user.copyWith();
+
+    final formKey = GlobalKey<FormState>();
 
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          UserService.update(formUser);
+          ref.read(travelProdiver.notifier).updateLoggedUser(formUser);
+        },
         child: const Text('Actualizar perfil'),
       ),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SectionTitleWidget(text: 'Datos personales'),
-          TextField(
-            controller: nameController,
-            decoration: const InputDecoration(
-              labelText: 'Nombre',
-            ),
-          ),
-          TextField(
-            controller: lastNameController,
-            decoration: const InputDecoration(
-              labelText: 'Apellido',
-            ),
-          ),
-          TextField(
-            controller: emailController,
-            decoration: const InputDecoration(
-              labelText: 'Email',
-            ),
-          ),
-          TextField(
-            controller: phoneController,
-            decoration: const InputDecoration(
-              labelText: 'Teléfono',
-            ),
-          ),
-          TextField(
-            controller: passwordController,
-            decoration: InputDecoration(
-              labelText: 'Contraseña',
-              suffixIcon: IconButton(
-                icon: Icon(
-                  passwordVisible
-                    ? Icons.visibility
-                    : Icons.visibility_off
-                ),
-                onPressed: () {
-                  setState(() {
-                    passwordVisible = !passwordVisible;
-                  });
-                },
+      content: Form(
+        key: formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SectionTitleWidget(text: 'Datos personales'),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Nombre',
               ),
+              initialValue: user.name,
+              onChanged: (value) {
+                formUser.name = value;
+              },
             ),
-            obscureText: passwordVisible,
-          ),
-          TextField(
-            controller: roleController,
-            decoration: const InputDecoration(
-              labelText: 'Rol',
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Apellido',
+              ),
+              initialValue: user.lastName,
+              onChanged: (value) {
+                formUser.lastName = value;
+              },
             ),
-            readOnly: true,
-          ),
-        ],
+            TextFormField(
+              initialValue: user.docNumber.toString(),
+              decoration: const InputDecoration(
+                labelText: 'DNI',
+              ),
+              readOnly: true,
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Email',
+              ),
+              initialValue: user.email,
+              onChanged: (value) {
+                formUser.email = value;
+              },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(
+                labelText: 'Teléfono',
+              ),
+              initialValue: user.phone,
+              onChanged: (value) {
+                formUser.name = value;
+              },
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Contraseña',
+                suffixIcon: IconButton(
+                  icon: Icon(
+                    passwordVisible
+                      ? Icons.visibility
+                      : Icons.visibility_off
+                  )
+                  ,
+                  onPressed: () {
+                    setState(() {
+                      passwordVisible = !passwordVisible;
+                    });
+                  },
+                ),
+              ),
+              initialValue: user.password,
+              obscureText: passwordVisible,
+              onChanged: (value) {
+                formUser.password = value;
+              },
+            ),
+            TextFormField(
+              initialValue: user.role,
+              decoration: const InputDecoration(
+                labelText: 'Rol',
+              ),
+              readOnly: true,
+            ),
+          ],
+        ),
       ),
     );
   }

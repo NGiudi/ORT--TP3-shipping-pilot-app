@@ -14,7 +14,6 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     'user': null,
   });
 
-  //? buisness logic.
   double _calculateVisitPrice(String visitStauts) {
     Pricing pricing = state['settings'].pricing;
 
@@ -39,46 +38,21 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     return total;
   }
 
-  void finalizeVisit(String visitStauts , int visitIdx) {
-    int lastVisitIdx = state['travel'].visits.length - 1;
-
-    //? update visit data.
-    state['travel'].visits[visitIdx].status = visitStauts;
-    state['travel'].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
-    
-    updateVisit(visitIdx);
-
-    //? update travel data.
-    state['travel'].price = _calculateTravelPrice();
-    
-    if (visitIdx == lastVisitIdx) {  
-      state['travel'].status = Travel.FINISHED_STATUS;
-    }
-
-    TravelService.update(state['travel']);
-  }
-
-  void startVisit (int visitIdx) {
-    state['travel'].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
-    updateVisit(visitIdx);
-
-    if (visitIdx == 0) {  
-      state['travel'].status = Travel.IN_PROGRESS_STATUS;
-      TravelService.update(state['travel']);
-    }
-  }
-
-  //? database logic.
-  Future<void> login(int dni, String date) async {
+  //? buisness logic.
+  void login(int dni, String date) async {
     state = {...state, 'isLoading': true};
 
+    //? get logged user data.
     Map<String, dynamic> user = await UserService.get(dni);
     user['doc_number'] = dni;
 
+    //? get travel for today.
     Travel? travel = await TravelService.get('$dni-$date');
 
+    //? get settings data.
     Map<String, dynamic> settings = await SettingsService.get();
 
+    //? udate global state.
     state = {
       ...state,
       'isLoading': false,
@@ -88,11 +62,50 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     };
   }
 
-  Future<void> updateVisit(int idx) async {
-    //? update the visit in the database.
-    await VisitService.update(state['travel'].visits[idx]);
+  void finalizeVisit(String visitStauts , int visitIdx) async {
+    int lastVisitIdx = state['travel'].visits.length - 1;
 
-    //? update the state with the updated visits.
+    //? update visit data.
+    state['travel'].visits[visitIdx].status = visitStauts;
+    state['travel'].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
+    
+    //? update the visit in the database.
+    await VisitService.update(state['travel'].visits[visitIdx]);
+
+    //? update travel data.
+    state['travel'].price = _calculateTravelPrice();
+    
+    if (visitIdx == lastVisitIdx) {  
+      state['travel'].status = Travel.FINISHED_STATUS;
+    }
+
+    TravelService.update(state['travel']);
+
+    //? update global state.
+    updateTravel();
+  }
+
+  void startVisit (int visitIdx) async {
+    state['travel'].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
+    
+    //? update the visit in the database.
+    await VisitService.update(state['travel'].visits[visitIdx]);
+    
+    if (visitIdx == 0) {  
+      state['travel'].status = Travel.IN_PROGRESS_STATUS;
+      TravelService.update(state['travel']);
+    }
+
+    //? update global state.
+    updateTravel();
+  }
+
+  //? handle global state.
+  void updateLoggedUser(User user) {
+    state = {...state, 'user': user};
+  }
+
+  void updateTravel() {
     state = {...state, 'travel': state['travel']!.copyWith()};
   }
 }
