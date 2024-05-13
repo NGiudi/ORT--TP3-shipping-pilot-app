@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/travel/travel_detail/travel_detail_content.dart';
 import 'package:shipping_pilot/widgets/index.dart';
@@ -14,7 +14,7 @@ class TravelDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(travelProdiver)['isLoading'];
+    final isLoading = ref.watch(travelProvider)['isLoading'];
 
     //? Waiting to receive the route information.
     if (isLoading) {

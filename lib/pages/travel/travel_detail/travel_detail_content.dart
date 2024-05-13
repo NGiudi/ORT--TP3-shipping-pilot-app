@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
@@ -15,7 +15,7 @@ class TravelDetailContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Travel? travel = ref.watch(travelProdiver)['travel'];
+    final Travel? travel = ref.watch(travelProvider)['travel'];
 
     if (travel == null) {
       return const MessageWidget(

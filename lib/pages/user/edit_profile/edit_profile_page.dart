@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shipping_pilot/models/index.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
@@ -24,7 +24,7 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final User user = ref.watch(travelProdiver)['user'];
+    final User user = ref.watch(userProvider)['user'];
     User formUser = user.copyWith();
 
     final formKey = GlobalKey<FormState>();
@@ -33,7 +33,7 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
       button: ElevatedButton(
         onPressed: () {
           UserService.update(formUser);
-          ref.read(travelProdiver.notifier).updateLoggedUser(formUser);
+          ref.read(userProvider.notifier).updateLoggedUser(formUser);
         },
         child: const Text('Actualizar perfil'),
       ),

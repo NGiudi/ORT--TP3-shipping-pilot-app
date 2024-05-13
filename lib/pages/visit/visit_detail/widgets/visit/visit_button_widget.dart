@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shipping_pilot/providers/travel_provider.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
@@ -13,14 +13,14 @@ class VisitButtonWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Travel travel = ref.watch(travelProdiver)['travel'];
+    final Travel travel = ref.watch(travelProvider)['travel'];
     final Visit visit = travel.visits[idx];
 
     switch (visit.status) {
       case Visit.NEW_STATUS:
         return ElevatedButton(
           onPressed: () async {
-            ref.read(travelProdiver.notifier).startVisit(idx);
+            ref.read(travelProvider.notifier).startVisit(idx);
           },
           child: const Text('Iniciar visita'),
         );

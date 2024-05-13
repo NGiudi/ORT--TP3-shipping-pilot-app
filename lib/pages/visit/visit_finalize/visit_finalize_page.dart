@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
@@ -27,7 +27,7 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () async {      
-          ref.read(travelProdiver.notifier).finalizeVisit(_selected, widget.idx);
+          ref.read(travelProvider.notifier).finalizeVisit(_selected, widget.idx);
           context.goNamed(TravelDetailPage.name);
         },
         child: const Text('Guardar'),

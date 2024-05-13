@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
@@ -14,7 +14,7 @@ class SidebarWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final User user = ref.watch(travelProdiver)['user'];
+    final User user = ref.watch(userProvider)['user'];
 
     return Drawer(
       child: ListView(

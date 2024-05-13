@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:shipping_pilot/providers/travel_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
@@ -72,16 +72,13 @@ class LoginPageState extends ConsumerState<LoginPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  if (_usuarioController.text.isEmpty ||
-                      _claveController.text.isEmpty) {
+                  if (_usuarioController.text.isEmpty || _claveController.text.isEmpty) {
                     return;
                   }
 
-                  //TODO: obtener este dato del login.
-                  const int dni = 23456789;
-                  const String day = '24042024';
+                  const int dni = 23456789; //TODO: obtener este dato del login.
 
-                  ref.read(travelProdiver.notifier).login(dni, day);
+                  ref.read(userProvider.notifier).login(dni);
 
                   context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
                 },
