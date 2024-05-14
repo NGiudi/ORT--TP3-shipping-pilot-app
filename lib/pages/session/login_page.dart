@@ -79,6 +79,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                   const int dni = 23456789; //TODO: obtener este dato del login.
 
                   ref.read(userProvider.notifier).login(dni);
+                  ref.read(travelProvider.notifier).getTravel(dni);
 
                   context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
                 },

@@ -75,6 +75,20 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     updateTravel();
   }
 
+  void getTravel(int dni) async {
+    String date = '24042024';
+
+    state = { ...state, 'isLoading': true };
+
+    Travel travel = await TravelService.get('$dni-$date');
+
+    state = {
+      ...state,
+      'isLoading': false,
+      'travel': travel,
+    };
+  }
+
   //? handle global state.
   void updateTravel() {
     state = {...state, 'travel': state['travel']!.copyWith()};
