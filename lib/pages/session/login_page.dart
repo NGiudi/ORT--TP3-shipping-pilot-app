@@ -6,6 +6,10 @@ import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
+import 'package:shipping_pilot/services/index.dart';
+
+import 'package:shipping_pilot/models/index.dart';
+
 class LoginPage extends ConsumerStatefulWidget {
   static const String name = 'LoginPage';
 
@@ -71,17 +75,28 @@ class LoginPageState extends ConsumerState<LoginPage> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_usuarioController.text.isEmpty || _claveController.text.isEmpty) {
                     return;
                   }
 
-                  const int dni = 23456789; //TODO: obtener este dato del login.
+                  const int docNumber = 12345678; //TODO: obtener este dato del login.
+                  
+                  User? user = await UserService.get(docNumber);
+                  
+                  if (user != null) {
+                    ref.read(userProvider.notifier).updateLoggedUser(user);
 
-                  ref.read(userProvider.notifier).login(dni);
-                  ref.read(travelProvider.notifier).getTravel(dni);
+                    if (user.isAdmin()) {
+                      ref.read(travelProvider.notifier).getTravels();
+                      context.goNamed(TravelListPage.name);
+                    } else {
+                      ref.read(travelProvider.notifier).getDriverTravel(user.docNumber);
+                      context.goNamed(TravelDetailPage.name);
+                    }
+                  }
 
-                  context.goNamed(TravelDetailPage.name, extra: _usuarioController.text);
+                  //TODO: caso no se pueda loguear mostrar error.
                 },
                 child: const Text('Iniciar sesión'),
               ),

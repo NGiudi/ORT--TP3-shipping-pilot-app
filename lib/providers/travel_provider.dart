@@ -1,19 +1,26 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/services/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
-final travelProvider = StateNotifierProvider<TravelNotifier, Map<String, dynamic>>((ref) => TravelNotifier());
+final travelProvider = StateNotifierProvider<TravelNotifier, Map<String, dynamic>>((ref) {
+  Settings? settings = ref.watch(userProvider)['settings'];
+
+  return TravelNotifier(settings: settings);
+});
 
 class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
-  TravelNotifier(): super({
+  final Settings? settings;
+
+  TravelNotifier({ this.settings }) : super({
     'isLoading': false,
-    'travel': null,
+    'travels': [],
   });
 
   double _calculateVisitPrice(String visitStauts) {
-    Pricing pricing = state['settings'].pricing;
+    Pricing pricing = settings!.pricing;
 
     switch (visitStauts) {
       case Visit.SUCCESSFUL_STATUS:
@@ -25,8 +32,8 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     }
   }
 
-  double _calculateTravelPrice() {
-    List<Visit> visits = state['travel'].visits;
+  double _calculateTravelPrice(int travelIdx) {
+    List<Visit> visits = state['travels'][travelIdx].visits;
     double total = 0;
 
     for (Visit visit in visits) {
@@ -37,60 +44,78 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   //? buisness logic.
-  void finalizeVisit(String visitStauts , int visitIdx) async {
-    int lastVisitIdx = state['travel'].visits.length - 1;
+  void finalizeVisit(String visitStauts , int visitIdx, int travelIdx) async {
+    int lastVisitIdx = state['travels'][travelIdx].visits.length - 1;
 
     //? update visit data.
-    state['travel'].visits[visitIdx].status = visitStauts;
-    state['travel'].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
+    state['travels'][travelIdx].visits[visitIdx].status = visitStauts;
+    state['travels'][travelIdx].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
     
     //? update the visit in the database.
-    await VisitService.update(state['travel'].visits[visitIdx]);
+    await VisitService.update(state['travels'][travelIdx].visits[visitIdx]);
 
     //? update travel data.
-    state['travel'].price = _calculateTravelPrice();
+    state['travels'][travelIdx].price = _calculateTravelPrice(travelIdx);
     
     if (visitIdx == lastVisitIdx) {  
-      state['travel'].status = Travel.FINISHED_STATUS;
+      state['travels'][travelIdx].status = Travel.FINISHED_STATUS;
     }
 
-    TravelService.update(state['travel']);
+    TravelService.update(state['travels'][travelIdx]);
 
     //? update global state.
     updateTravel();
   }
 
-  void startVisit (int visitIdx) async {
-    state['travel'].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
+  void startVisit(int visitIdx, int travelIdx) async {
+    state['travels'][travelIdx].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
     
     //? update the visit in the database.
-    await VisitService.update(state['travel'].visits[visitIdx]);
+    await VisitService.update(state['travels'][travelIdx].visits[visitIdx]);
     
     if (visitIdx == 0) {  
-      state['travel'].status = Travel.IN_PROGRESS_STATUS;
-      TravelService.update(state['travel']);
+      state['travels'][travelIdx].status = Travel.IN_PROGRESS_STATUS;
+      TravelService.update(state['travels'][travelIdx]);
     }
 
     //? update global state.
     updateTravel();
   }
 
-  void getTravel(int dni) async {
+  Future<void> getTravels() async {
+    state = { ...state, 'isLoading': true };
+
+    List<Travel?> travels = await TravelService.getAll();
+  
+    state = {
+      ...state,
+      'isLoading': false,
+      'travels': travels,
+    };
+  }
+
+  Future<void> getDriverTravel(int dni) async {
     String date = '24042024';
 
     state = { ...state, 'isLoading': true };
 
-    Travel travel = await TravelService.get('$dni-$date');
+    Travel? travel = await TravelService.get('$dni-$date');
 
     state = {
       ...state,
       'isLoading': false,
-      'travel': travel,
+      'travels': travel == null ? [] : [travel],
     };
   }
 
   //? handle global state.
   void updateTravel() {
-    state = {...state, 'travel': state['travel']!.copyWith()};
+    List<Travel?> travels = [];
+
+    for (Travel travel in state['travels']) {
+      travels.add(travel.copyWith());
+    }
+
+    state = {...state, 'travels': travels};
   }
 }

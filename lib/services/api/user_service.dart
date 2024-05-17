@@ -6,14 +6,25 @@ import 'package:shipping_pilot/models/index.dart';
 class UserService {
   static const String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';
 
-  static Future get(int dni) async {
-    final url = Uri.https(_baseUrl, 'users/$dni.json');
+  static Future<User?> get(int docNumber) async {
+    User? user;
+
+    //? get user in database.
+    final url = Uri.https(_baseUrl, 'users/$docNumber.json');
     final resp = await http.get(url);
     
-    return json.decode(resp.body);
+    Map<String, dynamic>? userJson = json.decode(resp.body);
+    
+    //? create user instance.
+    if (userJson != null) {
+      userJson['doc_number'] = docNumber;
+      user = User.fromJson(userJson);
+    }
+    
+    return user;
   }
 
-  static Future update(User user) async {
+  static Future<void> update(User user) async {
     //? adapt the user for the database.
     Map<String, dynamic> userJson = user.toJson();
   

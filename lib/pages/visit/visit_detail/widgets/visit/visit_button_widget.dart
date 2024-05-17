@@ -7,27 +7,33 @@ import 'package:shipping_pilot/providers/index.dart';
 import 'package:shipping_pilot/models/index.dart';
 
 class VisitButtonWidget extends ConsumerWidget {
-  final int idx;
+  final int travelIdx;
+  final int visitIdx;
 
-  const VisitButtonWidget({super.key, required this.idx});
+  const VisitButtonWidget({
+    super.key,
+    this.travelIdx = 0,
+    required this.visitIdx
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Travel travel = ref.watch(travelProvider)['travel'];
-    final Visit visit = travel.visits[idx];
+    final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+
+    final Visit visit = travels[travelIdx]!.visits[visitIdx];
 
     switch (visit.status) {
       case Visit.NEW_STATUS:
         return ElevatedButton(
           onPressed: () async {
-            ref.read(travelProvider.notifier).startVisit(idx);
+            ref.read(travelProvider.notifier).startVisit(visitIdx, travelIdx);
           },
           child: const Text('Iniciar visita'),
         );
       case Visit.IN_PROGRESS_STATUS:
         return ElevatedButton(
           onPressed: () async {
-            context.push('/visit_detail/$idx/finalize');
+            context.push('/visit_detail/$visitIdx/finalize');
           },
           child: const Text('Finalizar visita'),
         );

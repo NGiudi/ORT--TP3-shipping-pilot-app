@@ -20,10 +20,15 @@ final appRouter = GoRouter(
       name: TravelDetailPage.name,
     ),
     GoRoute(
+      path: '/travel_list',
+      builder: (context, state) => const TravelListPage(),
+      name: TravelListPage.name,
+    ),
+    GoRoute(
       path: '/visit_detail/:id',
       builder: (context, state) {
         int idx = int.parse(state.pathParameters['id']!);
-        return  VisitDetailPage(idx: idx);
+        return  VisitDetailPage(visitIdx: idx);
       },
       name: VisitDetailPage.name,
     ),
@@ -31,7 +36,7 @@ final appRouter = GoRouter(
       path: '/visit_detail/:id/finalize',
       builder: (context, state) {
         int idx = int.parse(state.pathParameters['id']!);
-        return VisitFinalizePage(idx: idx);
+        return VisitFinalizePage(visitIdx: idx);
       },
       name: VisitFinalizePage.name,
     ),

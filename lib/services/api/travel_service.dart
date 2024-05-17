@@ -16,6 +16,10 @@ class TravelService {
     return json.decode(resp.body);
   }
 
+  static Future<List<Travel?>> getAll() async {
+    return Future.value([]); //TODO.
+  }
+
   static Future get(String uuid) async {
     //* get travel.
     Map<String, dynamic>? travel = await _getTravel(uuid);
@@ -24,8 +28,7 @@ class TravelService {
       travel['id'] = uuid;
 
       //* get driver.
-      Map<String, dynamic> driver = await UserService.get(travel['driver']);
-      driver['doc_number'] = travel['driver'];
+      User? driver = await UserService.get(travel['driver']);
       travel['driver'] = driver;
 
       //* get vehicle.

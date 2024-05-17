@@ -11,9 +11,14 @@ import 'package:shipping_pilot/models/index.dart';
 class VisitFinalizePage extends ConsumerStatefulWidget {
   static const String name = 'VisitFinalize';
 
-  final int idx;
+  final int travelIdx;
+  final int visitIdx;
 
-  const VisitFinalizePage({super.key, required this.idx});
+  const VisitFinalizePage({
+    super.key,
+    required this.visitIdx,
+    this.travelIdx = 0
+  });
 
   @override
   VisitFinalizePageState createState() => VisitFinalizePageState();
@@ -27,7 +32,7 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () async {      
-          ref.read(travelProvider.notifier).finalizeVisit(_selected, widget.idx);
+          ref.read(travelProvider.notifier).finalizeVisit(_selected, widget.visitIdx, widget.travelIdx);
           context.goNamed(TravelDetailPage.name);
         },
         child: const Text('Guardar'),

@@ -14,23 +14,28 @@ class UserProvider extends StateNotifier<Map<String, dynamic>> {
   });
 
   //? buisness logic.
-  void login(int dni) async {
+  Future<User?> login(int docNumber) async {
     state = {...state, 'isLoading': true};
 
     //? get logged user data.
-    Map<String, dynamic> user = await UserService.get(dni);
-    user['doc_number'] = dni;
+    User? user = await UserService.get(docNumber);
+    
+    if (user != null) {      
+      //? get settings data.
+      Map<String, dynamic> settings = await SettingsService.get();
 
-    //? get settings data.
-    Map<String, dynamic> settings = await SettingsService.get();
+      //? udate global state.
+      state = {
+        ...state,
+        'isLoading': false,
+        'settings': Settings.fromJson(settings),
+        'user': user,
+      };
+    } else {
+      state = { ...state, 'isLoading': false };
+    }
 
-    //? udate global state.
-    state = {
-      ...state,
-      'isLoading': false,
-      'settings': Settings.fromJson(settings),
-      'user': User.fromJson(user),
-    };
+    return user;
   }
 
   //? handle global state.

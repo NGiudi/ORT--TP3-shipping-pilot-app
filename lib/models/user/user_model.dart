@@ -66,4 +66,8 @@ class User {
   String fullName() {
     return '$name $lastName';
   }
+
+  bool isAdmin() {
+    return role == 'admin';
+  }
 }

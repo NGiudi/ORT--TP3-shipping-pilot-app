@@ -11,13 +11,15 @@ import 'package:shipping_pilot/models/index.dart';
 class TravelDetailContent extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
-  const TravelDetailContent({super.key});
+  final int idx;
+
+  const TravelDetailContent({ super.key, this.idx = 0 });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Travel? travel = ref.watch(travelProvider)['travel'];
-
-    if (travel == null) {
+    final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+    
+    if (travels.isEmpty) {
       return const MessageWidget(
         icon: Icon(
           Icons.warning,
@@ -33,12 +35,12 @@ class TravelDetailContent extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16), 
       child: ListView(
         children: [
-          TravelDetailWidget(travel: travel),
+          TravelDetailWidget(travel: travels[idx]!),
           const CustomDivider(),
-          VehicleDetailWidget(vehicle: travel.vehicle),
+          VehicleDetailWidget(vehicle: travels[idx]!.vehicle),
           const CustomDivider(),
           const  SectionTitleWidget(text: 'Visitas'),
-          VisitsListWidget(travel: travel)
+          VisitsListWidget(travel: travels[idx]!)
         ],
       ),
     );
