@@ -85,7 +85,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   Future<void> getTravels() async {
     state = { ...state, 'isLoading': true };
 
-    List<Travel?> travels = await TravelService.getAll();
+    List<Travel> travels = await TravelService.getAll();
   
     state = {
       ...state,

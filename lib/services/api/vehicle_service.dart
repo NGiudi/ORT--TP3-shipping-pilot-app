@@ -1,14 +1,26 @@
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:shipping_pilot/models/index.dart';
 
 class VehicleService {
   static const String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';
 
-  static Future get(String licensePlate) async {
+  static Future<Vehicle?> get(String licensePlate) async {
+    Vehicle? vehicle;
+
+    //? get vehicle in database.
     final url = Uri.https(_baseUrl, 'vehicles/$licensePlate.json');
     final resp = await http.get(url);
     
-    return json.decode(resp.body);
+    Map<String, dynamic>? vehicleJson = json.decode(resp.body);
+
+    //? create vehicle instance.
+    if (vehicleJson != null) {
+      vehicleJson['license_plate'] = licensePlate;
+      vehicle = Vehicle.fromJson(vehicleJson);
+    }
+    
+    return vehicle;
   }
 }

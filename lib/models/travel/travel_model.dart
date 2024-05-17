@@ -36,8 +36,8 @@ class Travel {
     price: json['price'].toDouble(),
     stats: TravelStats.fromJson(json['stats']),
     status: json['status'],
-    vehicle: Vehicle.fromJson(json['vehicle']),
-    visits: List<Visit>.from(json['visits'].map((x) => Visit.fromJson(x))),
+    vehicle: json['vehicle'],
+    visits: json['visits'],
   );
 
   Map<String, dynamic> toJson() => {

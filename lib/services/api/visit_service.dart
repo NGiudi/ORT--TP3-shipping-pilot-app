@@ -6,16 +6,28 @@ import 'package:shipping_pilot/models/index.dart';
 class VisitService {
   static const String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';
   
-  static Future get(String id) async {
+  static Future<Visit?> get(String id) async {
+    Visit? visit;
+
+    //? get visit in database.
     final url = Uri.https(_baseUrl, 'visits/$id.json');
     final resp = await http.get(url);
     
-    return json.decode(resp.body);
+    Map<String, dynamic>? visitJson = json.decode(resp.body);
+
+    //? create visit instance.
+    if (visitJson != null) {
+      visitJson['id'] = id;
+      visit = Visit.fromJson(visitJson);
+    }
+
+    return visit;
   }
 
-  static Future update(Visit visit) async {
+  static Future<void> update(Visit visit) async {
     //? adapt the visit for the database.
     Map<String, dynamic> visitJson = visit.toJson();
+
     visitJson.remove('id');
 
     //? update visit in the database.
