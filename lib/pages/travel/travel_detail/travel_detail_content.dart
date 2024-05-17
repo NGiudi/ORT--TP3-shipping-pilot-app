@@ -11,9 +11,9 @@ import 'package:shipping_pilot/models/index.dart';
 class TravelDetailContent extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
-  final int idx;
+  final int travelIdx;
 
-  const TravelDetailContent({ super.key, this.idx = 0 });
+  const TravelDetailContent({ super.key, this.travelIdx = 0 });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,12 +35,12 @@ class TravelDetailContent extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16), 
       child: ListView(
         children: [
-          TravelDetailWidget(travel: travels[idx]!),
+          TravelDetailWidget(travel: travels[travelIdx]!),
           const CustomDivider(),
-          VehicleDetailWidget(vehicle: travels[idx]!.vehicle),
+          VehicleDetailWidget(vehicle: travels[travelIdx]!.vehicle),
           const CustomDivider(),
           const  SectionTitleWidget(text: 'Visitas'),
-          VisitsListWidget(travel: travels[idx]!)
+          VisitsListWidget(travel: travels[travelIdx]!)
         ],
       ),
     );

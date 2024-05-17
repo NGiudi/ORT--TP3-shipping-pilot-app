@@ -31,7 +31,7 @@ class Travel {
   });
 
   factory Travel.fromJson(Map<String, dynamic> json) => Travel(
-    driver: User.fromJson(json['driver']),
+    driver: json['driver'],
     id: json['id'],
     price: json['price'].toDouble(),
     stats: TravelStats.fromJson(json['stats']),

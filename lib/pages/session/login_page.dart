@@ -20,11 +20,10 @@ class LoginPage extends ConsumerStatefulWidget {
 }
 
 class LoginPageState extends ConsumerState<LoginPage> {
-  final TextEditingController _usuarioController = TextEditingController();
-
-  final TextEditingController _claveController = TextEditingController();
-
   bool passwordVisible = true;
+  
+  final TextEditingController _usuarioController = TextEditingController();
+  final TextEditingController _claveController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +79,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     return;
                   }
 
-                  const int docNumber = 12345678; //TODO: obtener este dato del login.
-                  
+                  int docNumber = int.parse(_usuarioController.text);
+
                   User? user = await UserService.get(docNumber);
-                  
+
                   if (user != null) {
                     ref.read(userProvider.notifier).updateLoggedUser(user);
 

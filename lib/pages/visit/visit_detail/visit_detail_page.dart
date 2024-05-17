@@ -18,7 +18,7 @@ class VisitDetailPage extends ConsumerWidget {
   const VisitDetailPage({
     super.key,
     this.travelIdx = 0,
-    required this.visitIdx
+    required this.visitIdx,
   });
 
   @override
