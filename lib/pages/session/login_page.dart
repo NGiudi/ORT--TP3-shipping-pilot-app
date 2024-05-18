@@ -93,7 +93,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       String travelId = '${user.docNumber}-24042024';
 
                       ref.read(travelProvider.notifier).getDriverTravel(travelId);
-                      context.push('/travel_detail/$travelId');
+                      context.go('/travel_detail/$travelId');
                     }
                   }
 

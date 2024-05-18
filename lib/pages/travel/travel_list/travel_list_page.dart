@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
@@ -33,7 +34,9 @@ class TravelListPage extends ConsumerWidget {
           Travel travel = travels[idx];
 
           return ListTile(
-            onTap: () {},
+            onTap: () {
+              context.push('/travel_detail/${travel.id}');
+            },
             subtitle: Text('Conductor: ${travel.driver.fullName()}'),
             title: Text('Recorrido del ${travel.getDateOfId()}'),
             trailing: const Icon(Icons.chevron_right),
