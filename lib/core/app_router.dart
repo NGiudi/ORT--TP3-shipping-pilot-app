@@ -29,16 +29,20 @@ final appRouter = GoRouter(
     ),
     GoRoute(
       builder: (context, state) {
-        int idx = int.parse(state.pathParameters['id']!);
-        return  VisitDetailPage(visitIdx: idx);
+        String id = state.pathParameters['id']!;
+        String? travelId = state.uri.queryParameters['travelId'];
+        
+        return  VisitDetailPage(travelId: travelId, visitId: id);
       },
       name: VisitDetailPage.name,
       path: '/visit_detail/:id',
     ),
     GoRoute(
       builder: (context, state) {
-        int idx = int.parse(state.pathParameters['id']!);
-        return VisitFinalizePage(visitIdx: idx);
+        String id = state.pathParameters['id']!;
+        String? travelId = state.uri.queryParameters['travelId'];
+
+        return VisitFinalizePage(travelId: travelId, visitId: id);
       },
       name: VisitFinalizePage.name,
       path: '/visit_detail/:id/finalize',

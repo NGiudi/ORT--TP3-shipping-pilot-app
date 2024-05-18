@@ -19,10 +19,10 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     'travels': [],
   });
 
-  double _calculateVisitPrice(String visitStauts) {
+  double _calculateVisitPrice(String newStatus) {
     Pricing pricing = settings!.pricing;
 
-    switch (visitStauts) {
+    switch (newStatus) {
       case Visit.SUCCESSFUL_STATUS:
         return pricing.successfulCoefficient * pricing.visitPrice;
       case Visit.FAILED_STATUS:
@@ -32,8 +32,8 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     }
   }
 
-  double _calculateTravelPrice(int travelIdx) {
-    List<Visit> visits = state['travels'][travelIdx].visits;
+  double _calculateTravelPrice(Travel travel) {
+    List<Visit> visits = travel.visits;
     double total = 0;
 
     for (Visit visit in visits) {
@@ -44,38 +44,43 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   //? buisness logic.
-  void finalizeVisit(String visitStauts , int visitIdx, int travelIdx) async {
-    int lastVisitIdx = state['travels'][travelIdx].visits.length - 1;
+  void finalizeVisit(String travelId, String newStatus,  Visit visit) async {
+    Travel travel = state['travels'].firstWhere((t) => t.id == travelId);
+
+    int lastVisitIdx = travel.visits.length - 1;
+    int visitIdx = travel.visits.indexOf(visit);
 
     //? update visit data.
-    state['travels'][travelIdx].visits[visitIdx].status = visitStauts;
-    state['travels'][travelIdx].visits[visitIdx].price = _calculateVisitPrice(visitStauts);
-    
-    //? update the visit in the database.
-    await VisitService.update(state['travels'][travelIdx].visits[visitIdx]);
+    visit.status = newStatus;
+    visit.price = _calculateVisitPrice(newStatus);
+    await VisitService.update(visit);
 
     //? update travel data.
-    state['travels'][travelIdx].price = _calculateTravelPrice(travelIdx);
+    travel.price = _calculateTravelPrice(travel);
     
     if (visitIdx == lastVisitIdx) {  
-      state['travels'][travelIdx].status = Travel.FINISHED_STATUS;
+      travel.status = Travel.FINISHED_STATUS;
     }
 
-    TravelService.update(state['travels'][travelIdx]);
+    TravelService.update(travel);
 
     //? update global state.
     updateTravel();
   }
 
-  void startVisit(int visitIdx, int travelIdx) async {
-    state['travels'][travelIdx].visits[visitIdx].status = Visit.IN_PROGRESS_STATUS;
+  void startVisit(String travelId, Visit visit) async {
+    Travel travel = state['travels'].firstWhere((t) => t.id == travelId);
+
+    int visitIdx = travel.visits.indexOf(visit);
+
+    //? update the visit.
+    visit.status = Visit.IN_PROGRESS_STATUS;
+    await VisitService.update(visit);
     
-    //? update the visit in the database.
-    await VisitService.update(state['travels'][travelIdx].visits[visitIdx]);
-    
+    //? update the travel.
     if (visitIdx == 0) {  
-      state['travels'][travelIdx].status = Travel.IN_PROGRESS_STATUS;
-      TravelService.update(state['travels'][travelIdx]);
+      travel.status = Travel.IN_PROGRESS_STATUS;
+      TravelService.update(travel);
     }
 
     //? update global state.

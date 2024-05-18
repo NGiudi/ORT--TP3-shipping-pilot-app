@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
 
+import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
@@ -11,13 +12,13 @@ import 'package:shipping_pilot/models/index.dart';
 class VisitFinalizePage extends ConsumerStatefulWidget {
   static const String name = 'VisitFinalize';
 
-  final int travelIdx;
-  final int visitIdx;
+  final String? travelId;
+  final String visitId;
 
   const VisitFinalizePage({
     super.key,
-    required this.visitIdx,
-    this.travelIdx = 0
+    this.travelId,
+    required this.visitId,
   });
 
   @override
@@ -29,11 +30,25 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+
+    if (travels.isEmpty || widget.travelId == null) {
+      return TravelDetailEmptyStateWidget(travelId: widget.travelId);
+    }
+
+    Travel? travel = travels.firstWhere((t) => t!.id == widget.travelId);
+
+    if (travel == null) {
+      return TravelDetailEmptyStateWidget(travelId: widget.travelId);
+    }
+
+    final Visit visit = travel.visits.firstWhere((v) => v.id == widget.visitId);
+
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () async {      
-          ref.read(travelProvider.notifier).finalizeVisit(_selected, widget.visitIdx, widget.travelIdx);
-          context.goNamed(TravelDetailPage.name);
+          ref.read(travelProvider.notifier).finalizeVisit(widget.travelId!, _selected, visit);
+          context.go('/travel_detail/${widget.travelId}');
         },
         child: const Text('Guardar'),
       ),

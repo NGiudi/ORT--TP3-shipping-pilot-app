@@ -4,9 +4,9 @@ import 'package:shipping_pilot/widgets/index.dart';
 
 class TravelDetailEmptyStateWidget extends StatelessWidget {
 
-  final String travelId;
+  final String? travelId;
 
-  const TravelDetailEmptyStateWidget({ super.key, required this.travelId });
+  const TravelDetailEmptyStateWidget({ super.key, this.travelId });
 
   @override
   Widget build(BuildContext context) {   
@@ -17,7 +17,10 @@ class TravelDetailEmptyStateWidget extends StatelessWidget {
         color: Colors.orange,
       ),
       title: 'Nada por aquí',
-      text: 'No se encontró ningún recorrido con el id $travelId.',
+      text: 
+        travelId == null
+          ? 'Se debe ingresar el id del recorrido.'
+          : 'No se encontró ningún recorrido con el id $travelId.',
     );
   }
 }

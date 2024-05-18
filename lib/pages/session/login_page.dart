@@ -81,11 +81,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
                   int docNumber = int.parse(_usuarioController.text);
 
-                  User? user = await UserService.get(docNumber);
+                  User? user = await ref.read(userProvider.notifier).login(docNumber);
 
                   if (user != null) {
-                    ref.read(userProvider.notifier).updateLoggedUser(user);
-
                     if (user.isAdmin()) {
                       ref.read(travelProvider.notifier).getTravels();
                       context.goNamed(TravelListPage.name);

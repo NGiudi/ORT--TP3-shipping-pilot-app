@@ -7,6 +7,8 @@ class Visit {
   double price;
   VisitStats stats;
   String status;
+  String travelId;
+  int travelIndex;
 
   //? statuses
   static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
@@ -21,6 +23,8 @@ class Visit {
     required this.price,
     required this.stats,
     required this.status,
+    required this.travelId,
+    required this.travelIndex,
   });
 
   factory Visit.fromJson(Map<String, dynamic> json) => Visit(
@@ -30,6 +34,8 @@ class Visit {
     price: json['price'].toDouble(),
     stats: VisitStats.fromJson(json['stats']),
     status: json['status'],
+    travelId: json['travel_id'],
+    travelIndex: json['travel_index'],
   );
 
   Map<String, dynamic> toJson() => {
@@ -39,6 +45,8 @@ class Visit {
     'price': price,
     'stats': stats.toJson(),
     'status': status,
+    'travel_id': travelId,
+    'travel_index': travelIndex,
   };
 
   Visit copyWith({
@@ -48,6 +56,8 @@ class Visit {
     double? price,
     VisitStats? stats,
     String? status,
+    String? travelId,
+    int? travelIndex,
   }) {
     return Visit(
       buyer: buyer ?? this.buyer.copyWith(),
@@ -56,16 +66,8 @@ class Visit {
       price: price ?? this.price,
       stats: stats ?? this.stats.copyWith(),
       status: status ?? this.status,
+      travelId: travelId ?? this.travelId,
+      travelIndex: travelIndex ?? this.travelIndex,
     );
-  }
-  
-  String getIndex() {
-    List<String> parts = id.split('-');
-
-    if (parts.length < 3) {
-      return '';
-    }
-
-    return '${int.parse(parts[2]) - 1}';
   }
 }

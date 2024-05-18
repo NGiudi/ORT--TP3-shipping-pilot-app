@@ -20,15 +20,15 @@ class UserProvider extends StateNotifier<Map<String, dynamic>> {
     //? get logged user data.
     User? user = await UserService.get(docNumber);
     
-    if (user != null) {      
+    if (user != null) {
       //? get settings data.
-      Map<String, dynamic> settings = await SettingsService.get();
+      Settings settings = await SettingsService.get();
 
       //? udate global state.
       state = {
         ...state,
         'isLoading': false,
-        'settings': Settings.fromJson(settings),
+        'settings': settings,
         'user': user,
       };
     } else {

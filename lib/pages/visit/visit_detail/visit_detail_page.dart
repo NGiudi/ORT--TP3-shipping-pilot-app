@@ -3,37 +3,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
 
-import 'package:shipping_pilot/pages/common/scrollable_content_with_button_layout_page.dart';
+import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/pages/visit/visit_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
+import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
 class VisitDetailPage extends ConsumerWidget {
   static const String name = 'VisitDetail';
 
-  final int travelIdx;
-  final int visitIdx;
+  final String? travelId;
+  final String visitId;
 
   const VisitDetailPage({
     super.key,
-    this.travelIdx = 0,
-    required this.visitIdx,
+    this.travelId,
+    required this.visitId
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {   
     final List<Travel?> travels = ref.watch(travelProvider)['travels'];
-    
-    //TODO: agregar mensaje de error.
-    if (travels.isEmpty || travels[travelIdx]!.visits.isEmpty) {
-      return const Scaffold();
+
+    if (travels.isEmpty || travelId == null) {
+      return TravelDetailEmptyStateWidget(travelId: travelId);
     }
 
-    final Visit visit = travels[travelIdx]!.visits[visitIdx];
+    Travel? travel = travels.firstWhere((t) => t!.id == travelId);
+
+    if (travel == null) {
+      return TravelDetailEmptyStateWidget(travelId: travelId);
+    }
+
+    final Visit visit = travel.visits.firstWhere((v) => v.id == visitId);
 
     return ScrollableContentWithButtonLayoutPage(
-      button: VisitButtonWidget(visitIdx: visitIdx),
+      button: VisitButtonWidget(travelId: travelId!, visit: visit),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
