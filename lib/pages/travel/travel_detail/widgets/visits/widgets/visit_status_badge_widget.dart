@@ -5,12 +5,11 @@ import 'package:shipping_pilot/widgets/index.dart';
 
 class VisitStatusBadge extends StatelessWidget {
   final String status;
- 
+
   const VisitStatusBadge({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {
-
     final statusText = {
       Visit.NEW_STATUS: '',
       Visit.IN_PROGRESS_STATUS: 'En curso',

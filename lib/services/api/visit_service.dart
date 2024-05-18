@@ -4,15 +4,16 @@ import 'dart:convert';
 import 'package:shipping_pilot/models/index.dart';
 
 class VisitService {
-  static const String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';
-  
+  static const String _baseUrl =
+      'shipping-pilot-app-default-rtdb.firebaseio.com';
+
   static Future<Visit?> get(String id) async {
     Visit? visit;
 
     //? get visit in database.
     final url = Uri.https(_baseUrl, 'visits/$id.json');
     final resp = await http.get(url);
-    
+
     Map<String, dynamic>? visitJson = json.decode(resp.body);
 
     //? create visit instance.

@@ -16,20 +16,20 @@ class Client {
   });
 
   factory Client.fromJson(Map<String, dynamic> json) => Client(
-    address: Address.fromJson(json['address']),
-    docNumber: json['doc_number'],
-    lastName: json['last_name'],
-    name: json['name'],
-    phone: json['phone'],
-  );
+        address: Address.fromJson(json['address']),
+        docNumber: json['doc_number'],
+        lastName: json['last_name'],
+        name: json['name'],
+        phone: json['phone'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'address': address.toJson(),
-    'doc_number': docNumber,
-    'last_name': lastName,
-    'name': name,
-    'phone': phone,
-  };
+        'address': address.toJson(),
+        'doc_number': docNumber,
+        'last_name': lastName,
+        'name': name,
+        'phone': phone,
+      };
 
   Client copyWith({
     Address? address,

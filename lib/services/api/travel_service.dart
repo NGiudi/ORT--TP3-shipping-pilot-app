@@ -6,9 +6,11 @@ import 'package:shipping_pilot/services/index.dart';
 import 'package:shipping_pilot/models/index.dart';
 
 class TravelService {
-  static const String _baseUrl = 'shipping-pilot-app-default-rtdb.firebaseio.com';
+  static const String _baseUrl =
+      'shipping-pilot-app-default-rtdb.firebaseio.com';
 
-  static Future<Map<String, dynamic>> _getAdditionalTravelInfo(Map<String, dynamic> travelJson) async {
+  static Future<Map<String, dynamic>> _getAdditionalTravelInfo(
+      Map<String, dynamic> travelJson) async {
     //* get driver.
     User? driver = await UserService.get(travelJson['driver']);
     travelJson['driver'] = driver;
@@ -20,11 +22,11 @@ class TravelService {
     //* get visits.
     List<Visit> visits = [];
 
-    for (int i=1; i <= travelJson['stats']['visits_count'] ; i++) {
+    for (int i = 1; i <= travelJson['stats']['visits_count']; i++) {
       String id = '${travelJson['id']}-$i';
 
       Visit? visit = await VisitService.get(id);
-      
+
       if (visit != null) {
         visits.add(visit);
       }
@@ -33,7 +35,7 @@ class TravelService {
     travelJson['visits'] = visits;
 
     return travelJson;
-  } 
+  }
 
   static Future<List<Travel>> getAll() async {
     List<Travel> travelsList = [];
@@ -46,7 +48,6 @@ class TravelService {
 
     if (travelsObj != null) {
       for (String key in travelsObj.keys) {
-      
         Map<String, dynamic> travelJson = travelsObj[key];
         travelJson['id'] = key;
 
@@ -79,7 +80,7 @@ class TravelService {
   static Future update(Travel travel) async {
     //? adapt the travel for the database.
     Map<String, dynamic> travelJson = travel.toJson();
-    
+
     travelJson['driver'] = travel.driver.docNumber;
     travelJson['vehicle'] = travel.vehicle.licensePlate;
 

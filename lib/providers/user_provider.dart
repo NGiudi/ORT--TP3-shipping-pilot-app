@@ -4,14 +4,16 @@ import 'package:shipping_pilot/services/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
-final userProvider = StateNotifierProvider<UserProvider, Map<String, dynamic>>((ref) => UserProvider());
+final userProvider = StateNotifierProvider<UserProvider, Map<String, dynamic>>(
+    (ref) => UserProvider());
 
 class UserProvider extends StateNotifier<Map<String, dynamic>> {
-  UserProvider(): super({
-    'isLoading': false,
-    'settings': null,
-    'user': null,
-  });
+  UserProvider()
+      : super({
+          'isLoading': false,
+          'settings': null,
+          'user': null,
+        });
 
   //? buisness logic.
   Future<User?> login(int docNumber) async {
@@ -19,7 +21,7 @@ class UserProvider extends StateNotifier<Map<String, dynamic>> {
 
     //? get logged user data.
     User? user = await UserService.get(docNumber);
-    
+
     if (user != null) {
       //? get settings data.
       Settings settings = await SettingsService.get();
@@ -32,7 +34,7 @@ class UserProvider extends StateNotifier<Map<String, dynamic>> {
         'user': user,
       };
     } else {
-      state = { ...state, 'isLoading': false };
+      state = {...state, 'isLoading': false};
     }
 
     return user;

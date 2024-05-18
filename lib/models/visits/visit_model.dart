@@ -13,8 +13,10 @@ class Visit {
   //? statuses
   static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
   static const FAILED_STATUS = 'failed'; // ignore: constant_identifier_names
-  static const IN_PROGRESS_STATUS = 'in_propress'; // ignore: constant_identifier_names
-  static const SUCCESSFUL_STATUS = 'successful'; // ignore: constant_identifier_names
+  static const IN_PROGRESS_STATUS =
+      'in_propress'; // ignore: constant_identifier_names
+  static const SUCCESSFUL_STATUS =
+      'successful'; // ignore: constant_identifier_names
 
   Visit({
     required this.buyer,
@@ -28,26 +30,26 @@ class Visit {
   });
 
   factory Visit.fromJson(Map<String, dynamic> json) => Visit(
-    buyer: Client.fromJson(json['buyer']),
-    id: json['id'],
-    packages: List<String>.from(json['packages'].map((x) => x)),
-    price: json['price'].toDouble(),
-    stats: VisitStats.fromJson(json['stats']),
-    status: json['status'],
-    travelId: json['travel_id'],
-    travelIndex: json['travel_index'],
-  );
+        buyer: Client.fromJson(json['buyer']),
+        id: json['id'],
+        packages: List<String>.from(json['packages'].map((x) => x)),
+        price: json['price'].toDouble(),
+        stats: VisitStats.fromJson(json['stats']),
+        status: json['status'],
+        travelId: json['travel_id'],
+        travelIndex: json['travel_index'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'buyer': buyer.toJson(),
-    'id': id,
-    'packages': List<dynamic>.from(packages.map((x) => x)),
-    'price': price,
-    'stats': stats.toJson(),
-    'status': status,
-    'travel_id': travelId,
-    'travel_index': travelIndex,
-  };
+        'buyer': buyer.toJson(),
+        'id': id,
+        'packages': List<dynamic>.from(packages.map((x) => x)),
+        'price': price,
+        'stats': stats.toJson(),
+        'status': status,
+        'travel_id': travelId,
+        'travel_index': travelIndex,
+      };
 
   Visit copyWith({
     Client? buyer,

@@ -29,20 +29,19 @@ class TravelListPage extends ConsumerWidget {
       drawer: const SidebarWidget(),
       appBar: const AppbarWidget(),
       body: ListView.builder(
-        itemCount: travels.length,
-        itemBuilder: (context, idx) {
-          Travel travel = travels[idx];
+          itemCount: travels.length,
+          itemBuilder: (context, idx) {
+            Travel travel = travels[idx];
 
-          return ListTile(
-            onTap: () {
-              context.push('/travel_detail/${travel.id}');
-            },
-            subtitle: Text('Conductor: ${travel.driver.fullName()}'),
-            title: Text('Recorrido del ${travel.getDateOfId()}'),
-            trailing: const Icon(Icons.chevron_right),
-          );
-        }
-      ),
+            return ListTile(
+              onTap: () {
+                context.push('/travel_detail/${travel.id}');
+              },
+              subtitle: Text('Conductor: ${travel.driver.fullName()}'),
+              title: Text('Recorrido del ${travel.getDateOfId()}'),
+              trailing: const Icon(Icons.chevron_right),
+            );
+          }),
     );
   }
 }

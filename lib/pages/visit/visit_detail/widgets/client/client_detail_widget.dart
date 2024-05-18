@@ -7,11 +7,11 @@ import 'package:shipping_pilot/models/index.dart';
 class ClientDetailWidget extends StatelessWidget {
   final Client client;
 
-  const ClientDetailWidget({ super.key, required this.client });
+  const ClientDetailWidget({super.key, required this.client});
 
   @override
-  Widget build(BuildContext context) {    
-    return Column (
+  Widget build(BuildContext context) {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SectionTitleWidget(text: 'Comprador'),
@@ -31,10 +31,8 @@ class ClientDetailWidget extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 4),
-                child: Text(
-                  client.address.district,
-                  style: Theme.of(context).textTheme.bodyMedium
-                ),
+                child: Text(client.address.district,
+                    style: Theme.of(context).textTheme.bodyMedium),
               ),
               const SizedBox(height: 8),
               FieldWidget(
@@ -44,7 +42,9 @@ class ClientDetailWidget extends StatelessWidget {
               const SizedBox(height: 8),
               FieldWidget(
                 title: 'Observaciones',
-                text: client.address.observations.isEmpty ? '-' : client.address.observations,
+                text: client.address.observations.isEmpty
+                    ? '-'
+                    : client.address.observations,
               ),
             ],
           ),

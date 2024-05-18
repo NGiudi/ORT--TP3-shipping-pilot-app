@@ -46,8 +46,10 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
 
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
-        onPressed: () async {      
-          ref.read(travelProvider.notifier).finalizeVisit(widget.travelId!, _selected, visit);
+        onPressed: () async {
+          ref
+              .read(travelProvider.notifier)
+              .finalizeVisit(widget.travelId!, _selected, visit);
           context.go('/travel_detail/${widget.travelId}');
         },
         child: const Text('Guardar'),
@@ -56,15 +58,14 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RadioListTile(
-            title: const Text('Exitosa'),
-            value: Visit.SUCCESSFUL_STATUS,
-            groupValue: _selected,
-            onChanged: (value) {
-              setState(() {
-                _selected = value!;
-              });
-            }
-          ),
+              title: const Text('Exitosa'),
+              value: Visit.SUCCESSFUL_STATUS,
+              groupValue: _selected,
+              onChanged: (value) {
+                setState(() {
+                  _selected = value!;
+                });
+              }),
           RadioListTile(
             title: const Text('Fallida'),
             value: Visit.FAILED_STATUS,
@@ -80,4 +81,3 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
     );
   }
 }
-

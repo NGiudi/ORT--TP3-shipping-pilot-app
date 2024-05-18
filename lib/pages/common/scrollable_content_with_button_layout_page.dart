@@ -6,11 +6,8 @@ class ScrollableContentWithButtonLayoutPage extends StatelessWidget {
   final Widget content;
   final Widget button;
 
-  const ScrollableContentWithButtonLayoutPage({
-    super.key,
-    required this.button,
-    required this.content
-  });
+  const ScrollableContentWithButtonLayoutPage(
+      {super.key, required this.button, required this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +17,12 @@ class ScrollableContentWithButtonLayoutPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: content,
-              ),
-            )
-          ),
+              child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: content,
+            ),
+          )),
           Padding(
             padding: const EdgeInsets.only(bottom: 12, left: 8, right: 8),
             child: SizedBox(

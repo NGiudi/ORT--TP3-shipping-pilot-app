@@ -6,10 +6,11 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text('ShippingPilot', style: Theme.of(context).textTheme.titleMedium),
+      title:
+          Text('ShippingPilot', style: Theme.of(context).textTheme.titleMedium),
     );
   }
-  
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

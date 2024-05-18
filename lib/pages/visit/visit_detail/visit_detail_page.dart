@@ -16,14 +16,10 @@ class VisitDetailPage extends ConsumerWidget {
   final String? travelId;
   final String visitId;
 
-  const VisitDetailPage({
-    super.key,
-    this.travelId,
-    required this.visitId
-  });
+  const VisitDetailPage({super.key, this.travelId, required this.visitId});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {   
+  Widget build(BuildContext context, WidgetRef ref) {
     final List<Travel?> travels = ref.watch(travelProvider)['travels'];
 
     if (travels.isEmpty || travelId == null) {

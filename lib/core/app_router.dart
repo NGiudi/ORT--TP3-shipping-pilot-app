@@ -31,8 +31,8 @@ final appRouter = GoRouter(
       builder: (context, state) {
         String id = state.pathParameters['id']!;
         String? travelId = state.uri.queryParameters['travelId'];
-        
-        return  VisitDetailPage(travelId: travelId, visitId: id);
+
+        return VisitDetailPage(travelId: travelId, visitId: id);
       },
       name: VisitDetailPage.name,
       path: '/visit_detail/:id',

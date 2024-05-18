@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:shipping_pilot/models/index.dart';
 
-List<Travel> routeFromJson(String str) => List<Travel>.from(json.decode(str).map((x) => Travel.fromJson(x)));
+List<Travel> routeFromJson(String str) =>
+    List<Travel>.from(json.decode(str).map((x) => Travel.fromJson(x)));
 
-String routeToJson(List<Travel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String routeToJson(List<Travel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Travel {
   User driver;
@@ -17,8 +19,10 @@ class Travel {
 
   //? statuses
   static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
-  static const IN_PROGRESS_STATUS = 'in_propress'; // ignore: constant_identifier_names
-  static const FINISHED_STATUS = 'finished'; // ignore: constant_identifier_names
+  static const IN_PROGRESS_STATUS =
+      'in_propress'; // ignore: constant_identifier_names
+  static const FINISHED_STATUS =
+      'finished'; // ignore: constant_identifier_names
 
   Travel({
     required this.driver,
@@ -31,25 +35,25 @@ class Travel {
   });
 
   factory Travel.fromJson(Map<String, dynamic> json) => Travel(
-    driver: json['driver'],
-    id: json['id'],
-    price: json['price'].toDouble(),
-    stats: TravelStats.fromJson(json['stats']),
-    status: json['status'],
-    vehicle: json['vehicle'],
-    visits: json['visits'],
-  );
+        driver: json['driver'],
+        id: json['id'],
+        price: json['price'].toDouble(),
+        stats: TravelStats.fromJson(json['stats']),
+        status: json['status'],
+        vehicle: json['vehicle'],
+        visits: json['visits'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'driver': driver.toJson(),
-    'id': id,
-    'price': price,
-    'stats': stats.toJson(),
-    'status': status,
-    'vehicle': vehicle.toJson(),
-    'visits': List<dynamic>.from(visits.map((x) => x.toJson())),
-  };
-  
+        'driver': driver.toJson(),
+        'id': id,
+        'price': price,
+        'stats': stats.toJson(),
+        'status': status,
+        'vehicle': vehicle.toJson(),
+        'visits': List<dynamic>.from(visits.map((x) => x.toJson())),
+      };
+
   Travel copyWith({
     User? driver,
     String? id,
@@ -72,7 +76,7 @@ class Travel {
 
   String getDateOfId() {
     String dateString = id.split('-')[1];
-    
+
     String day = dateString.substring(0, 2);
     String month = dateString.substring(2, 4);
     String year = dateString.substring(4, 8);
@@ -83,7 +87,7 @@ class Travel {
   String currentVisit() {
     Visit? currentVisit;
 
-    for (int i=0; i < visits.length; i++) {
+    for (int i = 0; i < visits.length; i++) {
       if (visits[i].status == Visit.IN_PROGRESS_STATUS) {
         currentVisit = visits[i];
         i = visits.length;

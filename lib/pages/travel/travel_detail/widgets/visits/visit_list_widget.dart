@@ -17,7 +17,8 @@ class VisitsListWidget extends StatelessWidget {
         return ListTile(
           enabled: travel.currentVisit() == visit.id,
           onTap: () {
-            context.push('/visit_detail/${visit.id}?travelId=${visit.travelId}');
+            context
+                .push('/visit_detail/${visit.id}?travelId=${visit.travelId}');
           },
           subtitle: Text(visit.buyer.fullName()),
           title: Column(

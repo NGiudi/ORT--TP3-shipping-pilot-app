@@ -10,16 +10,16 @@ class TravelStats {
   });
 
   factory TravelStats.fromJson(Map<String, dynamic> json) => TravelStats(
-    eta: DateTime.parse(json['eta']),
-    packagesCount: json['packages_count'],
-    visitsCount: json['visits_count'],
-  );
+        eta: DateTime.parse(json['eta']),
+        packagesCount: json['packages_count'],
+        visitsCount: json['visits_count'],
+      );
 
   Map<String, dynamic> toJson() => {
-    'eta': eta.toIso8601String(),
-    'packages_count': packagesCount,
-    'visits_count': visitsCount,
-  };
+        'eta': eta.toIso8601String(),
+        'packages_count': packagesCount,
+        'visits_count': visitsCount,
+      };
 
   TravelStats copyWith({
     DateTime? eta,

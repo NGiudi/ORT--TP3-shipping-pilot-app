@@ -29,7 +29,8 @@ class VisitButtonWidget extends ConsumerWidget {
       case Visit.IN_PROGRESS_STATUS:
         return ElevatedButton(
           onPressed: () async {
-            context.push('/visit_detail/${visit.id}/finalize?travelId=${visit.travelId}');
+            context.push(
+                '/visit_detail/${visit.id}/finalize?travelId=${visit.travelId}');
           },
           child: const Text('Finalizar visita'),
         );

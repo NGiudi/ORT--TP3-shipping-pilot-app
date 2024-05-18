@@ -6,8 +6,6 @@ import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/index.dart';
 
-import 'package:shipping_pilot/services/index.dart';
-
 import 'package:shipping_pilot/models/index.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -21,7 +19,7 @@ class LoginPage extends ConsumerStatefulWidget {
 
 class LoginPageState extends ConsumerState<LoginPage> {
   bool passwordVisible = true;
-  
+
   final TextEditingController _usuarioController = TextEditingController();
   final TextEditingController _claveController = TextEditingController();
 
@@ -75,13 +73,15 @@ class LoginPageState extends ConsumerState<LoginPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
-                  if (_usuarioController.text.isEmpty || _claveController.text.isEmpty) {
+                  if (_usuarioController.text.isEmpty ||
+                      _claveController.text.isEmpty) {
                     return;
                   }
 
                   int docNumber = int.parse(_usuarioController.text);
 
-                  User? user = await ref.read(userProvider.notifier).login(docNumber);
+                  User? user =
+                      await ref.read(userProvider.notifier).login(docNumber);
 
                   if (user != null) {
                     if (user.isAdmin()) {
@@ -90,7 +90,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
                     } else {
                       String travelId = '${user.docNumber}-24042024';
 
-                      ref.read(travelProvider.notifier).getDriverTravel(travelId);
+                      ref
+                          .read(travelProvider.notifier)
+                          .getDriverTravel(travelId);
                       context.go('/travel_detail/$travelId');
                     }
                   }

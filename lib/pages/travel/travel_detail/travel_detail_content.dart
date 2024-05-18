@@ -13,31 +13,31 @@ class TravelDetailContent extends ConsumerWidget {
 
   final String travelId;
 
-  const TravelDetailContent({ super.key, required this.travelId });
+  const TravelDetailContent({super.key, required this.travelId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Travel?> travels = ref.watch(travelProvider)['travels'];
-    
+
     if (travels.isEmpty) {
       return TravelDetailEmptyStateWidget(travelId: travelId);
     }
 
     Travel? travel = travels.firstWhere((t) => t!.id == travelId);
-    
+
     if (travel == null) {
       return TravelDetailEmptyStateWidget(travelId: travelId);
     }
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16), 
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListView(
         children: [
           TravelDetailWidget(travel: travel),
           const CustomDivider(),
           VehicleDetailWidget(vehicle: travel.vehicle),
           const CustomDivider(),
-          const  SectionTitleWidget(text: 'Visitas'),
+          const SectionTitleWidget(text: 'Visitas'),
           VisitsListWidget(travel: travel)
         ],
       ),

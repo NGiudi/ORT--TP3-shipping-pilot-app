@@ -9,7 +9,6 @@ import 'package:shipping_pilot/pages/index.dart';
 import 'package:shipping_pilot/models/index.dart';
 
 class SidebarWidget extends ConsumerWidget {
-
   const SidebarWidget({super.key});
 
   @override
@@ -20,7 +19,7 @@ class SidebarWidget extends ConsumerWidget {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(user.fullName()), 
+            accountName: Text(user.fullName()),
             accountEmail: Text(user.email),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
@@ -38,12 +37,12 @@ class SidebarWidget extends ConsumerWidget {
             onTap: () {
               context.pushNamed(EditProfilePage.name);
             },
-            title: const Text('Datos personales'),  
+            title: const Text('Datos personales'),
           ),
           ListTile(
             leading: const Icon(Icons.logout),
             onTap: () => {}, //TODO: add logout function.
-            title: const Text('Cerrar sesión'),  
+            title: const Text('Cerrar sesión'),
           ),
         ],
       ),

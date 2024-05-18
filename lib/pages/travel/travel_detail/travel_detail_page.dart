@@ -12,7 +12,7 @@ class TravelDetailPage extends ConsumerWidget {
 
   final String travelId;
 
-  const TravelDetailPage({ super.key, required this.travelId });
+  const TravelDetailPage({super.key, required this.travelId});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

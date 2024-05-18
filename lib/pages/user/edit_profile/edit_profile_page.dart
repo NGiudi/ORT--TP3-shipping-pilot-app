@@ -90,12 +90,9 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
               decoration: InputDecoration(
                 labelText: 'Contraseña',
                 suffixIcon: IconButton(
-                  icon: Icon(
-                    passwordVisible
+                  icon: Icon(passwordVisible
                       ? Icons.visibility
-                      : Icons.visibility_off
-                  )
-                  ,
+                      : Icons.visibility_off),
                   onPressed: () {
                     setState(() {
                       passwordVisible = !passwordVisible;

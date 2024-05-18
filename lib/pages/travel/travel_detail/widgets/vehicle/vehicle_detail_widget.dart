@@ -6,15 +6,15 @@ import 'package:shipping_pilot/models/index.dart';
 
 class VehicleDetailWidget extends StatelessWidget {
   final Vehicle vehicle;
- 
+
   const VehicleDetailWidget({super.key, required this.vehicle});
 
   @override
-  Widget build(BuildContext context) {    
-    return Column (
+  Widget build(BuildContext context) {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SectionTitleWidget( text: 'Vehículo'),
+        const SectionTitleWidget(text: 'Vehículo'),
         Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Column(
