@@ -11,36 +11,34 @@ import 'package:shipping_pilot/models/index.dart';
 class TravelDetailContent extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
-  final int travelIdx;
+  final String travelId;
 
-  const TravelDetailContent({ super.key, this.travelIdx = 0 });
+  const TravelDetailContent({ super.key, required this.travelId });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Travel?> travels = ref.watch(travelProvider)['travels'];
     
     if (travels.isEmpty) {
-      return const MessageWidget(
-        icon: Icon(
-          Icons.warning,
-          size: 80,
-          color: Colors.orange,
-        ),
-        title: 'No hay recorrido asignado',
-        text: 'No se encontró ningún recorrido asignado para tu usuario.',
-      );
+      return TravelDetailEmptyStateWidget(travelId: travelId);
+    }
+
+    Travel? travel = travels.firstWhere((t) => t!.id == travelId);
+    
+    if (travel == null) {
+      return TravelDetailEmptyStateWidget(travelId: travelId);
     }
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16), 
       child: ListView(
         children: [
-          TravelDetailWidget(travel: travels[travelIdx]!),
+          TravelDetailWidget(travel: travel),
           const CustomDivider(),
-          VehicleDetailWidget(vehicle: travels[travelIdx]!.vehicle),
+          VehicleDetailWidget(vehicle: travel.vehicle),
           const CustomDivider(),
           const  SectionTitleWidget(text: 'Visitas'),
-          VisitsListWidget(travel: travels[travelIdx]!)
+          VisitsListWidget(travel: travel)
         ],
       ),
     );

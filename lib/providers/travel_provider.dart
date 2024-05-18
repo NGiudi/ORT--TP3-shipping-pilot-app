@@ -94,17 +94,21 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
     };
   }
 
-  Future<void> getDriverTravel(int dni) async {
-    String date = '24042024';
+  Future<void> getDriverTravel(String travelId) async {
+    List<Travel> travelList = [];
 
     state = { ...state, 'isLoading': true };
 
-    Travel? travel = await TravelService.get('$dni-$date');
+    Travel? travel = await TravelService.get(travelId);
+
+    if (travel != null) {
+      travelList.add(travel);
+    }
 
     state = {
       ...state,
       'isLoading': false,
-      'travels': travel == null ? [] : [travel],
+      'travels': travelList,
     };
   }
 

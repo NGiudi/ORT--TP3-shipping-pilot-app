@@ -5,40 +5,43 @@ import 'package:shipping_pilot/pages/index.dart';
 final appRouter = GoRouter(
   routes: [
     GoRoute(
-      path: '/',
       builder: (context, state) => const LoginPage(),
       name: LoginPage.name,
+      path: '/',
     ),
     GoRoute(
-      path: '/edit_profile',
       builder: (context, state) => const EditProfilePage(),
       name: EditProfilePage.name,
+      path: '/edit_profile',
     ),
     GoRoute(
-      path: '/travel_detail',
-      builder: (context, state) => const TravelDetailPage(),
+      builder: (context, state) {
+        String id = state.pathParameters['id']!;
+        return TravelDetailPage(travelId: id);
+      },
       name: TravelDetailPage.name,
+      path: '/travel_detail/:id',
     ),
     GoRoute(
-      path: '/travel_list',
       builder: (context, state) => const TravelListPage(),
       name: TravelListPage.name,
+      path: '/travel_list',
     ),
     GoRoute(
-      path: '/visit_detail/:id',
       builder: (context, state) {
         int idx = int.parse(state.pathParameters['id']!);
         return  VisitDetailPage(visitIdx: idx);
       },
       name: VisitDetailPage.name,
+      path: '/visit_detail/:id',
     ),
     GoRoute(
-      path: '/visit_detail/:id/finalize',
       builder: (context, state) {
         int idx = int.parse(state.pathParameters['id']!);
         return VisitFinalizePage(visitIdx: idx);
       },
       name: VisitFinalizePage.name,
+      path: '/visit_detail/:id/finalize',
     ),
   ],
 );

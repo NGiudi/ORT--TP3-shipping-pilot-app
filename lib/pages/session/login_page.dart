@@ -90,8 +90,10 @@ class LoginPageState extends ConsumerState<LoginPage> {
                       ref.read(travelProvider.notifier).getTravels();
                       context.goNamed(TravelListPage.name);
                     } else {
-                      ref.read(travelProvider.notifier).getDriverTravel(user.docNumber);
-                      context.goNamed(TravelDetailPage.name);
+                      String travelId = '${user.docNumber}-24042024';
+
+                      ref.read(travelProvider.notifier).getDriverTravel(travelId);
+                      context.push('/travel_detail/$travelId');
                     }
                   }
 

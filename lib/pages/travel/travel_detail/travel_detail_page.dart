@@ -10,7 +10,9 @@ import 'package:shipping_pilot/pages/index.dart';
 class TravelDetailPage extends ConsumerWidget {
   static const String name = 'TravelDetail';
 
-  const TravelDetailPage({super.key});
+  final String travelId;
+
+  const TravelDetailPage({ super.key, required this.travelId });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,10 +23,10 @@ class TravelDetailPage extends ConsumerWidget {
       return const LoadingPage();
     }
 
-    return const Scaffold(
-      drawer: SidebarWidget(),
-      appBar: AppbarWidget(),
-      body: TravelDetailContent(),
+    return Scaffold(
+      drawer: const SidebarWidget(),
+      appBar: const AppbarWidget(),
+      body: TravelDetailContent(travelId: travelId),
     );
   }
 }

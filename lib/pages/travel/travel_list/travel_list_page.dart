@@ -6,6 +6,8 @@ import 'package:shipping_pilot/providers/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
+import 'package:shipping_pilot/models/index.dart';
+
 class TravelListPage extends ConsumerWidget {
   static const String name = 'TravelList';
 
@@ -13,18 +15,30 @@ class TravelListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final bool isLoading = ref.watch(travelProvider)['isLoading'];
+    final Map<String, dynamic> travelObj = ref.watch(travelProvider);
 
     //? Waiting to receive the route information.
-    if (isLoading) {
+    if (travelObj['isLoading']) {
       return const LoadingPage();
     }
 
-    return const Scaffold(
-      drawer: SidebarWidget(),
-      appBar: AppbarWidget(),
-      body: Center(
-        child: Text('Lista de recorridos'),
+    List<Travel> travels = travelObj['travels'];
+
+    return Scaffold(
+      drawer: const SidebarWidget(),
+      appBar: const AppbarWidget(),
+      body: ListView.builder(
+        itemCount: travels.length,
+        itemBuilder: (context, idx) {
+          Travel travel = travels[idx];
+
+          return ListTile(
+            onTap: () {},
+            subtitle: Text('Conductor: ${travel.driver.fullName()}'),
+            title: Text('Recorrido del ${travel.getDateOfId()}'),
+            trailing: const Icon(Icons.chevron_right),
+          );
+        }
       ),
     );
   }

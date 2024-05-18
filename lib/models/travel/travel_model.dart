@@ -70,6 +70,16 @@ class Travel {
     );
   }
 
+  String getDateOfId() {
+    String dateString = id.split('-')[1];
+    
+    String day = dateString.substring(0, 2);
+    String month = dateString.substring(2, 4);
+    String year = dateString.substring(4, 8);
+
+    return '$day/$month/$year';
+  }
+
   String currentVisit() {
     Visit? currentVisit;
 
