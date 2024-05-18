@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
 
+import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
@@ -41,7 +42,13 @@ class SidebarWidget extends ConsumerWidget {
           ),
           ListTile(
             leading: const Icon(Icons.logout),
-            onTap: () => {}, //TODO: add logout function.
+            onTap: () {
+              showDialog(
+                barrierDismissible: false,
+                context: context,
+                builder: (context) => const LogoutAlertWidget(),
+              );
+            },
             title: const Text('Cerrar sesión'),
           ),
         ],
