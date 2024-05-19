@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
 
-import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
+import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';

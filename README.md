@@ -158,6 +158,8 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
     - Stats `VisitStats`
     - Lista de ids de los paquetes `packages`
     - Precio `price`
+    - Id del recorrido `travel_id`
+    - Posición de la visita en el recorrido `travel_index`
 
   - VisitStats
     - Cantidad de paquetes `packages_count`
