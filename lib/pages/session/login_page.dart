@@ -25,6 +25,20 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    void showErrorSnackbar() {
+      SnackBar snackbar = SnackBar(
+        backgroundColor: Theme.of(context).colorScheme.error,
+        behavior: SnackBarBehavior.floating,
+        content: const Text('El usuario ingresado es inválido.'),
+        margin: const EdgeInsets.all(8.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -95,9 +109,9 @@ class LoginPageState extends ConsumerState<LoginPage> {
                           .getDriverTravel(travelId);
                       context.go('/travel_detail/$travelId');
                     }
+                  } else {
+                    showErrorSnackbar();
                   }
-
-                  //TODO: caso no se pueda loguear mostrar error.
                 },
                 child: const Text('Iniciar sesión'),
               ),

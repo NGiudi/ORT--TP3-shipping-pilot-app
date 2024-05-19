@@ -25,8 +25,6 @@ class TravelDetailPage extends ConsumerWidget {
       return const LoadingPage();
     }
 
-
-
     return Scaffold(
       drawer: loggedUser.isAdmin() ? null : const SidebarWidget(),
       appBar: const AppbarWidget(),
