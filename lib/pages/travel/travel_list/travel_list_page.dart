@@ -38,7 +38,15 @@ class TravelListPage extends ConsumerWidget {
                 context.push('/travel_detail/${travel.id}');
               },
               subtitle: Text('Conductor: ${travel.driver.fullName()}'),
-              title: Text('Recorrido del ${travel.getDateOfId()}'),
+              title: Row(
+                children: [
+                  const Icon(Icons.fire_truck),
+                  const SizedBox(width: 8),
+                  Text(travel.getDateOfId()),
+                  const SizedBox(width: 8),
+                  TravelStatusBadgeWidget(status: travel.status)
+                ],
+              ),
               trailing: const Icon(Icons.chevron_right),
             );
           }),
