@@ -22,4 +22,13 @@ class SettingsService {
 
     return settings;
   }
+
+  static Future update(Settings settings) async {
+    //? adapt the user for the database.
+    Map<String, dynamic> settingsJson = settings.toJson();
+
+    //? update user in the database.
+    final url = Uri.https(_baseUrl, 'settings.json');
+    await http.put(url, body: jsonEncode(settingsJson));
+  }
 }

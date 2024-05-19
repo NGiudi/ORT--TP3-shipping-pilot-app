@@ -20,11 +20,11 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como administrador, quiero poder **visualizar en tiempo real la ubicación de los vehículos**.
 
-- Como administrador, quiero poder **visualizar en tiempo real el progreso de las rutas**.
+- Como administrador, quiero poder **visualizar en tiempo real el progreso de las rutas**. (OK!)
 
-- Como administrador, quiero que se **calcule automáticamente los pagos de los conductores según el éxito de sus entregas**.
+- Como administrador, quiero que se **calcule automáticamente los pagos de los conductores según el éxito de sus entregas**. (OK!)
 
-- Como administrador, quiero poder **configurar los precios de las visitas**.
+- Como administrador, quiero poder **configurar los precios de las visitas**. (OK!)
 
 - Como administrador, quiero poder **puntuar los conductores**.
 
@@ -32,17 +32,17 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 ### Conductores
 
-- Como conductor, quiero poder **visualizar el listado de visitas programadas para el día**.
+- Como conductor, quiero poder **visualizar el listado de visitas programadas para el día**. (OK!)
 
-- Como conductor, quiero poder **visualizar el vehículo asignado para el día**.
+- Como conductor, quiero poder **visualizar el vehículo asignado para el día**. (OK!)
 
-- Como conductor, quiero poder **iniciar visitas**.
+- Como conductor, quiero poder **iniciar visitas**. (OK!)
 
-- Como conductor, quiero poder **finalizar visitas**.
+- Como conductor, quiero poder **finalizar visitas**. (OK!)
 
 - Como conductor, quiero poder **registrarportar cualquier problema o incidencia durante la entrega**.
 
-- Como conductor, quiero poder **visualizar las ganancias del recorrido**.
+- Como conductor, quiero poder **visualizar las ganancias del recorrido**. (OK!)
 
 - Como conductor, quiero poder **escanear los paquetes** antes de finalizar la visita.
 
@@ -52,7 +52,7 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como usuario, quiero poder **autenticarme en la aplicación** para hacer uso de la misma.
 
-- Como usuario, quiero poder **editar los datos personales**.
+- Como usuario, quiero poder **editar los datos personales**. (OK!)
 
 ## 📰 Documentación
 

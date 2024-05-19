@@ -44,4 +44,8 @@ class UserProvider extends StateNotifier<Map<String, dynamic>> {
   void updateLoggedUser(User user) {
     state = {...state, 'user': user};
   }
+
+  void updateSettings(Settings settings) {
+    state = {...state, 'settings': settings.copyWith()};
+  }
 }
