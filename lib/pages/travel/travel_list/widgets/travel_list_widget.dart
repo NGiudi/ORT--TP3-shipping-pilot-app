@@ -14,6 +14,11 @@ class TravelListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    if (travels.isEmpty) {
+      return const TravelDetailEmptyStateWidget();
+    }
+
     return Column(
       children: travels.map((Travel travel) {
         return ListTile(

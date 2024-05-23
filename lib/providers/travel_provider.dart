@@ -121,7 +121,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
 
   //? handle global state.
   void updateTravel() {
-    List<Travel?> travels = [];
+    List<Travel> travels = [];
 
     for (Travel travel in state['travels']) {
       travels.add(travel.copyWith());

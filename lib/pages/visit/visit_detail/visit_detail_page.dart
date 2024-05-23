@@ -20,6 +20,7 @@ class VisitDetailPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+    final User loggedUser = ref.watch(userProvider)['user'];
 
     if (travels.isEmpty || travelId == null) {
       return TravelDetailEmptyStateWidget(travelId: travelId);
@@ -34,7 +35,10 @@ class VisitDetailPage extends ConsumerWidget {
     final Visit visit = travel.visits.firstWhere((v) => v.id == visitId);
 
     return ScrollableContentWithButtonLayoutPage(
-      button: VisitButtonWidget(travelId: travelId!, visit: visit),
+      button: Visibility(
+        visible: loggedUser.isAdmin(),
+        child: VisitButtonWidget(travelId: travelId!, visit: visit)
+      ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -18,12 +18,11 @@ class Travel {
   List<Visit> visits;
 
   //? statuses
+  static const CANCELLED_STATUS = 'cancelled'; // ignore: constant_identifier_names
   static const NEW_STATUS = 'new'; // ignore: constant_identifier_names
-  static const IN_PROGRESS_STATUS =
-      'in_propress'; // ignore: constant_identifier_names
-  static const FINISHED_STATUS =
-      'finished'; // ignore: constant_identifier_names
-
+  static const IN_PROGRESS_STATUS = 'in_propress'; // ignore: constant_identifier_names
+  static const FINISHED_STATUS = 'finished'; // ignore: constant_identifier_names
+  
   Travel({
     required this.driver,
     required this.id,
@@ -97,5 +96,18 @@ class Travel {
     }
 
     return currentVisit == null ? '' : currentVisit.id;
+  }
+
+  bool isCancelled() {
+    return status == Travel.CANCELLED_STATUS;
+  }
+
+  bool inFinalStatus() {
+    List<String> finalStatuses = [
+      Travel.CANCELLED_STATUS,
+      Travel.FINISHED_STATUS
+    ];
+
+    return finalStatuses.contains(status);
   }
 }

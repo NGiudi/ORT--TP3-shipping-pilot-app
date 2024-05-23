@@ -1,4 +1,5 @@
 /* travels */
+export 'package:shipping_pilot/pages/travel/travel_detail/widgets/travels/travel_cancel_button_widget.dart';
 export 'package:shipping_pilot/pages/travel/travel_detail/widgets/travels/travel_detail_widget.dart';
 
 /* vehicles */

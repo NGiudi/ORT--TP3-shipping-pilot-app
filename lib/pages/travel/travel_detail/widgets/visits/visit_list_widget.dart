@@ -20,7 +20,7 @@ class VisitsListWidget extends ConsumerWidget {
     return Column(
       children: travel.visits.map((Visit visit) {
         return ListTile(
-          enabled: loggedUser.isAdmin() || travel.currentVisit() == visit.id,
+          enabled: loggedUser.isAdmin() || (!travel.isCancelled() && travel.currentVisit() == visit.id),
           onTap: () {
             context
                 .push('/visit_detail/${visit.id}?travelId=${visit.travelId}');

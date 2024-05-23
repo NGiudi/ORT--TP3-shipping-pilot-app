@@ -25,6 +25,10 @@ class TravelListPage extends ConsumerWidget {
 
     List<Travel> travels = travelObj['travels'];
 
+    if (travels.isEmpty) {
+      return const TravelDetailEmptyStateWidget();
+    }
+
     return Scaffold(
       drawer: const SidebarWidget(),
       appBar: const AppbarWidget(),

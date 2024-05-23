@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shipping_pilot/providers/index.dart';
+
+import 'package:shipping_pilot/pages/travel/travel_detail/widgets/index.dart';
 import 'package:shipping_pilot/widgets/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
-class TravelDetailWidget extends StatelessWidget {
+class TravelDetailWidget extends ConsumerWidget {
   final Travel travel;
 
   const TravelDetailWidget({super.key, required this.travel});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    User loggedUser = ref.watch(userProvider)['user'];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -32,6 +38,10 @@ class TravelDetailWidget extends StatelessWidget {
               FieldWidget(
                 text: travel.price.toString(),
                 title: 'Precio',
+              ),
+              Visibility(
+                visible: loggedUser.isAdmin() && !travel.inFinalStatus(),
+                child:TravelCancelButton(travel: travel),
               ),
             ],
           ),

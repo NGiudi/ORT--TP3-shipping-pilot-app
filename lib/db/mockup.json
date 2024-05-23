@@ -64,6 +64,10 @@
         "name": "Nicolás",
         "phone": "+5491133333333"
       },
+      "delivery_record": {
+        "dni": "",
+        "failed_reason": ""
+      },
       "packages": [
         "pck_1",
         "pck_2",
@@ -99,6 +103,10 @@
         "last_name": "Miguez",
         "name": "Jeronimo",
         "phone": "+5491122222222"
+      },
+      "delivery_record": {
+        "dni": "",
+        "failed_reason": ""
       },
       "packages": [
         "pck_3"

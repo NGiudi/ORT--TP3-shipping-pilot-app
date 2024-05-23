@@ -40,13 +40,16 @@ class SidebarWidget extends ConsumerWidget {
             },
             title: const Text('Datos personales'),
           ),
-          user.isAdmin() ? ListTile(
-            leading: const Icon(Icons.price_change_outlined),
-            onTap: () {
-              context.pushNamed(EditPricingPage.name);
-            },
-            title: const Text('Precios'),
-          ): const SizedBox(),
+          Visibility(
+            visible: user.isAdmin(),
+            child: ListTile(
+              leading: const Icon(Icons.price_change_outlined),
+              onTap: () {
+                context.pushNamed(EditPricingPage.name);
+              },
+              title: const Text('Precios'),
+            ),
+          ),
           ListTile(
             leading: const Icon(Icons.logout),
             onTap: () {
