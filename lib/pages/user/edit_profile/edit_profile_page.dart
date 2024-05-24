@@ -24,8 +24,13 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final User user = ref.watch(userProvider)['user'];
-    User formUser = user.copyWith();
+    UserProviderModel upm = ref.watch(userProvider);
+    
+    if (upm.user == null) {
+      return const SizedBox();
+    } 
+    
+    User formUser = upm.user!.copyWith();
 
     final formKey = GlobalKey<FormState>();
 
@@ -47,7 +52,7 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
               decoration: const InputDecoration(
                 labelText: 'Nombre',
               ),
-              initialValue: user.name,
+              initialValue: upm.user!.name,
               onChanged: (value) {
                 formUser.name = value;
               },
@@ -56,13 +61,13 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
               decoration: const InputDecoration(
                 labelText: 'Apellido',
               ),
-              initialValue: user.lastName,
+              initialValue: upm.user!.lastName,
               onChanged: (value) {
                 formUser.lastName = value;
               },
             ),
             TextFormField(
-              initialValue: user.docNumber.toString(),
+              initialValue: upm.user!.docNumber.toString(),
               decoration: const InputDecoration(
                 labelText: 'DNI',
               ),
@@ -72,7 +77,7 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
               decoration: const InputDecoration(
                 labelText: 'Email',
               ),
-              initialValue: user.email,
+              initialValue: upm.user!.email,
               onChanged: (value) {
                 formUser.email = value;
               },
@@ -81,7 +86,7 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
               decoration: const InputDecoration(
                 labelText: 'Teléfono',
               ),
-              initialValue: user.phone,
+              initialValue: upm.user!.phone,
               onChanged: (value) {
                 formUser.name = value;
               },
@@ -100,14 +105,14 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
                   },
                 ),
               ),
-              initialValue: user.password,
+              initialValue: upm.user!.password,
               obscureText: passwordVisible,
               onChanged: (value) {
                 formUser.password = value;
               },
             ),
             TextFormField(
-              initialValue: user.role,
+              initialValue: upm.user!.role,
               decoration: const InputDecoration(
                 labelText: 'Rol',
               ),

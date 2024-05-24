@@ -17,7 +17,8 @@ class TravelDetailContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+    final TravelProviderModel tpm = ref.watch(travelProvider);
+    List<Travel?> travels = tpm.travels;
 
     if (travels.isEmpty) {
       return TravelDetailEmptyStateWidget(travelId: travelId);

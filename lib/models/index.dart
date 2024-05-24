@@ -10,10 +10,12 @@ export 'package:shipping_pilot/models/settings/settings_model.dart';
 
 //? travel
 export 'package:shipping_pilot/models/travel/travel_model.dart';
+export 'package:shipping_pilot/models/travel/travel_provider_model.dart';
 export 'package:shipping_pilot/models/travel/travel_stats_model.dart';
 
 //? user
 export 'package:shipping_pilot/models/user/user_model.dart';
+export 'package:shipping_pilot/models/user/user_provider_model.dart';
 
 //? vehicle
 export 'package:shipping_pilot/models/vehicle/vehicle_model.dart';

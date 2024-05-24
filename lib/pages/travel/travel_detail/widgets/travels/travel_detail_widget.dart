@@ -15,7 +15,8 @@ class TravelDetailWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    User loggedUser = ref.watch(userProvider)['user'];
+    UserProviderModel upm = ref.watch(userProvider);
+    User? loggedUser = upm.user;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +41,7 @@ class TravelDetailWidget extends ConsumerWidget {
                 title: 'Precio',
               ),
               Visibility(
-                visible: loggedUser.isAdmin() && !travel.inFinalStatus(),
+                visible: loggedUser != null && loggedUser.isAdmin() && !travel.inFinalStatus(),
                 child:TravelCancelButton(travel: travel),
               ),
             ],

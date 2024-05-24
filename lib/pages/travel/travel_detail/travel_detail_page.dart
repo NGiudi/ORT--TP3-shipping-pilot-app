@@ -17,8 +17,16 @@ class TravelDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isLoading = ref.watch(travelProvider)['isLoading'];
-    User loggedUser = ref.watch(userProvider)['user'];
+    final TravelProviderModel tpm = ref.watch(travelProvider);
+    bool isLoading = tpm.isLoading;
+  
+    final UserProviderModel upm = ref.watch(userProvider);
+    User? loggedUser = upm.user;
+
+    //TODO: Agregar mensaje de error de que no existe un usuario logueado.
+    if (loggedUser == null) {
+      return const SizedBox();
+    }
 
     //? Waiting to receive the route information.
     if (isLoading) {

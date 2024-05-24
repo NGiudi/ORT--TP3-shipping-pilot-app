@@ -14,18 +14,19 @@ class SidebarWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final User user = ref.watch(userProvider)['user'];
+    UserProviderModel upm = ref.watch(userProvider);
+    User? user = upm.user;
 
     return Drawer(
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(user.fullName()),
-            accountEmail: Text(user.email),
+            accountName: Text(user == null ? "" : user.fullName()),
+            accountEmail: Text(user == null ? "" : user.email),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.network(
-                  user.photoUrl,
+                  user == null ? "" : user.photoUrl,
                   width: 90,
                   height: 90,
                   fit: BoxFit.cover,
@@ -41,7 +42,7 @@ class SidebarWidget extends ConsumerWidget {
             title: const Text('Datos personales'),
           ),
           Visibility(
-            visible: user.isAdmin(),
+            visible: user != null && user.isAdmin(),
             child: ListTile(
               leading: const Icon(Icons.price_change_outlined),
               onTap: () {

@@ -30,17 +30,14 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Travel?> travels = ref.watch(travelProvider)['travels'];
+    final TravelProviderModel tpm = ref.watch(travelProvider);
+    final List<Travel> travels = tpm.travels; 
 
     if (travels.isEmpty || widget.travelId == null) {
       return TravelDetailEmptyStateWidget(travelId: widget.travelId);
     }
 
-    Travel? travel = travels.firstWhere((t) => t!.id == widget.travelId);
-
-    if (travel == null) {
-      return TravelDetailEmptyStateWidget(travelId: widget.travelId);
-    }
+    Travel? travel = travels.firstWhere((t) => t.id == widget.travelId);
 
     final Visit visit = travel.visits.firstWhere((v) => v.id == widget.visitId);
 
@@ -75,6 +72,15 @@ class VisitFinalizePageState extends ConsumerState<VisitFinalizePage> {
                 _selected = value!;
               });
             },
+          ),
+          const CustomDivider(),
+          Visibility(
+            visible: _selected == Visit.SUCCESSFUL_STATUS, 
+            child: const Text('form exitosa'),
+          ),
+          Visibility(
+            visible: _selected == Visit.FAILED_STATUS,
+            child: const Text('form fallida'),
           ),
         ],
       ),

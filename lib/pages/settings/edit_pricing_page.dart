@@ -17,10 +17,16 @@ class EditPricingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Settings settings = ref.watch(userProvider)['settings'];
+    UserProviderModel upm = ref.watch(userProvider);
+    Settings? settings = upm.settings;
     
-    Pricing formPricing = settings.pricing.copyWith();
+    //TODO: agregar un error de que no se pudo acceder a los datos del precio.
+    if (settings == null) {
+      return const SizedBox();
+    }
 
+    Pricing formPricing = settings.pricing.copyWith();
+    
     final formKey = GlobalKey<FormState>();
 
     return ScrollableContentWithButtonLayoutPage(
@@ -29,7 +35,7 @@ class EditPricingPage extends ConsumerWidget {
           settings.pricing = formPricing;
           
           SettingsService.update(settings);
-          //TODO: ref.read(userProvider.notifier).updateSettings(settings);
+          ref.read(userProvider.notifier).updateSettings(settings);
         },
         child: const Text('Actualizar precios'),
       ),

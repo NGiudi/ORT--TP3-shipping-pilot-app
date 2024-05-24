@@ -4,48 +4,40 @@ import 'package:shipping_pilot/services/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
-final userProvider = StateNotifierProvider<UserProvider, Map<String, dynamic>>(
+final userProvider = StateNotifierProvider<UserProvider, UserProviderModel>(
     (ref) => UserProvider());
 
-class UserProvider extends StateNotifier<Map<String, dynamic>> {
-  UserProvider()
-      : super({
-          'isLoading': false,
-          'settings': null,
-          'user': null,
-        });
+class UserProvider extends StateNotifier<UserProviderModel> {
+  UserProvider() : super(
+    const UserProviderModel(isLoading: false, settings: null, user: null)
+  );
 
   //? buisness logic.
   Future<User?> login(int docNumber) async {
-    state = {...state, 'isLoading': true};
+    state = state.copyWith(isLoading: true);
 
     //? get logged user data.
-    User? user = await UserService.get(docNumber);
+    User? newUser = await UserService.get(docNumber);
 
-    if (user != null) {
+    if (newUser != null) {
       //? get settings data.
-      Settings settings = await SettingsService.get();
+      Settings newSettings = await SettingsService.get();
 
       //? udate global state.
-      state = {
-        ...state,
-        'isLoading': false,
-        'settings': settings,
-        'user': user,
-      };
+      state = state.copyWith(isLoading: false, settings: newSettings, user: newUser);    
     } else {
-      state = {...state, 'isLoading': false};
+      state = state.copyWith(isLoading: false);
     }
 
-    return user;
+    return newUser;
   }
 
   //? handle global state.
-  void updateLoggedUser(User user) {
-    state = {...state, 'user': user};
+  void updateLoggedUser(User newUser) {
+    state = state.copyWith(user: newUser);
   }
 
-  void updateSettings(Settings settings) {
-    state = {...state, 'settings': settings.copyWith()};
+  void updateSettings(Settings newSettings) {
+    state = state.copyWith(settings: newSettings);
   }
 }

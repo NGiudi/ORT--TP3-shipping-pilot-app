@@ -5,24 +5,20 @@ import 'package:shipping_pilot/services/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
-final travelProvider =
-    StateNotifierProvider<TravelNotifier, Map<String, dynamic>>((ref) {
-  Settings? settings = ref.watch(userProvider)['settings'];
-
-  return TravelNotifier(settings: settings);
+final travelProvider = StateNotifierProvider<TravelNotifier, TravelProviderModel>((ref) {
+  return TravelNotifier(ref: ref);
 });
 
-class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
-  final Settings? settings;
+class TravelNotifier extends StateNotifier<TravelProviderModel> {
+  StateNotifierProviderRef<TravelNotifier, TravelProviderModel> ref;
 
-  TravelNotifier({this.settings})
-      : super({
-          'isLoading': false,
-          'travels': [],
-        });
+  TravelNotifier({required this.ref}) : super(
+    const TravelProviderModel(travels: <Travel>[], isLoading: false)
+  );
 
   double _calculateVisitPrice(String newStatus) {
-    Pricing pricing = settings!.pricing;
+    UserProviderModel upm = ref.watch(userProvider);
+    Pricing pricing = upm.settings!.pricing;
 
     switch (newStatus) {
       case Visit.SUCCESSFUL_STATUS:
@@ -47,7 +43,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
 
   //? buisness logic.
   void finalizeVisit(String travelId, String newStatus, Visit visit) async {
-    Travel travel = state['travels'].firstWhere((t) => t.id == travelId);
+    Travel travel = state.travels.firstWhere((t) => t.id == travelId);
 
     int lastVisitIdx = travel.visits.length - 1;
     int visitIdx = travel.visits.indexOf(visit);
@@ -71,7 +67,7 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   void startVisit(String travelId, Visit visit) async {
-    Travel travel = state['travels'].firstWhere((t) => t.id == travelId);
+    Travel travel = state.travels.firstWhere((t) => t.id == travelId);
 
     int visitIdx = travel.visits.indexOf(visit);
 
@@ -90,21 +86,17 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
   }
 
   Future<void> getTravels() async {
-    state = {...state, 'isLoading': true};
+    state = state.copyWith(isLoading: true);
 
-    List<Travel> travels = await TravelService.getAll();
+    List<Travel> travelsList = await TravelService.getAll();
 
-    state = {
-      ...state,
-      'isLoading': false,
-      'travels': travels,
-    };
+    state = state.copyWith(isLoading: false, travels: travelsList);
   }
 
   Future<void> getDriverTravel(String travelId) async {
     List<Travel> travelList = [];
 
-    state = {...state, 'isLoading': true};
+    state = state.copyWith(isLoading: true);
 
     Travel? travel = await TravelService.get(travelId);
 
@@ -112,21 +104,17 @@ class TravelNotifier extends StateNotifier<Map<String, dynamic>> {
       travelList.add(travel);
     }
 
-    state = {
-      ...state,
-      'isLoading': false,
-      'travels': travelList,
-    };
+    state = state.copyWith(isLoading: false, travels: travelList);
   }
 
   //? handle global state.
   void updateTravel() {
-    List<Travel> travels = [];
+    List<Travel> travelList = [];
 
-    for (Travel travel in state['travels']) {
-      travels.add(travel.copyWith());
+    for (Travel travel in state.travels) {
+      travelList.add(travel.copyWith());
     }
 
-    state = {...state, 'travels': travels};
+    state = state.copyWith(travels: travelList);
   }
 }

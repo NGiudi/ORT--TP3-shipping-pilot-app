@@ -15,12 +15,13 @@ class VisitsListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    User loggedUser = ref.watch(userProvider)['user'];
+    UserProviderModel upm = ref.watch(userProvider);
+    User? loggedUser = upm.user;
 
     return Column(
       children: travel.visits.map((Visit visit) {
         return ListTile(
-          enabled: loggedUser.isAdmin() || (!travel.isCancelled() && travel.currentVisit() == visit.id),
+          enabled: loggedUser != null && loggedUser.isAdmin() || (!travel.isCancelled() && travel.currentVisit() == visit.id),
           onTap: () {
             context
                 .push('/visit_detail/${visit.id}?travelId=${visit.travelId}');

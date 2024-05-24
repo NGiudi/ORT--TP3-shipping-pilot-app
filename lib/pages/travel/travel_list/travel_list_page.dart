@@ -16,14 +16,16 @@ class TravelListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final Map<String, dynamic> travelObj = ref.watch(travelProvider);
+    final TravelProviderModel tpm = ref.watch(travelProvider);
 
     //? Waiting to receive the route information.
-    if (travelObj['isLoading']) {
+    if (tpm.isLoading) {
       return const LoadingPage();
     }
 
-    List<Travel> travels = travelObj['travels'];
+    List<Travel> travels = tpm.travels;
+
+    print(travels);
 
     if (travels.isEmpty) {
       return const TravelDetailEmptyStateWidget();
