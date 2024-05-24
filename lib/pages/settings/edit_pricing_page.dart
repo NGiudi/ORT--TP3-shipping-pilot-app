@@ -7,6 +7,7 @@ import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/services/index.dart';
+import 'package:shipping_pilot/utils/index.dart';
 
 import 'package:shipping_pilot/models/index.dart';
 
@@ -26,16 +27,18 @@ class EditPricingPage extends ConsumerWidget {
     }
 
     Pricing formPricing = settings.pricing.copyWith();
-    
+
     final formKey = GlobalKey<FormState>();
 
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () {
-          settings.pricing = formPricing;
-          
-          SettingsService.update(settings);
-          ref.read(userProvider.notifier).updateSettings(settings);
+          if (formKey.currentState!.validate()) {
+            settings.pricing = formPricing;
+
+            SettingsService.update(settings);
+            ref.read(userProvider.notifier).updateSettings(settings);
+          }
         },
         child: const Text('Actualizar precios'),
       ),
@@ -50,8 +53,9 @@ class EditPricingPage extends ConsumerWidget {
                 labelText: 'Pago por visita',
               ),
               initialValue: settings.pricing.visitPrice.toString(),
-              onChanged: (value) {
-                formPricing.visitPrice = double.parse(value);
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              validator: (String? value) {
+                return doubleFormValidation(value);
               },
             ),
             TextFormField(
@@ -59,8 +63,9 @@ class EditPricingPage extends ConsumerWidget {
                 labelText: 'Coeficiente de visita fallida',
               ),
               initialValue: settings.pricing.failedCoefficient.toString(),
-              onChanged: (value) {
-                formPricing.failedCoefficient = double.parse(value);
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              validator: (String? value) {
+                return doubleFormValidation(value);
               },
             ),
             TextFormField(
@@ -68,8 +73,9 @@ class EditPricingPage extends ConsumerWidget {
                 labelText: 'Coeficiente de visita exitosa',
               ),
               initialValue: settings.pricing.successfulCoefficient.toString(),
-              onChanged: (value) {
-                formPricing.successfulCoefficient = double.parse(value);
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              validator: (String? value) {
+                return doubleFormValidation(value);
               },
             ),
           ],
