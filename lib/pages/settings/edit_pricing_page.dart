@@ -54,6 +54,11 @@ class EditPricingPage extends ConsumerWidget {
               ),
               initialValue: settings.pricing.visitPrice.toString(),
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              onChanged: (value) {
+                if (double.tryParse(value) != null) {
+                  formPricing.visitPrice = double.parse(value);
+                }
+              },
               validator: (String? value) {
                 return doubleFormValidation(value);
               },
@@ -64,6 +69,11 @@ class EditPricingPage extends ConsumerWidget {
               ),
               initialValue: settings.pricing.failedCoefficient.toString(),
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              onChanged: (value) {
+                if (double.tryParse(value) != null) {
+                  formPricing.failedCoefficient = double.parse(value);
+                }
+              },
               validator: (String? value) {
                 return doubleFormValidation(value);
               },
@@ -74,6 +84,11 @@ class EditPricingPage extends ConsumerWidget {
               ),
               initialValue: settings.pricing.successfulCoefficient.toString(),
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              onChanged: (value) {
+                if (double.tryParse(value) != null) {
+                  formPricing.successfulCoefficient = double.parse(value);
+                }
+              },
               validator: (String? value) {
                 return doubleFormValidation(value);
               },
