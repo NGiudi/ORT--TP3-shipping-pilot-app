@@ -65,7 +65,7 @@
         "phone": "+5491133333333"
       },
       "delivery_record": {
-        "dni": "",
+        "doc_number": "",
         "failed_reason": ""
       },
       "packages": [
@@ -105,7 +105,7 @@
         "phone": "+5491122222222"
       },
       "delivery_record": {
-        "dni": "",
+        "doc_number": "",
         "failed_reason": ""
       },
       "packages": [

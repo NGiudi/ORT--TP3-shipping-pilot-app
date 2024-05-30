@@ -46,7 +46,7 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como conductor, quiero poder **escanear los paquetes** antes de finalizar la visita.
 
-- Como conductor, quiero poder **ingresar un código de segurar** para validar que el receptor sea realmente el comprador.
+- Como conductor, quiero poder **ingresar un código de seguridad** para validar que el receptor sea realmente el comprador.
 
 ### Usuario (Administradores y Conductores)
 

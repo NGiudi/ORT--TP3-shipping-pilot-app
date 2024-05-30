@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/services/index.dart';
 
@@ -16,20 +15,6 @@ class TravelNotifier extends StateNotifier<TravelProviderModel> {
     const TravelProviderModel(travels: <Travel>[], isLoading: false)
   );
 
-  double _calculateVisitPrice(String newStatus) {
-    UserProviderModel upm = ref.watch(userProvider);
-    Pricing pricing = upm.settings!.pricing;
-
-    switch (newStatus) {
-      case Visit.SUCCESSFUL_STATUS:
-        return pricing.successfulCoefficient * pricing.visitPrice;
-      case Visit.FAILED_STATUS:
-        return pricing.failedCoefficient * pricing.visitPrice;
-      default:
-        return pricing.visitPrice;
-    }
-  }
-
   double _calculateTravelPrice(Travel travel) {
     List<Visit> visits = travel.visits;
     double total = 0;
@@ -42,15 +27,13 @@ class TravelNotifier extends StateNotifier<TravelProviderModel> {
   }
 
   //? buisness logic.
-  void finalizeVisit(String travelId, String newStatus, Visit visit) async {
+  void finalizeVisit(String travelId, Visit visit) async {
     Travel travel = state.travels.firstWhere((t) => t.id == travelId);
 
     int lastVisitIdx = travel.visits.length - 1;
     int visitIdx = travel.visits.indexOf(visit);
 
     //? update visit data.
-    visit.status = newStatus;
-    visit.price = _calculateVisitPrice(newStatus);
     await VisitService.update(visit);
 
     //? update travel data.

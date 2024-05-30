@@ -21,5 +21,6 @@ export 'package:shipping_pilot/models/user/user_provider_model.dart';
 export 'package:shipping_pilot/models/vehicle/vehicle_model.dart';
 
 //? visit
+export 'package:shipping_pilot/models/visits/visit_delivery_record_model.dart';
 export 'package:shipping_pilot/models/visits/visit_model.dart';
 export 'package:shipping_pilot/models/visits/visit_stats_model.dart';

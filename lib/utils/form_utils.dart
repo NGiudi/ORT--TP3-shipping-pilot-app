@@ -21,3 +21,11 @@ String? docNumberFormValidation(String? value) {
 
   return null;
 }
+
+String? textFormValidation(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Campo requerido.';
+  }
+
+  return null;
+}
