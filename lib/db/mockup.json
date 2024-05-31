@@ -80,6 +80,7 @@
         "pck_10"
       ],
       "price": 5000,
+      "secure_code": "",
       "stats": {
         "eta": "2024-04-11T10:11:45.123456",
         "packages_count": 9
@@ -112,6 +113,7 @@
         "pck_3"
       ],
       "price": 5000,
+      "secure_code": "123456",
       "stats": {
         "eta": "2024-04-11T10:11:45.123456",
         "packages_count": 1

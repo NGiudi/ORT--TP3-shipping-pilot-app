@@ -40,13 +40,13 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
 - Como conductor, quiero poder **finalizar visitas**. (OK!)
 
-- Como conductor, quiero poder **registrarportar cualquier problema o incidencia durante la entrega**.
+- Como conductor, quiero poder **registrarportar cualquier problema o incidencia durante la entrega**. (OK!)
 
 - Como conductor, quiero poder **visualizar las ganancias del recorrido**. (OK!)
 
 - Como conductor, quiero poder **escanear los paquetes** antes de finalizar la visita.
 
-- Como conductor, quiero poder **ingresar un código de seguridad** para validar que el receptor sea realmente el comprador.
+- Como conductor, quiero poder **ingresar un código de seguridad** para validar que el receptor sea realmente el comprador. (OK!)
 
 ### Usuario (Administradores y Conductores)
 

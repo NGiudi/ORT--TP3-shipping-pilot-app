@@ -1,3 +1,5 @@
+import 'package:shipping_pilot/models/index.dart';
+
 String? doubleFormValidation(String? value) {
   if (value == null || value.isEmpty) {
     return 'Campo requerido.';
@@ -27,5 +29,18 @@ String? textFormValidation(String? value) {
     return 'Campo requerido.';
   }
 
+  return null;
+}
+
+
+String? secureCodeFormValidation(Visit visit, String? value) {
+  if (visit.hasSecureCode()) {
+    if (value == null || value.isEmpty) {
+      return 'Campo requerido.';
+    } else if (visit.secureCode != value) {
+      return 'Código de seguridad inválido';
+    }
+  }
+  
   return null;
 }

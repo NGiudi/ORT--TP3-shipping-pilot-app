@@ -6,6 +6,7 @@ class Visit {
   String id;
   List<String> packages;
   double price;
+  String secureCode;
   VisitStats stats;
   String status;
   String travelId;
@@ -23,6 +24,7 @@ class Visit {
     required this.id,
     required this.packages,
     required this.price,
+    required this.secureCode,
     required this.stats,
     required this.status,
     required this.travelId,
@@ -35,6 +37,7 @@ class Visit {
     id: json['id'],
     packages: List<String>.from(json['packages'].map((x) => x)),
     price: json['price'].toDouble(),
+    secureCode: json['secure_code'],
     stats: VisitStats.fromJson(json['stats']),
     status: json['status'],
     travelId: json['travel_id'],
@@ -47,6 +50,7 @@ class Visit {
     'id': id,
     'packages': List<dynamic>.from(packages.map((x) => x)),
     'price': price,
+    'secure_code': secureCode,
     'stats': stats.toJson(),
     'status': status,
     'travel_id': travelId,
@@ -59,6 +63,7 @@ class Visit {
     String? id,
     List<String>? packages,
     double? price,
+    String? secureCode,
     VisitStats? stats,
     String? status,
     String? travelId,
@@ -70,10 +75,15 @@ class Visit {
       id: id ?? this.id,
       packages: packages ?? List<String>.from(this.packages),
       price: price ?? this.price,
+      secureCode: secureCode ?? this.secureCode,
       stats: stats ?? this.stats.copyWith(),
       status: status ?? this.status,
       travelId: travelId ?? this.travelId,
       travelIndex: travelIndex ?? this.travelIndex,
     );
+  }
+
+  bool hasSecureCode() {
+    return secureCode.isNotEmpty;
   }
 }
