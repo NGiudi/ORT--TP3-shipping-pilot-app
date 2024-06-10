@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shipping_pilot/providers/index.dart';
 
 import 'package:shipping_pilot/pages/session/loogin/widgets/ocult_password_icon_widget.dart';
+import 'package:shipping_pilot/widgets/index.dart';
 import 'package:shipping_pilot/pages/index.dart';
 
 import 'package:shipping_pilot/utils/index.dart';
@@ -30,20 +31,6 @@ class LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    void showErrorSnackbar() {
-      SnackBar snackbar = SnackBar(
-        backgroundColor: Theme.of(context).colorScheme.error,
-        behavior: SnackBarBehavior.floating,
-        content: const Text('El usuario ingresado es inválido.'),
-        margin: const EdgeInsets.all(8.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      );
-
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    }
-
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -108,7 +95,7 @@ class LoginPageState extends ConsumerState<LoginPage> {
                           context.go('/travel_detail/$travelId');
                         }
                       } else {
-                        showErrorSnackbar();
+                        CustomSnackbar.showErrorSnackbar(context, 'El usuario ingresado es inválido.');
                       }
                     }
                   },

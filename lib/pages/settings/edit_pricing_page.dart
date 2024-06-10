@@ -36,8 +36,14 @@ class EditPricingPage extends ConsumerWidget {
           if (formKey.currentState!.validate()) {
             settings.pricing = formPricing;
 
-            SettingsService.update(settings);
-            ref.read(userProvider.notifier).updateSettings(settings);
+            try {
+              SettingsService.update(settings);
+              ref.read(userProvider.notifier).updateSettings(settings);
+            
+              CustomSnackbar.showSuccessSnackbar(context, 'Precios actualizados exitosamente.');
+            } catch (err) {
+              CustomSnackbar.showErrorSnackbar(context, 'Hubo un problema al actualizar los precios.');
+            } 
           }
         },
         child: const Text('Actualizar precios'),

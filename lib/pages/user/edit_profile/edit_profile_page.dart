@@ -37,8 +37,15 @@ class EditProfilePageState extends ConsumerState<EditProfilePage> {
     return ScrollableContentWithButtonLayoutPage(
       button: ElevatedButton(
         onPressed: () {
-          UserService.update(formUser);
-          ref.read(userProvider.notifier).updateLoggedUser(formUser);
+          try {
+            UserService.update(formUser);
+            ref.read(userProvider.notifier).updateLoggedUser(formUser);
+            
+            CustomSnackbar.showSuccessSnackbar(context, 'Datos actualizados exitosamente.');
+          } catch (err) {
+            CustomSnackbar.showErrorSnackbar(context, 'Hubo un problema al actualizar los datos.');
+          }
+          
         },
         child: const Text('Actualizar perfil'),
       ),
