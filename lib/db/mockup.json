@@ -17,9 +17,62 @@
         "visits_count": 2
       },
       "vehicle": "ABC123"
+    },
+    "23456789-23042024": {
+      "driver": 23456789,
+      "price": 15000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-12T09:00:00.000000",
+        "packages_count": 15,
+        "visits_count": 3
+      },
+      "vehicle": "ABC123"
+    },
+    "11234567-24042024": {
+      "driver": 11234567,
+      "price": 10000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-13T14:45:30.000000",
+        "packages_count": 12,
+        "visits_count": 3
+      },
+      "vehicle": "DEF456"
+    },
+    "11234567-23042024": {
+      "driver": 11234567,
+      "price": 5000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-14T16:30:15.000000",
+        "packages_count": 8,
+        "visits_count": 1
+      },
+      "vehicle": "DEF456"
+    },
+    "23456789-22042024": {
+      "driver": 23456789,
+      "price": 5000,
+      "status": "new",
+      "stats": {
+        "eta": "2024-04-15T11:20:10.000000",
+        "packages_count": 11,
+        "visits_count": 2
+      },
+      "vehicle": "ABC123"
     }
   },
   "users": {
+    "11234567": {
+      "email": "juan.perez@gmail.com",
+      "last_name": "Perez",
+      "name": "Juan",
+      "password": "pass1234",
+      "phone": "+5491144444444",
+      "photo_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVErbGzN5-649rSfng3O623SW0ySRC0pdM12gT5pqrjw&s",
+      "role": "driver"
+    },
     "23456789": {
       "email": "nicolas.giudice@gmail.com",
       "last_name": "Giudice",
@@ -44,6 +97,12 @@
       "brand": "Volkswagen",
       "color": "Negro",
       "model": "Fox",
+      "type": "car"
+    },
+    "DEF456": {
+      "brand": "Toyota",
+      "color": "Blanco",
+      "model": "Corolla",
       "type": "car"
     }
   },
@@ -121,6 +180,246 @@
       "status": "new",
       "travel_id": "23456789-24042024",
       "travel_index": 1
+    },
+    "23456789-23042024-1": {
+      "buyer": {
+        "address": {
+          "district": "Palermo",
+          "floor": 5,
+          "observations": "Leave at reception",
+          "street_name": "Santa Fe",
+          "street_number": 1500,
+          "unit": "A",
+          "zip_code": 1425
+        },
+        "doc_number": 56789012,
+        "last_name": "Pérez",
+        "name": "Ana",
+        "phone": "+5491144444444"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_11",
+        "pck_12"
+      ],
+      "price": 5000,
+      "secure_code": "654321",
+      "stats": {
+        "eta": "2024-04-12T09:30:00.000000",
+        "packages_count": 2
+      },
+      "status": "new",
+      "travel_id": "23456789-23042024",
+      "travel_index": 0
+    },
+    "23456789-23042024-2": {
+      "buyer": {
+        "address": {
+          "district": "Belgrano",
+          "floor": 8,
+          "observations": "",
+          "street_name": "Cabildo",
+          "street_number": 2200,
+          "unit": "B",
+          "zip_code": 1428
+        },
+        "doc_number": 67890123,
+        "last_name": "Gómez",
+        "name": "Luis",
+        "phone": "+5491155555555"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_13",
+        "pck_14"
+      ],
+      "price": 5000,
+      "secure_code": "789012",
+      "stats": {
+        "eta": "2024-04-12T10:00:00.000000",
+        "packages_count": 2
+      },
+      "status": "new",
+      "travel_id": "23456789-23042024",
+      "travel_index": 1
+    },
+    "23456789-23042024-3": {
+      "buyer": {
+        "address": {
+          "district": "Recoleta",
+          "floor": 2,
+          "observations": "Ring bell twice",
+          "street_name": "Avenida Alvear",
+          "street_number": 1700,
+          "unit": "",
+          "zip_code": 1425
+        },
+        "doc_number": 78901234,
+        "last_name": "Fernandez",
+        "name": "María",
+        "phone": "+5491166666666"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_15",
+        "pck_16"
+      ],
+      "price": 5000,
+      "secure_code": "890123",
+      "stats": {
+        "eta": "2024-04-12T10:30:00.000000",
+        "packages_count": 2
+      },
+      "status": "new",
+      "travel_id": "23456789-23042024",
+      "travel_index": 2
+    },
+    "11234567-24042024-1": {
+      "buyer": {
+        "address": {
+          "district": "San Telmo",
+          "floor": 3,
+          "observations": "",
+          "street_name": "Defensa",
+          "street_number": 800,
+          "unit": "C",
+          "zip_code": 1065
+        },
+        "doc_number": 89012345,
+        "last_name": "Lopez",
+        "name": "Carlos",
+        "phone": "+5491177777777"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_17",
+        "pck_18",
+        "pck_19"
+      ],
+      "price": 5000,
+      "secure_code": "901234",
+      "stats": {
+        "eta": "2024-04-13T15:00:00.000000",
+        "packages_count": 3
+      },
+      "status": "new",
+      "travel_id": "11234567-24042024",
+      "travel_index": 0
+    },
+    "11234567-24042024-2": {
+      "buyer": {
+        "address": {
+          "district": "Villa Urquiza",
+          "floor": 6,
+          "observations": "Delivery to doorman",
+          "street_name": "Triunvirato",
+          "street_number": 4800,
+          "unit": "F",
+          "zip_code": 1431
+        },
+        "doc_number": 90123456,
+        "last_name": "Martinez",
+        "name": "Laura",
+        "phone": "+5491188888888"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_20",
+        "pck_21",
+        "pck_22"
+      ],
+      "price": 5000,
+      "secure_code": "012345",
+      "stats": {
+        "eta": "2024-04-13T15:30:00.000000",
+        "packages_count": 3
+      },
+      "status": "new",
+      "travel_id": "11234567-24042024",
+      "travel_index": 1
+    },
+    "11234567-23042024-1": {
+      "buyer": {
+        "address": {
+          "district": "Barracas",
+          "floor": 4,
+          "observations": "Delivery to neighbor if not home",
+          "street_name": "Montes de Oca",
+          "street_number": 100,
+          "unit": "E",
+          "zip_code": 1270
+        },
+        "doc_number": 91234567,
+        "last_name": "Gutierrez",
+        "name": "Fernando",
+        "phone": "+5491199999999"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": "Not home"
+      },
+      "packages": [
+        "pck_23"
+      ],
+      "price": 5000,
+      "secure_code": "123450",
+      "stats": {
+        "eta": "2024-04-14T17:00:00.000000",
+        "packages_count": 1
+      },
+      "status": "new",
+      "travel_id": "11234567-23042024",
+      "travel_index": 0
+    },
+    "23456789-22042024-1": {
+      "buyer": {
+        "address": {
+          "district": "Microcentro",
+          "floor": 10,
+          "observations": "Delivery to office",
+          "street_name": "Corrientes",
+          "street_number": 600,
+          "unit": "H",
+          "zip_code": 1043
+        },
+        "doc_number": 93456789,
+        "last_name": "Sanchez",
+        "name": "Roberto",
+        "phone": "+5491111111111"
+      },
+      "delivery_record": {
+        "doc_number": "",
+        "failed_reason": ""
+      },
+      "packages": [
+        "pck_24",
+        "pck_25",
+        "pck_26"
+      ],
+      "price": 5000,
+      "secure_code": "543210",
+      "stats": {
+        "eta": "2024-04-15T11:45:00.000000",
+        "packages_count": 3
+      },
+      "status": "new",
+      "travel_id": "23456789-22042024",
+      "travel_index": 0
     }
   }
 }

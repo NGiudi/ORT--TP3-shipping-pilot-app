@@ -18,7 +18,6 @@ class EditProfilePage extends ConsumerStatefulWidget {
   EditProfilePageState createState() => EditProfilePageState();
 }
 
-//TODO: agregar snackbar y validacioens en el formulario.
 class EditProfilePageState extends ConsumerState<EditProfilePage> {
   bool passwordVisible = true;
 
