@@ -15,6 +15,10 @@ export 'package:shipping_pilot/widgets/layout/sidebar_widget.dart';
 /* session */
 export 'package:shipping_pilot/widgets/session/logout_alert_widget.dart';
 
+/* settings */
+export 'package:shipping_pilot/widgets/settings/settings_error_price_widget.dart';
+
 /* travel */
 export 'package:shipping_pilot/widgets/travel/travel_detail_empty_state_widget.dart';
 export 'package:shipping_pilot/widgets/travel/travel_status_badge_widget.dart';
+export 'package:shipping_pilot/widgets/travel/travel_detail_user_error_widget.dart';
