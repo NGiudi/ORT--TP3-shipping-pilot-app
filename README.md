@@ -174,11 +174,3 @@ En cuanto al pago de las rutas, este se efectuará por visita. Se ha establecido
 
   **Conductores:** Los conductores son usuarios que operan en el terreno y están encargados de llevar a cabo las entregas según las rutas y visitas asignadas por los administradores. Su función principal es registrar el progreso de las visitas, incluida la confirmación de entregas exitosas, actualización del estado de las visitas en tiempo real, reporte de problemas o incidencias, entre otras actividades operativas relacionadas con la logística de transporte y entrega.
 </details>
-
-## Fuera del MVP
-  - Agregar Pais y Ciudad en al dirección.
-  - Agregar valoración del conductor.
-  - Agregarle foto al usuario.
-  - Pantallas del administrador.
-  - Agregar lectura de QR de los paquetes antes de entregarlo al comprador.
-  - Ingresar codigo de seguridad para entregar el paquete.
